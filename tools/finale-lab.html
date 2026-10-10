@@ -1,0 +1,914 @@
+<title>Finale Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one narrow column, one idea per screen. Hairlines instead of cards; the timer ring is the only drawn object. */
+:root{
+  --bg:#F1F3EF;
+  --ink:#181C19;
+  --ink2:#5F6861;
+  --line:#D6DBD3;
+  --accent:#2D5C57;
+  --accent-soft:#DDE8E4;
+  --on-ink:#F1F3EF;
+  --warn:#9A5B13;
+  --font-display:'Outfit',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.22,.7,.2,1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111412; --ink:#E8ECE6; --ink2:#98A199; --line:#272D29;
+    --accent:#88BFB4; --accent-soft:#1B2D29; --on-ink:#111412; --warn:#E0A458;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111412; --ink:#E8ECE6; --ink2:#98A199; --line:#272D29;
+  --accent:#88BFB4; --accent-soft:#1B2D29; --on-ink:#111412; --warn:#E0A458;
+  color-scheme:dark;
+}
+
+
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--font-display);-webkit-font-smoothing:antialiased;margin:0}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.label{font:400 11px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.lab{max-width:1000px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:flex;flex-direction:column;gap:26px}
+.lab h1{margin:0;font-weight:700;font-size:26px;letter-spacing:-.03em}
+.lab h1 span{font-weight:300;color:var(--ink2)}
+.lede{margin:4px 0 0;color:var(--ink2);font-size:15px;max-width:62ch}
+/* frames: V1 and V2 side by side on wide screens, stacked on phones */
+.frames{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start}
+.frames[data-mode="v1"] #fr2,.frames[data-mode="v2"] #fr1{display:none}
+.frames[data-mode="v1"],.frames[data-mode="v2"]{grid-template-columns:minmax(0,390px);justify-content:center}
+.fr{margin:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.fr figcaption{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.fr figcaption b{font-weight:500;color:var(--ink)}
+.frame{position:relative;width:100%;max-width:390px;aspect-ratio:390/760;margin-inline:auto;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:var(--bg)}
+.frame .finale{position:absolute}
+.frame .f-scene{width:86%}
+.frame .f-text{font-size:clamp(24px,7cqw,32px)}
+.frame{container-type:inline-size}
+.under{position:absolute;inset:0;padding:64px 22px 22px;display:flex;flex-direction:column;gap:10px}
+.under h2{margin:0;font-weight:300;font-size:clamp(26px,9cqw,34px);letter-spacing:-.025em}
+.under p{margin:0;color:var(--ink2);font-size:15px}
+.under .bar{height:2px;background:var(--line);margin-top:18px}
+.under .replay{margin-top:auto;align-self:center;min-height:48px;padding:0 24px;border-radius:999px;background:var(--ink);color:var(--on-ink);font-weight:500}
+/* controls */
+.panel{display:grid;gap:24px}
+@media (min-width:820px){ .panel{grid-template-columns:1fr 1fr;column-gap:40px} .panel .wide{grid-column:1 / -1} }
+.group{display:flex;flex-direction:column;gap:10px;min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:40px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:15px;transition:background .25s,border-color .25s}
+.chip:hover{border-color:var(--ink2)}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.chip small{font:400 11px var(--font-mono);color:var(--ink2);margin-left:4px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{min-height:48px;padding:0 24px;border-radius:999px;background:var(--ink);color:var(--on-ink);font-weight:500}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.4;cursor:default}
+.input{min-height:44px;background:transparent;border:0;border-bottom:1px solid var(--line);padding:6px 0;font-size:20px;font-weight:300;width:100%;max-width:280px}
+.input:focus{outline:none;border-bottom-color:var(--accent)}
+.tl{position:relative;height:56px;margin-top:4px}
+.tl-track{position:absolute;left:0;right:0;top:22px;height:2px;background:var(--line)}
+.tl-fill{position:absolute;left:0;top:22px;height:2px;background:var(--accent);width:0}
+.tl-mark{position:absolute;top:10px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;font:400 11px var(--font-mono);color:var(--ink2);white-space:nowrap}
+.tl-mark::before{content:'';width:10px;height:10px;border-radius:50%;border:1px solid var(--ink2);background:var(--bg);margin-top:2px}
+.tl-mark.done{color:var(--ink)}
+.tl-mark.done::before{background:var(--accent);border-color:var(--accent)}
+.tl-mark:first-child{transform:none;align-items:flex-start}
+.tl-mark:last-child{transform:translateX(-100%);align-items:flex-end}
+.clock{font:400 13px var(--font-mono);color:var(--ink2);font-variant-numeric:tabular-nums}
+.steps{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.steps li{border-bottom:1px solid var(--line)}
+.steps button{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;padding:10px 6px;width:100%;text-align:left;font-size:15px}
+.steps b{font:400 12px var(--font-mono);color:var(--ink2);font-weight:400;padding-top:2px}
+.steps li.now{background:var(--accent-soft)}
+.note{margin:0;font-size:13px;color:var(--ink2);max-width:62ch}
+/* ---------- finale ---------- */
+.finale{--glow-a:.7;position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:var(--bg);opacity:0;visibility:hidden;cursor:pointer;overflow:hidden;transition:opacity .45s var(--ease),visibility 0s .45s;-webkit-tap-highlight-color:transparent}
+.finale:focus{outline:none}
+.finale.on{opacity:1;visibility:visible;transition:opacity .4s var(--ease)}
+.finale.p-out{opacity:0;visibility:hidden;transition:opacity .8s var(--ease),visibility 0s .8s}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .finale{--glow-a:.3}}
+:root[data-theme="dark"] .finale{--glow-a:.3}
+.f-scene{position:relative;width:min(88vw,460px,calc(100dvh - 170px));aspect-ratio:1;display:grid;perspective:900px;transition:opacity 1.2s ease}
+.f-scene[hidden]{display:none}
+.f-scene>*{grid-area:1/1}
+.f-scene svg{display:block;width:100%;height:100%;overflow:visible}
+.f-top{transform-origin:50% 64%;transition:transform 1.1s cubic-bezier(.5,0,.2,1),opacity .9s ease .1s}
+.finale.p-tilt .f-top{transform:rotateX(80deg) scale(.86);opacity:0}
+.f-side{opacity:0;transform:translateY(24px);transition:opacity .9s ease .45s,transform 1s var(--ease) .35s}
+.finale.p-tilt .f-side{opacity:1;transform:none}
+.f-ring,.f-body{transform-box:view-box;transform-origin:200px 200px}
+.f-ring circle{fill:none;stroke:var(--accent);stroke-width:3}
+.finale.on .f-ring{animation:fRingOut 1s var(--ease) .15s both}
+.finale.on .f-body{animation:fTopIn 1.1s var(--ease) .15s both}
+@keyframes fRingOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.1)}}
+@keyframes fTopIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.f-rip{transform-box:view-box;transform-origin:200px 200px;animation:fRip 2.4s ease-in-out infinite}
+.f-rip.r2{animation-delay:-1.2s}
+@keyframes fRip{0%,100%{transform:scale(.94)}50%{transform:scale(1.06)}}
+.f-stream{fill:none;stroke:#4A3427;stroke-width:4;stroke-linecap:round;stroke-dasharray:7 6;opacity:0}
+.finale.p-pour .f-stream{animation:fFlow .45s linear infinite,fLife 2.1s ease both}
+.finale.p-pour .f-stream.late{animation:fFlow .45s linear infinite,fLife 1.7s ease .45s both}
+@keyframes fFlow{to{stroke-dashoffset:-26}}
+@keyframes fLife{0%{opacity:0}12%{opacity:1}86%{opacity:1}100%{opacity:0}}
+.f-fill,.f-liq{transform-box:fill-box;transform-origin:50% 100%}
+.f-fill{transform:scaleY(0)}
+.finale.p-pour .f-fill{animation:fFill 1.9s cubic-bezier(.4,0,.3,1) .25s forwards}
+@keyframes fFill{to{transform:scaleY(.8)}}
+.finale.p-pour .f-tilt{animation:fTilt 2.2s cubic-bezier(.45,0,.3,1) forwards}
+@keyframes fTilt{0%{transform:rotate(0)}24%{transform:rotate(38deg)}82%{transform:rotate(38deg)}100%{transform:rotate(2deg)}}
+.finale.p-pour .f-liqtilt{animation:fLiqT 2.2s ease forwards}
+@keyframes fLiqT{0%,10%{transform:scaleY(1)}80%,100%{transform:scaleY(.45)}}
+.finale.p-pour .f-plunge{animation:fPlunge 1.9s cubic-bezier(.4,0,.3,1) .25s forwards}
+@keyframes fPlunge{to{transform:translateY(118px)}}
+.finale.p-pour .f-liqdown{animation:fLiqD 1.9s cubic-bezier(.4,0,.3,1) .25s forwards}
+@keyframes fLiqD{to{transform:scaleY(.08)}}
+.f-steam{fill:none;stroke:var(--ink2);stroke-width:2.2;stroke-linecap:round;opacity:0}
+.finale.p-glow .f-steam{animation:fSteam 2.6s ease-in-out infinite}
+.finale.p-glow .f-steam.s1{animation-delay:-.9s}.finale.p-glow .f-steam.s2{animation-delay:-1.7s}
+@keyframes fSteam{0%{opacity:0;transform:translateY(8px)}40%{opacity:.55}100%{opacity:0;transform:translateY(-14px)}}
+.f-glow{position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(62% 50% at 50% 52%,rgba(255,196,120,var(--glow-a)),rgba(255,196,120,calc(var(--glow-a) * .4)) 45%,rgba(255,196,120,0) 78%);transition:opacity 1.4s ease}
+.finale.p-glow .f-glow{opacity:1}
+.finale.p-glow .f-scene{opacity:.26}
+.f-text{position:absolute;left:24px;right:24px;top:50%;margin:0;text-align:center;font-weight:300;font-size:clamp(28px,8vw,42px);line-height:1.15;letter-spacing:-.02em;text-wrap:balance;opacity:0;transform:translateY(calc(-50% + 12px));transition:opacity 1s ease .35s,transform 1.3s var(--ease) .35s}
+.finale.p-glow .f-text{opacity:1;transform:translateY(-50%)}
+.f-skip{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);margin:0;text-align:center;font:400 11px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);opacity:0;transition:opacity .6s ease 1s}
+.finale.on .f-skip{opacity:.7}
+.finale.p-glow .f-skip{opacity:0;transition-delay:0s}
+
+
+</style>
+
+<div class="lab">
+  <header>
+    <h1>Finale Lab <span>&middot; Bloom Brew</span></h1>
+    <p class="lede">The animation that plays when a brew finishes. V1 is what the app does now: the top view fades out and a separate side view fades in. V2 draws the brewer in 3D while the camera tilts from straight above to side-on, then pours the way that brewer pours. Both run on the same clock, so pausing, slowing down and jumping move them together.</p>
+  </header>
+
+  <div class="frames" id="frames" data-mode="both">
+    <figure class="fr" id="fr1">
+      <figcaption><span class="label"><b>V1</b> &middot; crossfade</span><span class="label">In the app now</span></figcaption>
+      <div class="frame">
+        <div class="under" aria-hidden="true">
+          <h2 class="uTitle">Enjoy.</h2>
+          <p class="uLine">V60 &middot; Hard Lines &middot; Karimikui AB.</p>
+          <div class="bar"></div>
+          <p>The after-brew screen sits underneath and appears when the animation fades out.</p>
+          <button class="replay" type="button" tabindex="-1">Replay</button>
+        </div>
+        <div class="finale" id="finale" role="dialog" aria-label="Brew finished, version 1" tabindex="-1" aria-hidden="true" inert>
+          <div class="f-glow"></div>
+          <div class="f-scene" id="fScene"><div class="f-top" id="fTop"></div><div class="f-side" id="fSide"></div></div>
+          <p class="f-text" id="fText" aria-live="polite"></p>
+          <p class="f-skip">Tap to skip</p>
+        </div>
+      </div>
+    </figure>
+    <figure class="fr" id="fr2">
+      <figcaption><span class="label"><b>V2</b> &middot; camera tilt</span><span class="label" id="v2note">V60</span></figcaption>
+      <div class="frame">
+        <div class="under" aria-hidden="true">
+          <h2 class="uTitle">Enjoy.</h2>
+          <p class="uLine2">V60 &middot; Hard Lines &middot; Karimikui AB.</p>
+          <div class="bar"></div>
+          <p>The after-brew screen sits underneath and appears when the animation fades out.</p>
+          <button class="replay" type="button" tabindex="-1">Replay</button>
+        </div>
+        <div class="finale" id="finale2" role="dialog" aria-label="Brew finished, version 2" tabindex="-1" aria-hidden="true" inert>
+          <div class="f-glow"></div>
+          <div class="f-scene" id="fScene2"><svg id="v2svg" viewBox="0 0 400 400" aria-hidden="true"></svg></div>
+          <p class="f-text" id="fText2"></p>
+          <p class="f-skip">Tap to skip</p>
+        </div>
+      </div>
+    </figure>
+  </div>
+
+  <div class="panel">
+    <div class="group wide">
+      <div class="row">
+        <button class="btn" id="play" type="button">Play</button>
+        <button class="btn ghost" id="pause" type="button" disabled>Pause</button>
+        <span class="clock" id="clock">0.0 s / 7.1 s</span>
+      </div>
+      <div class="tl" aria-hidden="true"><div class="tl-track"></div><div class="tl-fill" id="tlFill"></div><div id="tlMarks"></div></div>
+    </div>
+    <div class="group">
+      <span class="label" id="lbShow">Show</span>
+      <div class="chips" id="modes" role="group" aria-labelledby="lbShow"></div>
+    </div>
+    <div class="group">
+      <span class="label" id="lbSpeed">Speed</span>
+      <div class="chips" id="speeds" role="group" aria-labelledby="lbSpeed"></div>
+    </div>
+    <div class="group">
+      <span class="label" id="lbPhase">Jump to a phase</span>
+      <ol class="steps" id="phases" aria-labelledby="lbPhase"></ol>
+    </div>
+    <div class="group">
+      <span class="label" id="lbBrewer">Brewer</span>
+      <div class="chips" id="brewers" role="group" aria-labelledby="lbBrewer"></div>
+      <p class="note">V2 draws every brewer in 3D with its own pour. V1 reuses the V60 drawing for Origami and Switch and the Kalita for Clever, as the app does today.</p>
+    </div>
+    <div class="group">
+      <span class="label" id="lbTheme">Theme</span>
+      <div class="chips" id="themes" role="group" aria-labelledby="lbTheme"></div>
+    </div>
+    <div class="group">
+      <span class="label">Options</span>
+      <div class="chips">
+        <button class="chip" id="optReduced" type="button" aria-pressed="false">Reduced motion</button>
+        <button class="chip" id="optSound" type="button" aria-pressed="false">Pour sound</button>
+        <button class="chip" id="optHold" type="button" aria-pressed="false">Hold at the end</button>
+      </div>
+      <p class="note">Reduced motion shows the app&rsquo;s simpler version: the glow and greeting only. Hold at the end stops before the fade-out so you can look at the last frame.</p>
+      <label class="label" for="nameIn" style="margin-top:8px">Name in the greeting</label>
+      <input class="input" id="nameIn" type="text" value="Brad" maxlength="40" autocomplete="off">
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const S = { name:'Brad', method:'v60' };
+const B = { ctx:null };
+/* ===== the app's V1 drawing code, copied unchanged ===== */
+const FIN = { timers:[], on:false, src:null };
+const rngSeed = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const pts = a => a.map(p => p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+const COFFEE = '#4A3427', PAPER = '#F6F7F3', PEDGE = '#D3D8CD', VALLEY = '#E3E6DD';
+function petalsSVG(n, r0, r1, hw0, hw1, fill, stroke){
+  let out = '';
+  for (let k = 0; k < n; k++) {
+    const a = 2*Math.PI*k/n - Math.PI/2, ca = Math.cos(a), sa = Math.sin(a);
+    const loc = [[r0,-hw0],[r1,-hw1]];
+    for (let t = 1; t < 12; t++) { const th = -Math.PI/2 + Math.PI*t/12; loc.push([r1 + hw1*0.9*Math.cos(th), hw1*Math.sin(th)]); }
+    loc.push([r1,hw1],[r0,hw0]);
+    out += '<polygon points="'+pts(loc.map(q => [200 + q[0]*ca - q[1]*sa, 200 + q[0]*sa + q[1]*ca]))+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1.5" stroke-linejoin="round"/>';
+  }
+  return out;
+}
+function bedSVG(r, amp, n, seed){
+  const edge = [];
+  for (let i = 0; i < 180; i++) { const th = 2*Math.PI*i/180 - Math.PI/2, rr = r + amp*Math.cos(n*(th + Math.PI/2)); edge.push([200 + rr*Math.cos(th), 200 + rr*Math.sin(th)]); }
+  const rnd = rngSeed(seed); let d = '';
+  for (let i = 0; i < 28; i++) { const a = rnd()*2*Math.PI, rr = Math.pow(rnd(), .6)*r*.82; d += '<circle cx="'+(200+rr*Math.cos(a)).toFixed(1)+'" cy="'+(200+rr*Math.sin(a)).toFixed(1)+'" r="'+(2.5+rnd()*4.5).toFixed(1)+'" fill="#68503F" fill-opacity=".45"/>'; }
+  return '<polygon points="'+pts(edge)+'" fill="url(#fBed)"/>'+d+
+    '<circle class="f-rip" cx="200" cy="200" r="'+(r*.42).toFixed(1)+'" fill="none" stroke="#F1F3EF" stroke-opacity=".12" stroke-width="2"/>'+
+    '<circle class="f-rip r2" cx="200" cy="200" r="'+(r*.7).toFixed(1)+'" fill="none" stroke="#F1F3EF" stroke-opacity=".09" stroke-width="2"/>'+
+    '<circle cx="200" cy="200" r="'+(r*.1).toFixed(1)+'" fill="#2A1E18"/>';
+}
+function topSVG(id){
+  let b = '';
+  if (id === 'v60') {
+    let ridges = '';
+    for (let k = 0; k < 14; k++) { const a = 2*Math.PI*k/14, c = Math.cos(a), s = Math.sin(a); ridges += '<line x1="'+(200+104*c).toFixed(1)+'" y1="'+(200+104*s).toFixed(1)+'" x2="'+(200+146*c).toFixed(1)+'" y2="'+(200+146*s).toFixed(1)+'" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>'; }
+    b = '<rect x="336" y="186" width="48" height="28" rx="14" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/>'+
+      '<circle cx="200" cy="200" r="152" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+ridges+
+      '<circle cx="200" cy="200" r="132" fill="'+PAPER+'" stroke="'+PEDGE+'" stroke-width="2"/>'+
+      '<path d="M200 70 l9 7 -9 7 9 7 -9 7 M200 98 V150" fill="none" stroke="'+PEDGE+'" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'+
+      bedSVG(88, 0, 1, 3);
+  } else if (id === 'kalita') {
+    b = '<circle cx="200" cy="200" r="152" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+
+      '<circle cx="200" cy="200" r="140" fill="'+VALLEY+'" stroke="'+PEDGE+'" stroke-width="2"/>'+
+      petalsSVG(18, 92, 124, 11, 21, '#FBFCF9', PEDGE)+bedSVG(88, 9, 18, 5);
+  } else if (id === 'chemex') {
+    b = '<path d="M168 52 Q200 30 232 52" fill="none" stroke="var(--ink2)" stroke-width="3" stroke-linecap="round"/>'+
+      '<circle cx="200" cy="200" r="152" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+
+      '<circle cx="200" cy="200" r="143" fill="none" stroke="var(--line)" stroke-width="2"/>'+
+      '<circle cx="200" cy="200" r="132" fill="'+PAPER+'" stroke="'+PEDGE+'" stroke-width="2"/>'+
+      '<path d="M296 150 A110 110 0 0 1 296 250 M284 160 A98 98 0 0 1 284 240" fill="none" stroke="'+PEDGE+'" stroke-width="3" stroke-linecap="round"/>'+
+      '<path d="M112 150 L128 200 L112 250" fill="none" stroke="'+PEDGE+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'+
+      bedSVG(94, 0, 1, 9);
+  } else if (id === 'aeropress') {
+    let bub = ''; const rnd = rngSeed(21);
+    for (let i = 0; i < 22; i++) { const a = rnd()*2*Math.PI, rr = 20 + rnd()*86; bub += '<circle cx="'+(200+rr*Math.cos(a)).toFixed(1)+'" cy="'+(200+rr*Math.sin(a)).toFixed(1)+'" r="'+(2+rnd()*5).toFixed(1)+'" fill="none" stroke="#C9A97F" stroke-opacity=".7" stroke-width="1.6"/>'; }
+    b = '<rect x="44" y="190" width="30" height="20" rx="8" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/><rect x="326" y="190" width="30" height="20" rx="8" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/>'+
+      '<circle cx="200" cy="200" r="138" fill="var(--bg)" stroke="var(--ink2)" stroke-width="4"/>'+
+      '<circle cx="200" cy="200" r="126" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2"/>'+
+      '<circle cx="200" cy="200" r="112" fill="'+COFFEE+'"/><circle cx="200" cy="200" r="104" fill="none" stroke="#9A7A58" stroke-opacity=".55" stroke-width="8"/>'+bub+
+      '<circle class="f-rip" cx="200" cy="200" r="46" fill="none" stroke="#C9A97F" stroke-opacity=".35" stroke-width="2"/>';
+  } else {
+    let bub = ''; const rnd = rngSeed(33);
+    for (let i = 0; i < 30; i++) { const a = rnd()*2*Math.PI, rr = 10 + rnd()*108; bub += '<circle cx="'+(200+rr*Math.cos(a)).toFixed(1)+'" cy="'+(200+rr*Math.sin(a)).toFixed(1)+'" r="'+(2+rnd()*5).toFixed(1)+'" fill="none" stroke="#C9A97F" stroke-opacity=".7" stroke-width="1.6"/>'; }
+    b = '<path d="M340 168 C392 168 392 232 340 232" fill="none" stroke="var(--ink2)" stroke-width="12" stroke-linecap="round"/>'+
+      '<circle cx="200" cy="200" r="150" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+
+      '<circle cx="200" cy="200" r="138" fill="var(--accent-soft)" stroke="var(--line)" stroke-width="2"/>'+
+      '<circle cx="200" cy="200" r="124" fill="'+COFFEE+'"/><circle cx="200" cy="200" r="116" fill="none" stroke="#9A7A58" stroke-opacity=".5" stroke-width="10"/>'+bub;
+  }
+  return '<svg viewBox="0 0 400 400" aria-hidden="true"><defs><radialGradient id="fBed" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#54402F"/><stop offset="1" stop-color="#2B211B"/></radialGradient></defs>'+
+    '<g class="f-ring"><circle cx="200" cy="200" r="172"/></g><g class="f-body">'+b+'</g></svg>';
+}
+/* cup under the brewer; cx is its centre */
+function cupSVG(cx){
+  const body = 'M'+(cx-55)+' 270 L'+(cx-55)+' 328 Q'+(cx-55)+' 356 '+(cx-27)+' 356 L'+(cx+27)+' 356 Q'+(cx+55)+' 356 '+(cx+55)+' 328 L'+(cx+55)+' 270 Z';
+  let steam = '';
+  [-20, 0, 20].forEach((dx, i) => { steam += '<path class="f-steam s'+i+'" d="M'+(cx+dx)+' 256 q-8 -13 0 -26 q8 -13 0 -26"/>'; });
+  return '<defs><clipPath id="fCupClip"><path d="'+body+'"/></clipPath></defs>'+
+    '<g clip-path="url(#fCupClip)"><rect class="f-fill" x="'+(cx-55)+'" y="274" width="110" height="82" fill="'+COFFEE+'"/></g>'+
+    '<path d="'+body+'" fill="none" stroke="var(--ink2)" stroke-width="3" stroke-linejoin="round"/>'+
+    '<path d="M'+(cx+55)+' 286 h16 a17 17 0 0 1 0 34 h-16" fill="none" stroke="var(--ink2)" stroke-width="4" stroke-linecap="round"/>'+steam;
+}
+function sideSVG(id){
+  const table = '<line x1="40" y1="358" x2="360" y2="358" stroke="var(--line)" stroke-width="2" stroke-linecap="round"/>';
+  let inner = '';
+  if (id === 'v60') {
+    inner = '<path d="M122 120 L278 120 L214 238 L186 238 Z" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3" stroke-linejoin="round"/>'+
+      '<path d="M132 120 L146 96 L254 96 L268 120" fill="'+PAPER+'" stroke="'+PEDGE+'" stroke-width="2" stroke-linejoin="round"/>'+
+      '<path d="M142 126 L258 126 L244 150 L156 150 Z" fill="'+COFFEE+'"/>'+
+      '<path d="M150 150 L192 232 M200 150 V232 M250 150 L208 232" stroke="var(--line)" stroke-width="2.5" stroke-linecap="round" fill="none"/>'+
+      '<rect x="184" y="238" width="32" height="10" rx="3" fill="var(--bg)" stroke="var(--ink2)" stroke-width="2.5"/>'+
+      '<rect x="276" y="116" width="30" height="12" rx="6" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/>'+
+      cupSVG(200)+'<path class="f-stream" d="M200 250 V332"/>';
+  } else if (id === 'kalita') {
+    let zig = ''; for (let i = 0; i <= 14; i++) zig += (112 + i*13.7).toFixed(1)+','+(i%2 ? 108 : 118)+' ';
+    inner = '<path d="M106 122 L294 122 L250 214 L150 214 Z" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3" stroke-linejoin="round"/>'+
+      '<polyline points="'+zig+'" fill="'+PAPER+'" stroke="'+PEDGE+'" stroke-width="2" stroke-linejoin="round"/>'+
+      '<path d="M120 128 L280 128 L262 152 L138 152 Z" fill="'+COFFEE+'"/>'+
+      '<path d="M146 152 q6 30 14 60 M174 152 q4 30 8 60 M200 152 v60 M226 152 q-4 30 -8 60 M254 152 q-6 30 -14 60" stroke="var(--line)" stroke-width="2.2" fill="none" stroke-linecap="round"/>'+
+      '<rect x="140" y="214" width="120" height="10" rx="3" fill="var(--bg)" stroke="var(--ink2)" stroke-width="2.5"/>'+
+      '<rect x="150" y="224" width="10" height="14" fill="var(--ink2)"/><rect x="240" y="224" width="10" height="14" fill="var(--ink2)"/>'+
+      cupSVG(200)+'<path class="f-stream" d="M174 226 V316"/><path class="f-stream" d="M200 226 V320"/><path class="f-stream" d="M226 226 V316"/>';
+  } else if (id === 'aeropress') {
+    inner = '<rect class="f-liq f-liqdown" x="163" y="92" width="74" height="148" fill="'+COFFEE+'"/>'+
+      '<g class="f-plunge"><rect x="194" y="30" width="12" height="42" fill="var(--ink2)"/><rect x="176" y="22" width="48" height="9" rx="4" fill="var(--ink2)"/><rect x="162" y="70" width="76" height="22" rx="4" fill="var(--ink2)"/></g>'+
+      '<rect x="158" y="58" width="84" height="184" rx="5" fill="none" stroke="var(--ink2)" stroke-width="3"/>'+
+      '<rect x="148" y="54" width="104" height="8" rx="4" fill="var(--bg)" stroke="var(--ink2)" stroke-width="2.5"/>'+
+      '<path d="M158 110 h10 M158 140 h10 M158 170 h10 M158 200 h10" stroke="var(--ink2)" stroke-width="2" stroke-linecap="round"/>'+
+      '<rect x="150" y="242" width="100" height="16" rx="4" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/>'+
+      cupSVG(200)+'<path class="f-stream" d="M186 260 V322"/><path class="f-stream" d="M214 260 V322"/>';
+  } else if (id === 'chemex') {
+    inner = '<g class="f-tilt" style="transform-origin:225px 90px"><g transform="translate(45 0)">'+
+      '<path d="M100 90 L132 150 L132 156 L82 270 L198 270 L148 156 L148 150 L180 90 Z" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3" stroke-linejoin="round"/>'+
+      '<path d="M112.7 200 L167.3 200 L198 270 L82 270 Z" fill="'+COFFEE+'" class="f-liq f-liqtilt"/>'+
+      '<rect x="126" y="138" width="28" height="44" rx="6" fill="#A67C52" stroke="#7E5B3A" stroke-width="2"/><path d="M126 158 H154" stroke="#7E5B3A" stroke-width="3"/><circle cx="140" cy="164" r="4" fill="#E9DCC6" stroke="#7E5B3A" stroke-width="1.5"/>'+
+      '<path d="M176 88 q8 -6 14 2" fill="none" stroke="var(--ink2)" stroke-width="3" stroke-linecap="round"/></g></g>'+
+      cupSVG(310)+'<path class="f-stream late" d="M228 94 C252 98 292 150 300 330"/>';
+  } else {
+    inner = '<g class="f-tilt" style="transform-origin:214px 114px"><g>'+
+      '<path d="M110 150 h-22 a14 14 0 0 0 -14 14 v46 a14 14 0 0 0 14 14 h22" fill="none" stroke="var(--ink2)" stroke-width="5" stroke-linecap="round"/>'+
+      '<rect x="110" y="110" width="90" height="160" rx="6" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+
+      '<rect x="112" y="190" width="86" height="78" fill="'+COFFEE+'" class="f-liq f-liqtilt"/>'+
+      '<rect x="106" y="104" width="98" height="10" rx="3" fill="var(--ink2)"/><rect x="151" y="92" width="8" height="14" fill="var(--ink2)"/><circle cx="155" cy="86" r="9" fill="var(--ink2)"/>'+
+      '<path d="M200 110 q10 -3 16 5" fill="none" stroke="var(--ink2)" stroke-width="3" stroke-linecap="round"/></g></g>'+
+      cupSVG(310)+'<path class="f-stream late" d="M218 118 C246 122 290 160 298 330"/>';
+  }
+  return '<svg viewBox="0 0 400 400" aria-hidden="true">'+table+inner+'</svg>';
+}
+function pourSound(){
+  try {
+    const c = B.ctx;
+    if (!c || c.state !== 'running') return;   /* silent unless the page already has audio running; a muted phone stays quiet */
+    const n = Math.floor(c.sampleRate*1.5), buf = c.createBuffer(1, n, c.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < n; i++) d[i] = Math.random()*2 - 1;
+    const src = c.createBufferSource(); src.buffer = buf; src.loop = true;
+    const bp = c.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1100; bp.Q.value = .7;
+    const g = c.createGain(), t = c.currentTime;
+    g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.04, t+.45); g.gain.setValueAtTime(.04, t+1.5); g.gain.exponentialRampToValueAtTime(.0001, t+2.1);
+    src.connect(bp); bp.connect(g); g.connect(c.destination);
+    src.start(t); src.stop(t+2.2); FIN.src = src;
+  } catch (e) {}
+}
+
+
+/* ===== V2: every brewer drawn as a solid of revolution, seen by a camera that tilts from straight above to side-on =====
+   Projection: model point (x, d, z) with z up and d toward the viewer. At camera elevation e and scale k,
+   screen y = ay + (H - z)·cos(e)·k + d·sin(e)·k, so a circle at height z becomes an ellipse with ry = r·sin(e).
+   At e = 90° it is the top view; at e = 12° it is almost side-on. Each brewer is a profile of [height, radius]
+   points plus its own parts (base, handle, paper, lid) and its own way of pouring. */
+const V2 = (function(){
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = $('#v2svg');
+  const add = (tag, attrs, parent) => { const el = document.createElementNS(NS, tag); Object.keys(attrs || {}).forEach(k => el.setAttribute(k, attrs[k])); (parent || svg).append(el); return el; };
+  const set = (el, attrs) => { if (!el) return; Object.keys(attrs).forEach(k => el.setAttribute(k, typeof attrs[k] === 'number' ? attrs[k].toFixed(2) : attrs[k])); };
+  const f = n => n.toFixed(1);
+  const clamp01 = x => Math.max(0, Math.min(1, x));
+  const span = (t, a, b) => clamp01((t - a) / (b - a));
+  const lerp = (a, b, x) => a + (b - a) * x;
+  const ease = x => x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2;
+  const easeOut = x => 1 - Math.pow(1 - x, 3);
+  const WOOD = '#A67C52', WOOD_EDGE = '#7E5B3A', STEEL = '#C9CDC6', RUBBER = '#2F3330', CAP = '#4A4F4B';
+
+  /* ----- shape helpers ----- */
+  /* radius of a profile at height z (profile runs top to bottom) */
+  function rAt(prof, z){
+    if (z >= prof[0][0]) return prof[0][1];
+    for (let i = 1; i < prof.length; i++) {
+      const a = prof[i - 1], b = prof[i];
+      if (z >= b[0]) return lerp(b[1], a[1], (z - b[0]) / (a[0] - b[0]));
+    }
+    return prof[prof.length - 1][1];
+  }
+  /* the part of a profile between two heights */
+  function cut(prof, zLo, zHi){
+    const pts = [[zHi, rAt(prof, zHi)]];
+    prof.forEach(p => { if (p[0] < zHi && p[0] > zLo) pts.push(p); });
+    pts.push([zLo, rAt(prof, zLo)]);
+    return pts;
+  }
+  const shrink = (prof, w) => prof.map(p => [p[0], Math.max(6, p[1] - w)]);
+  const cyl = (z0, z1, r) => [[z1, r], [z0, r]];
+  /* silhouette of a turned shape: sides down, front of the bottom, sides up, back of the top */
+  function sil(P, prof){
+    const k = P.k, s = Math.max(.002, P.s), top = prof[0], bot = prof[prof.length - 1];
+    let d = 'M' + f(P.ax - top[1]*k) + ' ' + f(P.y(top[0]));
+    for (let i = 1; i < prof.length; i++) d += ' L' + f(P.ax - prof[i][1]*k) + ' ' + f(P.y(prof[i][0]));
+    d += ' A' + f(bot[1]*k) + ' ' + f(Math.max(.01, bot[1]*k*s)) + ' 0 0 0 ' + f(P.ax + bot[1]*k) + ' ' + f(P.y(bot[0]));
+    for (let i = prof.length - 2; i >= 0; i--) d += ' L' + f(P.ax + prof[i][1]*k) + ' ' + f(P.y(prof[i][0]));
+    d += ' A' + f(top[1]*k) + ' ' + f(Math.max(.01, top[1]*k*s)) + ' 0 0 0 ' + f(P.ax - top[1]*k) + ' ' + f(P.y(top[0])) + ' Z';
+    return d;
+  }
+  /* the visible side of a ring or band between two heights: sides, front of the bottom edge, front of the top edge.
+     Unlike sil() it has no top face, so whatever is inside the ring stays visible. */
+  function band(P, z0, r0, z1, r1){
+    const k = P.k, s = Math.max(.002, P.s);
+    return 'M' + f(P.ax - r1*k) + ' ' + f(P.y(z1)) + ' L' + f(P.ax - r0*k) + ' ' + f(P.y(z0)) +
+      ' A' + f(r0*k) + ' ' + f(Math.max(.01, r0*k*s)) + ' 0 0 0 ' + f(P.ax + r0*k) + ' ' + f(P.y(z0)) +
+      ' L' + f(P.ax + r1*k) + ' ' + f(P.y(z1)) +
+      ' A' + f(r1*k) + ' ' + f(Math.max(.01, r1*k*s)) + ' 0 0 1 ' + f(P.ax - r1*k) + ' ' + f(P.y(z1)) + ' Z';
+  }
+  /* a horizontal circle at height z, as an ellipse path (optionally scalloped: amp, n petals) */
+  function ring(P, z, r, amp, n){
+    if (!amp) {
+      const rx = r * P.k, ry = Math.max(.01, rx * P.s), x = P.ax, y = P.y(z);
+      return 'M' + f(x - rx) + ' ' + f(y) + ' A' + f(rx) + ' ' + f(ry) + ' 0 1 0 ' + f(x + rx) + ' ' + f(y) + ' A' + f(rx) + ' ' + f(ry) + ' 0 1 0 ' + f(x - rx) + ' ' + f(y) + ' Z';
+    }
+    let d = '';
+    for (let i = 0; i <= 96; i++) {
+      const th = 2 * Math.PI * i / 96, rr = r + amp * Math.cos(n * th);
+      d += (i ? ' L' : 'M') + f(P.ax + rr * Math.cos(th) * P.k) + ' ' + f(P.y(z) + rr * Math.sin(th) * P.s * P.k);
+    }
+    return d + ' Z';
+  }
+  function ell(el, P, z, r, extra){ set(el, Object.assign({ cx:P.ax, cy:P.y(z), rx:r * P.k, ry:Math.max(.01, r * P.k * P.s) }, extra || {})); }
+  /* a line along a surface at angle th0 between two heights, optionally spiralling */
+  function surfLine(P, prof, th0, zFrom, zTo, spiral, H){
+    let d = '', depth = 0;
+    for (let j = 0; j <= 8; j++) {
+      const z = lerp(zFrom, zTo, j / 8), th = th0 + (spiral || 0) * (1 - z / H), r = rAt(prof, z);
+      d += (j ? ' L' : 'M') + f(P.ax + r * Math.cos(th) * P.k) + ' ' + f(P.y(z) + r * Math.sin(th) * P.s * P.k);
+      depth += Math.sin(th);
+    }
+    return { d, front:depth > 0 };
+  }
+  /* a loop handle in the plane through the axis on the right: a short tab from above, a D shape from the side */
+  function loop(P, prof, h){
+    const z1 = h.zTop, z2 = h.zBot, out = h.out, x = r => f(P.ax + r * P.k), y = z => f(P.y(z));
+    return 'M' + x(rAt(prof, z1) - 6) + ' ' + y(z1) + ' C' + x(out) + ' ' + y(z1 + 6) + ' ' + x(out) + ' ' + y(z2 - 4) + ' ' + x(rAt(prof, z2) - 6) + ' ' + y(z2);
+  }
+  /* a flat tab sticking out sideways at height z, between radius r0 and r1 (dir 1 right, -1 left) */
+  function tab(el, P, z, r0, r1, depth, tall, dir){
+    const h = (depth * P.s + tall * P.c) * P.k, a = P.ax + dir * r0 * P.k, b = P.ax + dir * r1 * P.k;
+    set(el, { x:Math.min(a, b), y:P.y(z) - h / 2, width:Math.abs(b - a), height:h, rx:Math.min(10 * P.k, h / 2) });
+  }
+  /* rotate a point about (px, py) by deg */
+  function rot(x, y, px, py, deg){ const a = deg * Math.PI / 180, c = Math.cos(a), s = Math.sin(a); return [px + (x - px) * c - (y - py) * s, py + (x - px) * s + (y - py) * c]; }
+  /* keep the part of a polygon below a horizontal line (screen y >= ys) */
+  function below(poly, ys){
+    const out = [];
+    for (let i = 0; i < poly.length; i++) {
+      const a = poly[i], b = poly[(i + 1) % poly.length], ai = a[1] >= ys, bi = b[1] >= ys;
+      if (ai) out.push(a);
+      if (ai !== bi) { const u = (ys - a[1]) / (b[1] - a[1]); out.push([a[0] + (b[0] - a[0]) * u, ys]); }
+    }
+    return out;
+  }
+  /* sampled outline of a profile's silhouette as points, for clipping */
+  function silPoints(P, prof){
+    const pts = [], k = P.k, s = P.s, bot = prof[prof.length - 1], top = prof[0];
+    prof.forEach(p => pts.push([P.ax - p[1]*k, P.y(p[0])]));
+    for (let i = 1; i < 12; i++) { const th = Math.PI - Math.PI * i / 12; pts.push([P.ax + bot[1]*k*Math.cos(th), P.y(bot[0]) + bot[1]*k*s*Math.sin(th)]); }
+    for (let i = prof.length - 1; i >= 0; i--) pts.push([P.ax + prof[i][1]*k, P.y(prof[i][0])]);
+    for (let i = 1; i < 12; i++) { const th = -Math.PI * i / 12; pts.push([P.ax + top[1]*k*Math.cos(th), P.y(top[0]) + top[1]*k*s*Math.sin(th)]); }
+    return pts;
+  }
+  const polyD = pts => pts.length < 3 ? '' : 'M' + pts.map(p => f(p[0]) + ' ' + f(p[1])).join(' L') + ' Z';
+
+  /* ----- the brewers ----- */
+  /* kind: drip (coffee drips through into a cup below), drain (steep, then the level drops as it drains),
+     press (AeroPress on the cup), tiltpour (vessel tips to pour into a cup alongside).
+     side: where the camera ends up (scale, x of the axis, screen y of the lowest point). */
+  const SPECS = {
+    v60: { kind:'drip', H:214, prof:[[214,150],[0,26]], wall:9, mat:'glass', paper:{ type:'cone', r:124, up:6, seam:true },
+      ribs:{ n:14, spiral:.55, from:.28 }, bed:.45, base:{ r:48, z0:-1, z1:-10 }, tip:.14,
+      handle:{ zTop:.78, zBot:.34, reach:44, w:13 }, streams:[0], side:{ k:.6, ax:200, bottom:250 } },
+    origami: { kind:'drip', H:200, prof:[[200,150],[0,30]], wall:8, mat:'ceramic', paper:{ type:'cone', r:118, up:6, seam:true },
+      pleats:{ n:20, amp:5 }, bed:.45, base:{ r:44, z0:-1, z1:-9 }, holder:{ z0:.13, z1:.18, out:24 },
+      streams:[0], side:{ k:.6, ax:200, bottom:250 } },
+    kalita: { kind:'drip', H:150, prof:[[150,150],[0,76]], wall:8, mat:'steel', paper:{ type:'wave', r:136, up:10, amp:8, n:20 },
+      bed:.3, bedAmp:6, base:{ r:96, z0:-2, z1:-9 }, bands:[.36, .68],
+      streams:[-22, 0, 22], side:{ k:.62, ax:200, bottom:250 } },
+    'switch': { kind:'drain', H:200, prof:[[200,146],[0,30]], wall:9, mat:'glass', paper:{ type:'cone', r:120, up:6, seam:true },
+      ribs:{ n:14, spiral:.55, from:.28 }, level:[.72, .16], tip:.12,
+      collar:{ r:58, z0:-54, z1:0 }, valve:{ z0:-42, z1:-34, r:61 },
+      handle:{ zTop:.78, zBot:.36, reach:44, w:13 }, streams:[0], side:{ k:.58, ax:200, bottom:252 } },
+    clever: { kind:'drain', H:180, prof:[[180,150],[0,70]], wall:8, mat:'plastic', paper:{ type:'cone', r:132, up:6, seam:true },
+      level:[.74, .14], base:{ r:104, z0:-3, z1:-13 },
+      handle:{ zTop:.84, zBot:.5, reach:38, w:12 }, streams:[0], side:{ k:.6, ax:200, bottom:252 } },
+    chemex: { kind:'tiltpour', H:300, prof:[[300,150],[178,30],[160,27],[142,31],[40,114],[0,118]], wall:7, mat:'glass',
+      paper:{ type:'chemex', r:138, up:12, lift:true }, bed:.72, level:[.24, .05],
+      collar:{ z0:128, z1:200, t:7 }, spout:14,
+      tilt:{ start:2500, up:3150, down:4300, end:4700, deg:50 }, side:{ k:.6, ax:150, bottom:352 } },
+    aeropress: { kind:'press', H:230, prof:[[230,118],[0,118]], wall:8, mat:'plastic', open:true, level:[.56, .06],
+      cap:{ r:74, z0:-14, z1:0 }, flange:{ r:148, z0:6, z1:16 }, wings:{ r1:178, depth:24, tall:10 }, marks:[.3, .45, .6, .75],
+      plunger:{ r:108, enter:2450, land:2720, done:4400 }, streams:[-18, 18], side:{ k:.6, ax:200, bottom:286 } },
+    french: { kind:'tiltpour', H:250, prof:[[250,124],[0,124]], wall:5, mat:'glass', open:true, level:[.72, .1],
+      frame:[{ z0:0, z1:14, r:130 }, { z0:232, z1:250, r:130 }], handle:{ zTop:.86, zBot:.22, reach:62, w:15, from:130 },
+      lid:{ land:[1850, 2400], press:[2400, 2850], rod:80 }, spout:8,
+      tilt:{ start:2900, up:3400, down:4300, end:4700, deg:42 }, side:{ k:.55, ax:160, bottom:352 } }
+  };
+
+  let id = null, R = null;
+  function build(which){
+    id = SPECS[which] ? which : 'v60';
+    const sp = SPECS[id], tilts = sp.kind === 'tiltpour', cupX = tilts ? 310 : 200;
+    svg.innerHTML = '<defs><radialGradient id="v2Bed" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#54402F"/><stop offset="1" stop-color="#2B211B"/></radialGradient><clipPath id="v2Clip"><path id="v2ClipP"/></clipPath></defs>';
+    R = { clip:svg.querySelector('#v2ClipP'), cupX };
+    R.ring = add('circle', { cx:200, cy:200, r:172, fill:'none', stroke:'var(--accent)', 'stroke-width':3 });
+    R.cup = add('g', {}); R.cup.innerHTML = cupSVG(cupX);
+    /* its own clip id, so the coffee stays inside this cup and not V1's */
+    R.cup.querySelector('clipPath').id = 'v2CupClip';
+    R.cup.querySelector('[clip-path]').setAttribute('clip-path', 'url(#v2CupClip)');
+    R.fill = R.cup.querySelector('.f-fill');
+    R.streams = (sp.streams || [0]).map(() => add('path', { fill:'none', stroke:COFFEE, 'stroke-width':4, 'stroke-linecap':'round', 'stroke-dasharray':'7 6', opacity:0 }));
+    /* liquid in a vessel that tips is drawn outside it, so its surface stays level */
+    if (tilts) R.liquidOut = add('path', { fill:COFFEE });
+    const g = R.g = add('g', {});
+    const stroke = { stroke:'var(--ink2)', 'stroke-width':3, 'stroke-linejoin':'round' };
+    if (sp.handle) { R.hOut = add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-linecap':'round' }, g); R.hIn = add('path', { fill:'none', stroke:'var(--accent-soft)', 'stroke-linecap':'round' }, g); }
+    if (sp.collar && id === 'switch') { R.collar = add('path', Object.assign({ fill:'var(--bg)', 'fill-opacity':.5 }, stroke), g); R.collarTop = add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':2 }, g); R.valve = add('path', { fill:STEEL, stroke:'var(--ink2)', 'stroke-width':2 }, g); R.lever = add('rect', { fill:STEEL, stroke:'var(--ink2)', 'stroke-width':2 }, g); }
+    if (sp.cap) R.cap = add('path', { fill:CAP, stroke:'var(--ink2)', 'stroke-width':2 }, g);
+    if (sp.wings) { R.wingL = add('rect', { fill:'var(--accent-soft)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); R.wingR = add('rect', { fill:'var(--accent-soft)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); }
+    if (sp.flange) { R.flange = add('path', { fill:'var(--accent-soft)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); R.flangeTop = add('path', { fill:'var(--accent-soft)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); }
+    if (sp.base) { R.base = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g); R.baseTop = add('path', { fill:'var(--bg)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); }
+    if (sp.tip) R.tip = add('path', { fill:'var(--bg)' }, g);
+    if (!tilts && (sp.mat === 'glass' || sp.mat === 'plastic')) R.liquid = add('path', { fill:COFFEE }, g);
+    if (sp.lid) R.mesh = add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':2.5, 'stroke-dasharray':'2 3' }, g);
+    const bodyFill = { glass:{ fill:'var(--bg)', 'fill-opacity':.28 }, plastic:{ fill:'var(--accent-soft)', 'fill-opacity':.38 }, ceramic:{ fill:'var(--accent-soft)' }, steel:{ fill:'var(--bg)' } }[sp.mat];
+    R.body = add('path', Object.assign({}, bodyFill, stroke), g);
+    if (sp.bands) R.bands = sp.bands.map(() => add('path', { fill:'none', stroke:'var(--line)', 'stroke-width':2.5 }, g));
+    if (sp.pleats) R.pleats = Array.from({ length:sp.pleats.n }, () => add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':1.6, 'stroke-opacity':.5 }, g));
+    if (sp.holder) R.holder = add('path', { fill:WOOD, stroke:WOOD_EDGE, 'stroke-width':2.5, 'stroke-linejoin':'round' }, g);
+    if (sp.collar && id === 'chemex') { R.wood = add('path', { fill:WOOD, stroke:WOOD_EDGE, 'stroke-width':2.5, 'stroke-linejoin':'round' }, g); R.tie = add('path', { fill:'none', stroke:'#7E5B3A', 'stroke-width':3 }, g); R.bead = add('ellipse', { fill:'#E9DCC6', stroke:WOOD_EDGE, 'stroke-width':1.5 }, g); }
+    if (sp.marks) R.marks = sp.marks.map(() => add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':2, 'stroke-linecap':'round' }, g));
+    if (sp.frame) { R.frameLo = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g); R.frameHi = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g); }
+    if (sp.ribs) R.ribsSide = Array.from({ length:sp.ribs.n }, () => add('path', { fill:'none', stroke:'var(--line)', 'stroke-width':3, 'stroke-linecap':'round' }, g));
+    R.rim = add('path', Object.assign({ fill:'var(--bg)' }, stroke), g);
+    if (sp.spout) R.spout = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g);
+    if (sp.ribs) R.ribsTop = Array.from({ length:sp.ribs.n }, () => add('path', { fill:'none', stroke:'var(--line)', 'stroke-width':3, 'stroke-linecap':'round' }, g));
+    if (sp.pleats) R.pleatsTop = Array.from({ length:sp.pleats.n }, () => add('path', { fill:'none', stroke:'var(--line)', 'stroke-width':3, 'stroke-linecap':'round' }, g));
+    R.paperG = add('g', {}, g);
+    if (sp.paper) {
+      R.paper = add('path', { fill:sp.paper.type === 'wave' ? '#FBFCF9' : PAPER, stroke:PEDGE, 'stroke-width':2 }, R.paperG);
+      if (sp.paper.type === 'chemex') R.paperFold = add('path', { fill:'none', stroke:PEDGE, 'stroke-width':2 }, R.paperG);
+    }
+    R.inside = add('g', { 'clip-path':'url(#v2Clip)' }, R.paperG);
+    if (sp.paper && sp.paper.seam) R.seam = add('path', { fill:'none', stroke:PEDGE, 'stroke-width':3, 'stroke-linecap':'round' }, R.inside);
+    if (sp.paper && sp.paper.type === 'wave') R.folds = Array.from({ length:sp.paper.n }, () => add('path', { fill:'none', stroke:PEDGE, 'stroke-width':2 }, R.inside));
+    if (sp.bed != null) {
+      R.bed = add('path', { fill:'url(#v2Bed)' }, R.inside);
+      R.rip = add('ellipse', { fill:'none', stroke:'#F1F3EF', 'stroke-opacity':.12, 'stroke-width':2 }, R.inside);
+      R.hole = add('ellipse', { fill:'#2A1E18' }, R.inside);
+    }
+    if (sp.level && id !== 'chemex') {
+      R.surf = add('path', { fill:COFFEE }, R.inside);
+      R.crust = add('path', { fill:'none', stroke:'#9A7A58', 'stroke-opacity':.55, 'stroke-width':6 }, R.inside);
+      R.bub = Array.from({ length:22 }, () => add('ellipse', { fill:'none', stroke:'#C9A97F', 'stroke-opacity':.7, 'stroke-width':1.6 }, R.inside));
+      const rnd = rngSeed(id.length * 7 + 3);
+      R.bubAt = R.bub.map(() => ({ a:rnd() * 2 * Math.PI, u:.15 + rnd() * .75, r:2 + rnd() * 4.5 }));
+    }
+    if (sp.lid) { R.rod = add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':4, 'stroke-linecap':'round' }, g); R.lid = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g); R.lidTop = add('path', { fill:'var(--bg)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); R.knob = add('ellipse', { fill:'var(--ink2)' }, g); }
+    if (sp.plunger) { R.plunger = add('path', { fill:'var(--bg)', 'fill-opacity':.85, stroke:'var(--ink2)', 'stroke-width':2.5 }, g); R.seal = add('path', { fill:RUBBER, stroke:'var(--ink2)', 'stroke-width':2 }, g); R.plTop = add('path', { fill:'var(--bg)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); }
+  }
+
+  function render(t, which){
+    if (which !== id || !R) build(which);
+    const sp = SPECS[id], H = sp.H, prof = sp.prof, inner = shrink(prof, sp.wall);
+    const tilts = sp.kind === 'tiltpour';
+    /* camera */
+    const intro = easeOut(span(t, 100, 800));
+    const tl = ease(span(t, 1300, 2500));
+    const eSide = 12 * Math.PI / 180;
+    const zLow = Math.min(0, sp.base ? sp.base.z1 : 0, sp.collar && id === 'switch' ? sp.collar.z0 : 0, sp.cap ? sp.cap.z0 : 0);
+    const aySide = sp.side.bottom - (H - zLow) * Math.cos(eSide) * sp.side.k;
+    const e = lerp(90, 12, tl) * Math.PI / 180, k = lerp(1, sp.side.k, tl);
+    const P = { k, s:Math.sin(e), c:Math.cos(e), ax:lerp(200, sp.side.ax, tl), y:z => lerp(200, aySide, tl) + (H - z) * Math.cos(e) * k };
+    const topness = Math.pow(P.s, 6);
+    /* the timer ring shrinks onto the rim */
+    set(R.ring, { r:lerp(172, prof[0][1], easeOut(span(t, 0, 800))), opacity:1 - span(t, 550, 950) });
+    /* tipping to pour (Chemex, French press) about the spout */
+    let deg = 0, px = 0, py = 0;
+    if (tilts) {
+      const T = sp.tilt;
+      deg = sp.tilt.deg * (ease(span(t, T.start, T.up)) - ease(span(t, T.down, T.end)));
+      px = P.ax + (prof[0][1] + (sp.spout || 0)) * k; py = P.y(H);
+    }
+    set(R.g, { opacity:intro, transform:'translate(200 200) scale(' + (0.92 + 0.08 * intro).toFixed(4) + ') translate(-200 -200)' + (deg ? ' rotate(' + deg.toFixed(2) + ' ' + f(px) + ' ' + f(py) + ')' : '') });
+
+    /* how full the vessel is: drains during the pour */
+    let level = null;
+    if (sp.level) {
+      const L = sp.level, drop = sp.kind === 'drain' ? ease(span(t, 2550, 4400)) : tilts ? ease(span(t, sp.tilt.start + 300, sp.tilt.down)) : 0;
+      level = lerp(L[0], L[1], drop) * H;
+    }
+    /* AeroPress plunger: lowers onto the coffee, then presses it through */
+    let seal = null;
+    if (sp.plunger) {
+      const pl = sp.plunger, l0 = sp.level[0] * H;
+      seal = t < pl.land ? lerp(H + 300, l0, easeOut(span(t, pl.enter, pl.land))) : lerp(l0, sp.cap ? 18 : 10, ease(span(t, pl.land, pl.done)));
+      level = Math.min(l0, seal);
+    }
+
+    /* parts behind the body */
+    if (R.hOut) {
+      const h = sp.handle, hp = { zTop:h.zTop * H, zBot:h.zBot * H, out:(h.from || prof[0][1]) + h.reach };
+      const d = loop(P, h.from ? cyl(0, H, h.from) : prof, hp);
+      set(R.hOut, { d, 'stroke-width':h.w * k + 5 }); set(R.hIn, { d, 'stroke-width':h.w * k });
+    }
+    if (R.collar) {
+      const c = sp.collar;
+      set(R.collar, { d:sil(P, cyl(c.z0, c.z1, c.r)) }); set(R.collarTop, { d:ring(P, c.z1, c.r) });
+      /* the steel valve band only reads from the side; from above it would be a solid disc */
+      set(R.valve, { d:band(P, sp.valve.z0, sp.valve.r, sp.valve.z1, sp.valve.r), opacity:1 - Math.pow(P.s, 2) });
+      tab(R.lever, P, (sp.valve.z0 + sp.valve.z1) / 2, sp.valve.r - 2, sp.valve.r + 22, 10, 9, 1);
+      set(R.lever, { opacity:1 - Math.pow(P.s, 2) });
+    }
+    if (R.cap) set(R.cap, { d:sil(P, cyl(sp.cap.z0, sp.cap.z1, sp.cap.r)) });
+    if (R.wingL) { const fz = (sp.flange.z0 + sp.flange.z1) / 2; tab(R.wingL, P, fz, sp.flange.r - 4, sp.wings.r1, sp.wings.depth, sp.wings.tall, -1); tab(R.wingR, P, fz, sp.flange.r - 4, sp.wings.r1, sp.wings.depth, sp.wings.tall, 1); }
+    if (R.flange) { set(R.flange, { d:sil(P, cyl(sp.flange.z0, sp.flange.z1, sp.flange.r)) }); set(R.flangeTop, { d:ring(P, sp.flange.z1, sp.flange.r) }); }
+    if (R.base) { set(R.base, { d:sil(P, cyl(sp.base.z1, sp.base.z0, sp.base.r)) }); set(R.baseTop, { d:ring(P, sp.base.z0, sp.base.r) }); }
+    if (R.frameLo) set(R.frameLo, { d:band(P, sp.frame[0].z0, sp.frame[0].r, sp.frame[0].z1, sp.frame[0].r) });
+    if (R.tip) set(R.tip, { d:sil(P, cut(prof, 0, sp.tip * H)) });
+    /* coffee seen through glass or plastic */
+    if (R.liquid) {
+      const top = sp.bed != null && sp.kind === 'drip' ? sp.bed * H : level;
+      set(R.liquid, { d:top != null && top > 2 ? sil(P, cut(inner, 0, top)) : '' });
+    }
+    if (R.liquidOut) {
+      /* the vessel tips, the surface stays level: clip the tipped interior with a horizontal line */
+      const pts = silPoints(P, cut(inner, 0, H)).map(p => deg ? rot(p[0], p[1], px, py, deg) : p);
+      const c = deg ? rot(P.ax, P.y(level), px, py, deg) : [P.ax, P.y(level)];
+      set(R.liquidOut, { d:level > 2 ? polyD(below(pts, c[1])) : '' });
+    }
+    /* French press: the lid comes down, then the mesh presses the grounds to the bottom */
+    let meshZ = null, lidZ = null;
+    if (sp.lid) {
+      const ld = sp.lid;
+      lidZ = lerp(H + 160, H + 2, easeOut(span(t, ld.land[0], ld.land[1])));
+      meshZ = lerp(H - 8, 16, ease(span(t, ld.press[0], ld.press[1])));
+      const show = t >= ld.land[0];
+      set(R.mesh, { d:show && t >= ld.land[1] - 60 ? ring(P, meshZ, rAt(inner, meshZ) - 2) : '', opacity:show ? 1 : 0 });
+    }
+    set(R.body, { d:sil(P, prof) });
+    if (R.bands) sp.bands.forEach((b, i) => { const z = b * H, r = rAt(prof, z); set(R.bands[i], { d:'M' + f(P.ax - r * k) + ' ' + f(P.y(z)) + ' A' + f(r * k) + ' ' + f(Math.max(.01, r * k * P.s)) + ' 0 0 0 ' + f(P.ax + r * k) + ' ' + f(P.y(z)), opacity:1 - topness }); });
+    if (R.pleats) R.pleats.forEach((pl, i) => { const L = surfLine(P, prof, 2 * Math.PI * i / R.pleats.length, .06 * H, H, 0, H); set(pl, { d:L.d, opacity:L.front ? (1 - topness) : 0 }); });
+    if (R.holder) { const h = sp.holder, z0 = h.z0 * H, z1 = h.z1 * H; set(R.holder, { d:band(P, z0, rAt(prof, z0) + h.out, z1, rAt(prof, z1) + h.out) }); }
+    if (R.wood) {
+      const c = sp.collar, t2 = c.t, zs = [c.z1, 178, 160, 142, c.z0];
+      set(R.wood, { d:sil(P, zs.map(z => [z, rAt(prof, z) + t2])) });
+      const zt = 162, rt = rAt(prof, zt) + t2 + 1;
+      set(R.tie, { d:'M' + f(P.ax - rt * k) + ' ' + f(P.y(zt)) + ' A' + f(rt * k) + ' ' + f(Math.max(.01, rt * k * P.s)) + ' 0 0 0 ' + f(P.ax + rt * k) + ' ' + f(P.y(zt)), opacity:1 - topness });
+      set(R.bead, { cx:P.ax + 6 * k, cy:P.y(zt - 14) + rt * k * P.s, rx:6 * k, ry:7 * k, opacity:1 - topness });
+    }
+    if (R.marks) sp.marks.forEach((m, i) => { const z = m * H, r = prof[0][1], th = 1.95; const x = P.ax + r * Math.cos(th) * k, y = P.y(z) + r * Math.sin(th) * P.s * k; set(R.marks[i], { d:'M' + f(x) + ' ' + f(y) + ' h' + f((i % 2 ? 10 : 18) * k), opacity:1 - topness }); });
+    if (R.frameHi) set(R.frameHi, { d:band(P, sp.frame[1].z0, sp.frame[1].r, sp.frame[1].z1, sp.frame[1].r) });
+    /* ribs: seen through the glass once tilted, seen from above at the start; they hand over smoothly */
+    if (R.ribsSide) {
+      const rb = sp.ribs;
+      R.ribsSide.forEach((el, i) => { const L = surfLine(P, inner, 2 * Math.PI * i / rb.n, rb.from * H, .9 * H, rb.spiral, H); set(el, { d:L.d, 'stroke-opacity':(1 - topness) * (L.front ? .8 : .3) }); });
+      R.ribsTop.forEach((el, i) => { const L = surfLine(P, inner, 2 * Math.PI * i / rb.n, rb.from * H, H, rb.spiral, H); set(el, { d:L.d, 'stroke-opacity':topness }); });
+    }
+    /* rim: the opening; Origami's pleated edge is scalloped */
+    set(R.rim, { d:ring(P, H, prof[0][1], sp.pleats ? sp.pleats.amp : 0, sp.pleats ? sp.pleats.n : 0) });
+    if (R.pleatsTop) R.pleatsTop.forEach((el, i) => { const L = surfLine(P, inner, 2 * Math.PI * (i + .5) / R.pleatsTop.length, .3 * H, H, 0, H); set(el, { d:L.d, 'stroke-opacity':topness }); });
+    if (R.spout) {
+      const r = prof[0][1], z = H, x0 = P.ax + (r - 4) * k, y0 = P.y(z), w = 14 * k * P.s + 3;
+      set(R.spout, { d:'M' + f(x0) + ' ' + f(y0 - w) + ' L' + f(x0 + (sp.spout + 4) * k) + ' ' + f(y0 - 2 * P.c * k) + ' L' + f(x0) + ' ' + f(y0 + w) + ' Z' });
+    }
+    /* paper, and what is seen through the opening */
+    if (sp.paper) {
+      const pp = sp.paper, zp = H + pp.up;
+      const lift = pp.lift ? easeOut(span(t, 1950, 2450)) : 0;
+      set(R.paperG, { transform:'translate(0 ' + f(-60 * lift) + ')', opacity:1 - lift });
+      if (pp.type === 'wave') { set(R.paper, { d:ring(P, zp, pp.r, pp.amp, pp.n) }); set(R.clip, { d:ring(P, zp, pp.r - 3, pp.amp, pp.n) }); }
+      else { set(R.paper, { d:ring(P, zp, pp.r) }); set(R.clip, { d:ring(P, zp, pp.r - (pp.type === 'chemex' ? 10 : 1.5)) }); }
+      if (R.paperFold) set(R.paperFold, { d:ring(P, zp, pp.r - 10) });
+      if (R.seam) {
+        let d = ''; const zEnd = (sp.bed != null ? sp.bed : sp.level[0]) * H;
+        for (let j = 0; j <= 6; j++) { const z = lerp(zp, zEnd, j / 6), r = rAt(inner, Math.min(z, H)) - 6; d += (j ? ' L' : 'M') + f(P.ax) + ' ' + f(P.y(z) - r * P.s * k); }
+        set(R.seam, { d, opacity:Math.pow(P.s, 3) });
+      }
+      if (R.folds) R.folds.forEach((el, i) => {
+        const th = 2 * Math.PI * (i + .5) / R.folds.length, zb = sp.bed * H, rb = rAt(inner, zb) - 4;
+        const a = [P.ax + rb * Math.cos(th) * k, P.y(zb) + rb * Math.sin(th) * P.s * k], b = [P.ax + (pp.r - pp.amp) * Math.cos(th) * k, P.y(zp) + (pp.r - pp.amp) * Math.sin(th) * P.s * k];
+        set(el, { d:'M' + f(a[0]) + ' ' + f(a[1]) + ' L' + f(b[0]) + ' ' + f(b[1]) });
+      });
+    } else {
+      set(R.clip, { d:ring(P, H, rAt(inner, H)) });
+    }
+    if (R.bed) {
+      const zb = sp.bed * H, rb = rAt(inner, zb) - 4, pulse = .94 + .06 * Math.sin(t / 380);
+      set(R.bed, { d:ring(P, zb, rb, sp.bedAmp || 0, sp.paper && sp.paper.n || 0) });
+      ell(R.rip, P, zb, rb * .55 * pulse);
+      ell(R.hole, P, zb, 9);
+    }
+    if (R.surf) {
+      const show = level != null && level > 2;
+      const rs = show ? rAt(inner, level) - 3 : 0;
+      set(R.surf, { d:show ? ring(P, level, rs) : '' });
+      set(R.crust, { d:show ? ring(P, level, rs * .92) : '', opacity:1 - span(t, 2550, 3300) });
+      R.bub.forEach((b, i) => {
+        const a = R.bubAt[i], rr = a.u * rs, x = P.ax + rr * Math.cos(a.a) * k, y = (show ? P.y(level) : 0) + rr * Math.sin(a.a) * P.s * k;
+        set(b, { cx:x, cy:y, rx:a.r * k, ry:Math.max(.01, a.r * k * P.s), opacity:show ? 1 - span(t, 2550, 3300) : 0 });
+      });
+    }
+    /* lid, rod and knob */
+    if (R.lid) {
+      const show = t >= sp.lid.land[0], ld = sp.lid, r = sp.frame[1].r + 2;
+      set(R.lid, { d:show ? sil(P, cyl(lidZ, lidZ + 10, r)) : '' }); set(R.lidTop, { d:show ? ring(P, lidZ + 10, r) : '' });
+      /* the knob rides on the rod: high while the mesh is up, down at the lid once pressed */
+      const knobZ = lidZ + 14 + ld.rod * (meshZ - 16) / (H - 24);
+      set(R.rod, { d:show ? 'M' + f(P.ax) + ' ' + f(P.y(lidZ + 10)) + ' V' + f(P.y(knobZ)) : '' });
+      ell(R.knob, P, knobZ + 6, 14, { opacity:show ? 1 : 0 });
+    }
+    /* AeroPress plunger */
+    if (R.plunger) {
+      const show = t >= sp.plunger.enter, top = seal + 270, r = sp.plunger.r;
+      set(R.plunger, { d:show ? sil(P, cyl(seal + 12, top, r)) : '' });
+      set(R.seal, { d:show ? sil(P, cyl(seal, seal + 12, r)) : '' });
+      set(R.plTop, { d:show ? ring(P, top, r) : '' });
+    }
+    /* cup and pour */
+    const cupIn = easeOut(span(t, 1950, 2550));
+    set(R.cup, { opacity:cupIn, transform:'translate(0 ' + ((1 - cupIn) * 26).toFixed(2) + ')' });
+    const T = tilts ? sp.tilt : null;
+    const pourA = sp.kind === 'press' ? sp.plunger.land : tilts ? T.start + 250 : 2500;
+    const pourB = sp.kind === 'press' ? sp.plunger.done : tilts ? T.down : 4350;
+    const fillLevel = .8 * ease(span(t, pourA + 150, pourB));
+    R.fill.style.transform = 'scaleY(' + fillLevel.toFixed(4) + ')';
+    const top = 356 - 82 * fillLevel, sOp = span(t, pourA, pourA + 150) * (1 - span(t, pourB, pourB + 170));
+    if (tilts) {
+      const sx = px + 2, sy = py + 2;
+      R.streams.forEach(el => set(el, { d:'M' + f(sx) + ' ' + f(sy) + ' C' + f(sx + 16) + ' ' + f(sy + 6) + ' ' + f(R.cupX - 10) + ' ' + f(sy + 50) + ' ' + f(R.cupX - 8) + ' ' + f(Math.max(sy + 60, top)), opacity:sOp, 'stroke-dashoffset':(-t * .055).toFixed(1) }));
+    } else {
+      const y0 = P.y(zLow) + 1;
+      R.streams.forEach((el, i) => { const x = P.ax + sp.streams[i] * k; set(el, { d:'M' + f(x) + ' ' + f(y0) + ' V' + f(Math.max(y0 + 1, top)), opacity:sOp, 'stroke-dashoffset':(-t * .055).toFixed(1) }); });
+    }
+  }
+  return { render, has:which => !!SPECS[which] };
+})();
+
+
+/* ===== lab controller: V1 uses the app's classes and timings; V2 is drawn from the same clock ===== */
+const finEl = $('#finale'), fin2 = $('#finale2');
+const PHASES = [
+  { at:0,    cls:'on',     name:'Ring to top view', what:'V1: the ring fades as the top view grows in. V2: the ring shrinks onto the brewer’s rim.' },
+  { at:1300, cls:'p-tilt', name:'Tilt to side view', what:'V1: the top view tips away and a side view fades in. V2: the camera lowers, the rim flattens and the cone grows down.' },
+  { at:2500, cls:'p-pour', name:'Pour',              what:'Coffee streams into the cup and fills it.' },
+  { at:4700, cls:'p-glow', name:'Glow and greeting', what:'A warm glow, the scene dims, steam rises and the greeting appears.' },
+  { at:7100, cls:'end',    name:'Fade out',          what:'The overlay fades to the after-brew screen. Tapping anywhere skips here.' }
+];
+const END = 7100, REDUCED_END = 2600;
+const BREWERS = [['v60','V60'],['kalita','Kalita'],['origami','Origami'],['chemex','Chemex'],['switch','Switch'],['clever','Clever'],['aeropress','AeroPress'],['french','French press']];
+const SPEEDS = [[.25,'¼×'],[.5,'½×'],[1,'1×']];
+const MODES = [['both','Both'],['v1','V1 only'],['v2','V2 only']];
+const L = { t:0, speed:1, playing:false, last:0, fired:-1, raf:0, reduced:false, sound:false, hold:false, theme:'auto', mode:'both' };
+
+function chipGroup(box, items, isOn, onPick){
+  box.replaceChildren();
+  items.forEach(it => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = it[1];
+    b.setAttribute('aria-pressed', String(isOn(it[0])));
+    b.addEventListener('click', () => { onPick(it[0]); chipGroup(box, items, isOn, onPick); });
+    box.append(b);
+  });
+}
+const inFinale = el => !!el && (finEl.contains(el) || fin2.contains(el));
+function rate(){ document.getAnimations().forEach(a => { if (!inFinale(a.effect && a.effect.target)) return; a.playbackRate = L.speed; if (L.playing) { if (a.playState === 'paused') a.play(); } else a.pause(); }); }
+function greet(){ return S.name ? 'Enjoy your cup, ' + S.name + '.' : 'Enjoy your cup.'; }
+function reset(){
+  cancelAnimationFrame(L.raf);
+  try { if (FIN.src) FIN.src.stop(); } catch (e) {}
+  FIN.src = null;
+  [finEl, fin2].forEach(f => { f.className = 'finale'; f.inert = true; f.setAttribute('aria-hidden', 'true'); });
+  $('#fTop').replaceChildren(); $('#fSide').replaceChildren();
+  L.t = 0; L.fired = -1; L.playing = false;
+}
+function build(){
+  $('#fText').textContent = greet(); $('#fText2').textContent = greet();
+  const art = { origami:'v60', 'switch':'v60', clever:'kalita' }[S.method] || S.method;
+  $('#fTop').innerHTML = topSVG(art);
+  $('#fSide').innerHTML = sideSVG(art);
+  $$('.uTitle').forEach(h => { h.textContent = S.name ? 'Enjoy, ' + S.name + '.' : 'Enjoy.'; });
+  const bName = (BREWERS.find(b => b[0] === S.method) || ['', 'V60'])[1];
+  $$('.uLine, .uLine2').forEach(p => { p.textContent = bName + ' · Hard Lines · Karimikui AB.'; });
+  $('#v2note').textContent = bName;
+  [finEl, fin2].forEach(f => { void f.offsetWidth; f.inert = false; f.removeAttribute('aria-hidden'); });
+  $('#fScene').hidden = L.reduced; $('#fScene2').hidden = L.reduced;
+}
+function fire(i){
+  const p = PHASES[i];
+  if (L.reduced) { if (i === 0) [finEl, fin2].forEach(f => f.classList.add('on', 'p-glow')); return; }
+  if (p.cls === 'end') return;
+  finEl.classList.add(p.cls);
+  if (p.cls === 'on' || p.cls === 'p-glow') fin2.classList.add(p.cls);   /* V2 draws its own tilt and pour */
+  if (p.cls === 'p-pour' && L.sound) {
+    try { B.ctx = B.ctx || new (window.AudioContext || window.webkitAudioContext)(); if (B.ctx.state === 'suspended') B.ctx.resume(); } catch (e) {}
+    pourSound();
+  }
+}
+function endAt(){ return L.reduced ? REDUCED_END : END; }
+function endNow(){
+  L.playing = false; cancelAnimationFrame(L.raf);
+  try { if (FIN.src) FIN.src.stop(); } catch (e) {}
+  [finEl, fin2].forEach(f => f.classList.add('p-out'));
+  setTimeout(() => { if (!L.playing) [finEl, fin2].forEach(f => { f.className = 'finale'; f.inert = true; f.setAttribute('aria-hidden', 'true'); }); }, 900 / L.speed);
+  paintUI();
+}
+function tick(now){
+  if (!L.playing) return;
+  L.t += (now - L.last) * L.speed; L.last = now;
+  PHASES.forEach((p, i) => { const at = L.reduced ? (i === 0 ? 0 : Infinity) : p.at; if (i > L.fired && L.t >= at) { fire(i); L.fired = i; } });
+  if (!L.reduced) V2.render(Math.min(L.t, END), S.method);
+  rate();
+  if (L.t >= endAt()) {
+    L.t = endAt();
+    if (L.hold) { L.playing = false; rate(); paintUI(); return; }
+    endNow(); return;
+  }
+  paintUI();
+  L.raf = requestAnimationFrame(tick);
+}
+function play(from){
+  reset(); build();
+  L.t = from || 0; L.playing = true; L.last = performance.now();
+  if (L.reduced) { fire(0); L.fired = 0; }
+  else PHASES.forEach((p, i) => { if (p.at <= L.t && p.cls !== 'end') { fire(i); L.fired = i; } });
+  V2.render(L.t, S.method);
+  L.raf = requestAnimationFrame(tick);
+  paintUI();
+}
+function paintUI(){
+  const end = endAt();
+  $('#clock').textContent = (L.t / 1000).toFixed(1) + ' s / ' + (end / 1000).toFixed(1) + ' s';
+  $('#tlFill').style.width = (Math.min(1, L.t / end) * 100) + '%';
+  $$('#tlMarks .tl-mark').forEach((m, i) => m.classList.toggle('done', L.reduced ? (i === 0 || L.t >= end) : L.t >= PHASES[i].at && (L.t > 0 || i === 0)));
+  $$('#phases li').forEach((li, i) => { const nx = PHASES[i + 1]; li.classList.toggle('now', !L.reduced && L.t >= PHASES[i].at && (!nx || L.t < nx.at) && (L.playing || L.t > 0)); });
+  $('#play').textContent = L.playing ? 'Restart' : (L.t > 0 && L.t < end ? 'Resume' : 'Play');
+  $('#pause').disabled = !L.playing;
+}
+PHASES.forEach(p => {
+  const m = document.createElement('span'); m.className = 'tl-mark'; m.style.left = (p.at / END * 100) + '%'; m.textContent = (p.at / 1000).toFixed(1) + ' s';
+  $('#tlMarks').append(m);
+  const li = document.createElement('li'), b = document.createElement('button');
+  b.type = 'button';
+  const tb = document.createElement('b'); tb.textContent = (p.at / 1000).toFixed(1) + ' s';
+  const d = document.createElement('span'); d.textContent = p.name + '. ' + p.what;
+  b.addEventListener('click', () => { if (L.reduced) { L.reduced = false; paintOpts(); } play(p.cls === 'end' ? END - 400 : p.at); });
+  b.append(tb, d); li.append(b); $('#phases').append(li);
+});
+$('#play').addEventListener('click', () => {
+  if (!L.playing && L.t > 0 && L.t < endAt()) { L.playing = true; L.last = performance.now(); rate(); L.raf = requestAnimationFrame(tick); paintUI(); return; }
+  play(0);
+});
+$('#pause').addEventListener('click', () => { L.playing = false; cancelAnimationFrame(L.raf); rate(); paintUI(); });
+$$('.under .replay').forEach(b => b.addEventListener('click', () => play(0)));
+[finEl, fin2].forEach(f => f.addEventListener('click', () => { if (L.playing || L.t > 0) { L.t = endAt(); endNow(); } }));
+chipGroup($('#modes'), MODES, v => v === L.mode, v => { L.mode = v; $('#frames').dataset.mode = v; });
+chipGroup($('#brewers'), BREWERS, v => v === S.method, v => { S.method = v; play(0); });
+chipGroup($('#speeds'), SPEEDS, v => v === L.speed, v => { L.speed = v; rate(); });
+const THEMES = [['auto','Match system'],['light','Light'],['dark','Dark']];
+chipGroup($('#themes'), THEMES, v => v === L.theme, v => { L.theme = v; if (v === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', v); });
+function paintOpts(){
+  $('#optReduced').setAttribute('aria-pressed', String(L.reduced));
+  $('#optSound').setAttribute('aria-pressed', String(L.sound));
+  $('#optHold').setAttribute('aria-pressed', String(L.hold));
+}
+$('#optReduced').addEventListener('click', () => { L.reduced = !L.reduced; paintOpts(); play(0); });
+$('#optSound').addEventListener('click', () => {
+  L.sound = !L.sound; paintOpts();
+  if (L.sound) { try { B.ctx = B.ctx || new (window.AudioContext || window.webkitAudioContext)(); if (B.ctx.state === 'suspended') B.ctx.resume(); } catch (e) {} }
+});
+$('#optHold').addEventListener('click', () => { L.hold = !L.hold; paintOpts(); });
+$('#nameIn').addEventListener('input', e => {
+  S.name = e.target.value.trim();
+  $('#fText').textContent = greet(); $('#fText2').textContent = greet();
+  $$('.uTitle').forEach(h => { h.textContent = S.name ? 'Enjoy, ' + S.name + '.' : 'Enjoy.'; });
+});
+paintOpts();
+/* open partway through the tilt and rest there, so the first view shows both versions mid-transition */
+play(1300);
+setTimeout(() => { if (L.playing && L.t < 2600) { L.playing = false; cancelAnimationFrame(L.raf); rate(); paintUI(); } }, 600);
+})();
+</script>

@@ -444,36 +444,7 @@ body{overflow-x:clip}
 .f-scene[hidden]{display:none}
 .f-scene>*{grid-area:1/1}
 .f-scene svg{display:block;width:100%;height:100%;overflow:visible}
-.f-top{transform-origin:50% 64%;transition:transform 1.1s cubic-bezier(.5,0,.2,1),opacity .9s ease .1s}
-.finale.p-tilt .f-top{transform:rotateX(80deg) scale(.86);opacity:0}
-.f-side{opacity:0;transform:translateY(24px);transition:opacity .9s ease .45s,transform 1s var(--ease) .35s}
-.finale.p-tilt .f-side{opacity:1;transform:none}
-.f-ring,.f-body{transform-box:view-box;transform-origin:200px 200px}
-.f-ring circle{fill:none;stroke:var(--accent);stroke-width:3}
-.finale.on .f-ring{animation:fRingOut 1s var(--ease) .15s both}
-.finale.on .f-body{animation:fTopIn 1.1s var(--ease) .15s both}
-@keyframes fRingOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.1)}}
-@keyframes fTopIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
-.f-rip{transform-box:view-box;transform-origin:200px 200px;animation:fRip 2.4s ease-in-out infinite}
-.f-rip.r2{animation-delay:-1.2s}
-@keyframes fRip{0%,100%{transform:scale(.94)}50%{transform:scale(1.06)}}
-.f-stream{fill:none;stroke:#4A3427;stroke-width:4;stroke-linecap:round;stroke-dasharray:7 6;opacity:0}
-.finale.p-pour .f-stream{animation:fFlow .45s linear infinite,fLife 2.1s ease both}
-.finale.p-pour .f-stream.late{animation:fFlow .45s linear infinite,fLife 1.7s ease .45s both}
-@keyframes fFlow{to{stroke-dashoffset:-26}}
-@keyframes fLife{0%{opacity:0}12%{opacity:1}86%{opacity:1}100%{opacity:0}}
-.f-fill,.f-liq{transform-box:fill-box;transform-origin:50% 100%}
-.f-fill{transform:scaleY(0)}
-.finale.p-pour .f-fill{animation:fFill 1.9s cubic-bezier(.4,0,.3,1) .25s forwards}
-@keyframes fFill{to{transform:scaleY(.8)}}
-.finale.p-pour .f-tilt{animation:fTilt 2.2s cubic-bezier(.45,0,.3,1) forwards}
-@keyframes fTilt{0%{transform:rotate(0)}24%{transform:rotate(38deg)}82%{transform:rotate(38deg)}100%{transform:rotate(2deg)}}
-.finale.p-pour .f-liqtilt{animation:fLiqT 2.2s ease forwards}
-@keyframes fLiqT{0%,10%{transform:scaleY(1)}80%,100%{transform:scaleY(.45)}}
-.finale.p-pour .f-plunge{animation:fPlunge 1.9s cubic-bezier(.4,0,.3,1) .25s forwards}
-@keyframes fPlunge{to{transform:translateY(118px)}}
-.finale.p-pour .f-liqdown{animation:fLiqD 1.9s cubic-bezier(.4,0,.3,1) .25s forwards}
-@keyframes fLiqD{to{transform:scaleY(.08)}}
+.f-fill{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0)}
 .f-steam{fill:none;stroke:var(--ink2);stroke-width:2.2;stroke-linecap:round;opacity:0}
 .finale.p-glow .f-steam{animation:fSteam 2.6s ease-in-out infinite}
 .finale.p-glow .f-steam.s1{animation-delay:-.9s}.finale.p-glow .f-steam.s2{animation-delay:-1.7s}
@@ -490,13 +461,52 @@ body{overflow-x:clip}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{transition-duration:.01ms !important;transition-delay:0s !important;animation-duration:.01ms !important}
 }
+
+/* PASS5: Today and the shelf */
+@media (max-width:360px){ .top-actions .mini{padding:14px 6px;white-space:nowrap} }
+.t-which{margin:-14px 0 6px}
+.t-name{margin:0;font-size:clamp(26px,7vw,34px);font-weight:300;letter-spacing:-.02em;line-height:1.15;overflow-wrap:anywhere}
+.t-status{margin:6px 0 0;font:400 12px var(--font-mono);color:var(--ink2)}
+.t-status.warn,.t-rs.warn,.h-sub.warn{color:var(--warn)}
+.t-dose{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;margin:26px 0 4px;font-weight:200;font-size:clamp(52px,16vw,76px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.t-dose .u{font:400 13px var(--font-mono);letter-spacing:.04em;color:var(--ink2);margin-left:6px}
+.t-arrow{font-size:.5em;color:var(--ink2)}
+.t-kv{margin-top:18px}
+.t-why{margin:16px 0 0;font-size:15px;max-width:44ch}
+.t-change{margin:8px 0 0;font-size:14px;color:var(--ink2);max-width:46ch}
+.t-warn{margin:12px 0 0;font-size:14px;color:var(--warn);max-width:46ch}
+.t-go{display:flex;align-items:center;gap:8px 20px;margin:28px 0 6px;flex-wrap:wrap}
+.t-go .btn-primary{flex:1 1 220px}
+.t-swap{margin-top:18px}
+.t-swap .chips{padding:0 0 14px}
+.t-swap .label{display:block;margin:6px 0 10px}
+.t-rate{margin:-6px 0 28px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.t-rate p{margin:0 0 12px;font-size:15px}
+.t-rate .chips{margin:0 0 12px}
+.t-rate .t-msg{margin:10px 0 0;font:400 12px var(--font-mono);color:var(--ink2)}
+.t-shelf{margin-top:34px}
+.t-shelf > .label{display:block;margin-bottom:6px}
+.t-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.t-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;width:100%;text-align:left;padding:14px 0;border-bottom:1px solid var(--line);min-height:52px}
+.t-rn{font-size:17px;font-weight:300;overflow-wrap:anywhere}
+.t-rs{font:400 12px var(--font-mono);color:var(--ink2);text-align:right}
+.t-more{display:flex;flex-wrap:wrap;gap:4px 20px;margin-top:6px}
+.t-empty p{max-width:42ch}
+.shelf-group{margin-top:26px}
+.shelf-group > .label{display:block;margin-bottom:6px}
+.shelf-group > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;font:400 11px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.shelf-group > summary::-webkit-details-marker{display:none}
+.shelf-group > summary::after{content:'+';margin-left:auto;font-size:18px}
+.shelf-group[open] > summary::after{content:'\2212'}
+.shelf-tools{display:flex;justify-content:flex-end;margin:-8px 0 0}
 </style>
 
 <div class="app" id="app">
   <header class="top">
     <button class="mark" id="homeBtn" type="button" aria-label="Bloom, back to the start">bloom</button>
     <div class="top-actions">
-      <button class="mini" id="unitBtn" type="button" aria-label="Switch between metric and imperial units">g · °C</button>
+      <button class="mini" id="unitBtn" type="button" aria-label="Switch between metric and imperial units" hidden>g · °C</button>
+      <button class="mini" id="shelfBtn" type="button">Shelf</button>
       <button class="mini" id="historyBtn" type="button">History</button>
       <button class="mini" id="settingsBtn" type="button">Settings</button>
     </div>
@@ -512,6 +522,78 @@ body{overflow-x:clip}
         <input class="input" id="nameInput" type="text" maxlength="40" autocomplete="given-name" autocapitalize="words" spellcheck="false" enterkeyhint="done" placeholder="First name is fine">
       </div>
       <p class="caption">Just a name. There is no account and no password. It is only used to greet you and to title your history.</p>
+    </section>
+
+    <section class="stage" data-stage="today" data-pos="after" aria-labelledby="h-today">
+      <h1 id="h-today" tabindex="-1">Good morning.</h1>
+      <div class="t-rate" id="todayRate" hidden>
+        <p id="trLabel">How was your last cup?</p>
+        <div class="chips" id="trTaste" role="group" aria-label="How it tasted"></div>
+        <div class="rating" id="trRating" role="radiogroup" aria-label="Rating"></div>
+        <p class="t-msg" id="trMsg"></p>
+      </div>
+      <div class="t-empty" id="todayEmpty" hidden>
+        <p class="lede" id="todayEmptyText"></p>
+        <div class="t-go">
+          <button class="btn-primary" id="todayAddBag" type="button">Add a bag</button>
+          <button class="link quiet" id="todayEmptyShelf" type="button" hidden>Open the shelf</button>
+        </div>
+      </div>
+      <div id="todayMain" hidden>
+        <p class="label t-which" id="todayWhich">Brewing today</p>
+        <h2 class="t-name" id="todayName"></h2>
+        <p class="t-status" id="todayStatus"></p>
+        <div class="t-dose" id="todayDose" aria-label="Coffee and water"></div>
+        <dl class="kv t-kv">
+          <div><dt>Brew</dt><dd id="tBrewer"></dd></div>
+          <div><dt>Water</dt><dd id="tTemp"></dd></div>
+          <div id="tGrindRow"><dt>Grind</dt><dd id="tGrind"></dd></div>
+        </dl>
+        <p class="t-why" id="todayWhy" hidden></p>
+        <p class="t-change" id="todayChange" hidden></p>
+        <p class="t-warn" id="todayWarn" hidden></p>
+        <p class="t-change"><button class="link quiet" id="todaySetup" type="button" hidden>Add your grinder in Settings to get grind suggestions</button></p>
+        <div class="t-go">
+          <button class="btn-primary" id="todayBrew" type="button">Start brewing</button>
+          <button class="link" id="todayAdjust" type="button">Adjust recipe</button>
+        </div>
+        <details class="more t-swap" id="todaySwap">
+          <summary>Change brewer or size <span class="more-sum" id="todaySwapSum"></span></summary>
+          <span class="label">Brewer</span>
+          <div class="chips" id="tsBrewers" role="radiogroup" aria-label="Brewer"></div>
+          <span class="label">In the cup</span>
+          <div class="chips" id="tsCups" role="radiogroup" aria-label="How much in the cup"></div>
+        </details>
+      </div>
+      <div class="t-shelf" id="todayShelf" hidden>
+        <span class="label">Also on your shelf</span>
+        <ul class="t-list" id="todayShelfList"></ul>
+        <p class="empty" id="todayShelfNone" hidden>Nothing else open right now.</p>
+        <div class="t-more">
+          <button class="link" id="todayChangeBag" type="button">Brew a different bag</button>
+          <button class="link" id="todaySeeShelf" type="button">Shelf</button>
+          <button class="link" id="todayNewBag" type="button">New bag</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="stage" data-stage="shelf" data-pos="after" aria-labelledby="h-shelf">
+      <h1 id="h-shelf" tabindex="-1">Shelf</h1>
+      <p class="hist-stats mono" id="shelfStats"></p>
+      <div class="shelf-tools"><button class="link" id="shelfNewBag" type="button">New bag</button></div>
+      <div class="shelf-group" id="sgNext" hidden>
+        <span class="label">Drink next</span>
+        <ul class="hist" id="shelfNext"></ul>
+      </div>
+      <div class="shelf-group" id="sgFreezer" hidden>
+        <span class="label">In the freezer</span>
+        <ul class="hist" id="shelfFreezer"></ul>
+      </div>
+      <details class="shelf-group" id="sgDone" hidden>
+        <summary>Finished <span id="shelfDoneCount"></span></summary>
+        <ul class="hist" id="shelfDone"></ul>
+      </details>
+      <p class="empty" id="shelfEmpty" hidden></p>
     </section>
 
     <section class="stage" data-stage="coffee" data-pos="after" aria-labelledby="h-coffee">
@@ -945,7 +1027,7 @@ body{overflow-x:clip}
 
   <div class="finale" id="finale" role="dialog" aria-label="Brew finished" tabindex="-1" aria-hidden="true" inert>
     <div class="f-glow"></div>
-    <div class="f-scene" id="fScene"><div class="f-top" id="fTop"></div><div class="f-side" id="fSide"></div></div>
+    <div class="f-scene" id="fScene"><svg id="v2svg" viewBox="0 0 400 400" aria-hidden="true"></svg></div>
     <p class="f-text" id="fText" aria-live="polite"></p>
     <p class="f-skip">Tap to skip</p>
   </div>
@@ -1156,6 +1238,10 @@ function compute(inp){
   if (iced) notes.push('Iced: about 40% of the water goes in the glass as ice and you brew with the rest. The grind is a touch finer and the water slightly hotter, so the coffee holds up as the ice melts.');
   else if (inp.iced) notes.push('Iced mode does not suit a French press, so this is a hot recipe.');
   if (tempCapped) notes.push('The water is kept at your kettle\u2019s maximum temperature.');
+  /* batch size: recipes don't scale evenly, so flag the ends of the range */
+  if (m.kind === 'pour' && dose < 12) notes.push('Small brew: a shallow bed drains fast and can taste thin. Grind a touch finer than usual and pour gently.');
+  else if (m.kind === 'pour' && dose > 32) notes.push('Large brew: a deep bed drains slowly and can turn bitter. Expect a longer drawdown, and go a touch coarser if it stalls.');
+  else if (dose > 32) notes.push('Large brew: more grounds take longer to settle and press. Allow a little extra time.');
 
   const grind = m.grind+' (like '+m.like+')'+(iced ? ', a touch finer for iced' : '');
   return { method:m, dose, water, cup, ratio, temp, grind, steps, totalSec, notes, capped, lean, delicate, iced, ice, totalWater:total, fastDrain, process:proc ? proc.kind : '', altitudeM:alt };
@@ -1233,7 +1319,7 @@ const savedMethod = LS.get('bloom.method', 'v60');
 const S = {
   stage:'coffee', returnTo:'coffee',
   units: LS.get('bloom.units','metric') === 'imperial' ? 'imperial' : 'metric',
-  varieties:['Gesha'], roastDate:isoDaysAgo(9), roast:'light', notes:['Floral','Stone fruit'],
+  varieties:[], roastDate:'', roast:'light', notes:[],
   roaster:'', coffeeName:'', labelNotes:'', components:[], process:'', grade:'', altitude:'', decaf:false,
   weightG:null, restDays:null, useWithinDays:null, roastDateText:'', roastInferred:false,
   method: METHODS[savedMethod] ? savedMethod : 'v60',
@@ -1335,6 +1421,7 @@ const store = {
   async init(){
     S.history = this.loadLocal();
     renderHistory();
+    this.initBags();
     try {
       if (!window.claude || !window.claude.use) return;
       const [db, user] = await Promise.all([window.claude.use('db'), window.claude.use('user')]);
@@ -1346,9 +1433,10 @@ const store = {
       this.col = this.profile.collection('brews');
       this.mode = 'db';
       this.unsub = this.col.orderBy('createdAt','desc').limit(200).onSnapshot(
-        snap => { S.history = snap.docs.map(d => Object.assign({ id:d.id }, d.data())); renderHistory(); },
+        snap => { S.history = snap.docs.map(d => Object.assign({ id:d.id }, d.data())); this.histReady = true; renderHistory(); },
         () => this.fallback()
       );
+      this.initBags();
       this.loadName();
     } catch (e) { this.fallback(); }
   },
@@ -1361,7 +1449,7 @@ const store = {
       if (!S.nameSet && remote) {
         S.name = remote; S.nameSet = true; LS.set('bloom.name', { name:S.name, set:true });
         paintName();
-        if (S.stage === 'welcome' && !$('#nameInput').value.trim()) go(S.nameFrom || 'coffee');
+        if (S.stage === 'welcome' && !$('#nameInput').value.trim()) go(S.nameFrom || 'today');
       } else if (S.nameSet && S.name && remote !== S.name) this.saveName();
     } catch (e) {}
   },
@@ -1407,16 +1495,18 @@ const store = {
 };
 
 /* ---------- stage navigation ---------- */
-const ORDER = ['welcome','coffee','method','yield','recipe','brew','done','history','log','settings'];
+const ORDER = ['welcome','today','shelf','coffee','method','yield','recipe','brew','done','history','log','settings'];
 const PROGRESS = { coffee:1, method:2, yield:3, recipe:4, brew:5, done:5 };
 const ACTIONS = {
   welcome: { back:['Skip', null], next:'Continue', to:null },
-  coffee:  { back:null, next:'Continue', to:'method' },
+  today:   { back:null, next:null },
+  shelf:   { back:null, next:'Close', to:null },
+  coffee:  { back:['Back','today'], next:'Continue', to:'method' },
   method:  { back:['Back','coffee'], next:'Continue', to:'yield' },
   yield:   { back:['Back','method'], next:'See recipe', to:'recipe' },
   recipe:  { back:['Back','yield'], next:'Start brewing', to:'brew' },
   brew:    { back:['Cancel brew', null], next:null },
-  done:    { back:['History','history'], next:'Brew another', to:'coffee' },
+  done:    { back:['History','history'], next:'Back to today', to:'today' },
   history: { back:null, next:'Close', to:null },
   log:     { back:['Cancel','history'], next:'Save', to:null },
   settings:{ back:null, next:'Done', to:null }
@@ -1431,6 +1521,10 @@ function setActions(){
   nextBtn.hidden = !a.next;
   if (a.next) nextBtn.textContent = a.next;
   if (S.stage === 'welcome') backBtn.textContent = S.nameSet ? 'Cancel' : 'Skip';
+  if (S.stage === 'coffee' && S.editingBagId) { backBtn.textContent = 'Cancel'; nextBtn.textContent = 'Save'; }
+  if (S.stage === 'recipe' && S.brewFrom === 'todayAdjust') backBtn.textContent = 'Today';
+  $('#shelfBtn').disabled = S.stage === 'brew';
+  $('#shelfBtn').setAttribute('aria-pressed', String(S.stage === 'shelf'));
   $('#historyBtn').disabled = S.stage === 'brew';
   $('#settingsBtn').disabled = S.stage === 'brew';
   $('#settingsBtn').setAttribute('aria-pressed', String(S.stage === 'settings'));
@@ -1444,9 +1538,12 @@ function setProgress(){
 }
 function go(name){
   const prev = S.stage;
-  if ((name === 'history' || name === 'settings') && !['history','log','settings'].includes(prev)) S.returnTo = prev;
+  if (['history','settings','shelf'].includes(name) && !['history','log','settings','shelf'].includes(prev) && !(prev === 'coffee' && name === 'shelf' && S.editingBagId)) S.returnTo = prev;
+  if (prev === 'coffee' && name !== 'coffee' && S.editingBagId && name !== 'method') S.editingBagId = '';
+  if (['today','coffee','method','yield'].includes(name)) S.brewFrom = '';
+  if (name === 'done') { S.todayMethod = ''; S.todayYield = 0; }
   if (prev === 'settings' && name !== 'settings') { clearTimeout(setTimer); store.saveSettings(); }
-  if (name === 'welcome' && prev !== 'welcome') S.nameFrom = prev === 'welcome' ? 'coffee' : prev;
+  if (name === 'welcome' && prev !== 'welcome') S.nameFrom = prev === 'welcome' ? 'today' : prev;
   if (prev === 'done' && name !== 'done') flushPatch();
   if (prev === 'history' && name !== 'history') flushHist();
   S.stage = name;
@@ -1463,6 +1560,9 @@ function go(name){
   if (name === 'history') { const f = document.activeElement; if (f && f.tagName === 'TEXTAREA' && f.blur) f.blur(); renderHistory(); }
   if (name === 'log' && prev !== 'log') resetLog();
   if (name === 'settings') renderSettings();
+  if (name === 'today') renderToday();
+  if (name === 'coffee') $('#h-coffee').textContent = S.editingBagId ? 'Edit bag' : S.bagId ? 'Your coffee' : 'New bag';
+  if (name === 'shelf') renderShelf();
   if (name === 'welcome') $('#nameInput').value = S.name;
   setProgress(); setActions();
   window.scrollTo(0, 0);
@@ -1480,27 +1580,31 @@ nextBtn.addEventListener('click', () => {
   const a = ACTIONS[S.stage];
   if (S.stage === 'welcome') { commitName(); return; }
   if (S.stage === 'log') { saveLog(); return; }
-  if (S.stage === 'history' || S.stage === 'settings') { go(S.returnTo); return; }
-  if (S.stage === 'done') { go('coffee'); return; }
+  if (S.stage === 'history' || S.stage === 'settings' || S.stage === 'shelf') { go(S.returnTo && S.returnTo !== 'welcome' ? S.returnTo : 'today'); return; }
+  if (S.stage === 'done') { go('today'); return; }
+  if (S.stage === 'coffee') { const editing = !!S.editingBagId; commitBag(); if (editing) { go('shelf'); S.editingBagId = ''; } else go('method'); return; }
   if (a.to) go(a.to);
 });
 backBtn.addEventListener('click', () => {
   const a = ACTIONS[S.stage];
-  if (S.stage === 'welcome') { if (S.nameSet) go(S.nameFrom || 'coffee'); else { S.nameSet = true; LS.set('bloom.name', { name:S.name, set:true }); go('coffee'); } return; }
-  if (S.stage === 'brew') { arm(backBtn, 'Tap again to cancel', () => { cancelBrew(); go('recipe'); }); return; }
+  if (S.stage === 'welcome') { if (S.nameSet) go(S.nameFrom || 'today'); else { S.nameSet = true; LS.set('bloom.name', { name:S.name, set:true }); go('today'); } return; }
+  if (S.stage === 'brew') { arm(backBtn, 'Tap again to cancel', () => { cancelBrew(); go(S.brewFrom === 'today' ? 'today' : 'recipe'); }); return; }
+  if (S.stage === 'coffee' && S.editingBagId) { go('shelf'); S.editingBagId = ''; return; }
+  if (S.stage === 'recipe' && S.brewFrom === 'todayAdjust') { go('today'); return; }
   if (a.back && a.back[1]) go(a.back[1]);
 });
 $('#historyBtn').addEventListener('click', () => { S.stage === 'history' ? go(S.returnTo) : go('history'); });
 $('#settingsBtn').addEventListener('click', () => { S.stage === 'settings' ? go(S.returnTo) : go('settings'); });
+$('#shelfBtn').addEventListener('click', () => { S.stage === 'shelf' ? go(S.returnTo && S.returnTo !== 'welcome' ? S.returnTo : 'today') : go('shelf'); });
 /* "bloom" goes back to the start; mid-brew it asks first */
 $('#homeBtn').addEventListener('click', () => {
   const hb = $('#homeBtn');
   if (S.stage === 'brew' && (B.state === 'running' || B.state === 'paused')) {
-    arm(hb, 'Leave brew?', () => { hb.textContent = 'bloom'; cancelBrew(); go('coffee'); });
+    arm(hb, 'Leave brew?', () => { hb.textContent = 'bloom'; cancelBrew(); go('today'); });
     return;
   }
   if (S.stage === 'brew') cancelBrew();
-  if (S.stage !== 'coffee') go(S.nameSet || S.stage !== 'welcome' ? 'coffee' : 'welcome');
+  if (S.stage !== 'today') go(S.nameSet || S.stage !== 'welcome' ? 'today' : 'welcome');
 });
 
 /* ---------- name: just a name, no account ---------- */
@@ -1515,7 +1619,7 @@ function commitName(){
   LS.set('bloom.name', { name:S.name, set:true });
   store.saveName();
   paintName();
-  go(S.nameFrom && S.nameFrom !== 'welcome' ? S.nameFrom : 'coffee');
+  go(S.nameFrom && S.nameFrom !== 'welcome' ? S.nameFrom : 'today');
 }
 $('#nameInput').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); commitName(); } });
 $('#greet').addEventListener('click', () => go('welcome'));
@@ -1770,6 +1874,7 @@ $('#scanBtn').addEventListener('click', () => {
   $('#scanHarder').hidden = true; scanMsg([]); paintStrip();
   pickPhoto();
 });
+function resetScan(){ if (SC.busy) return; SC.urls.forEach(u => URL.revokeObjectURL(u)); SC.files = []; SC.urls = []; $('#scanHarder').hidden = true; scanMsg([]); paintStrip(); }
 $('#scanAddBack').addEventListener('click', pickPhoto);
 $('#scanFile').addEventListener('change', e => {
   const f = e.target.files && e.target.files[0];
@@ -2305,73 +2410,10 @@ function completeBrew(){
   setTimeout(startFinale, 600);
 }
 
-/* ---------- finale: ring -> top view -> brewer -> cup -> greeting -> review ---------- */
-const FIN = { timers:[], on:false, src:null };
+/* ---------- finale: ring -> brewer seen from above -> camera tilts to the side -> pour -> greeting -> review ---------- */
+const FIN = { timers:[], on:false, src:null, raf:0 };
 const rngSeed = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
-const pts = a => a.map(p => p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
-const COFFEE = '#4A3427', PAPER = '#F6F7F3', PEDGE = '#D3D8CD', VALLEY = '#E3E6DD';
-function petalsSVG(n, r0, r1, hw0, hw1, fill, stroke){
-  let out = '';
-  for (let k = 0; k < n; k++) {
-    const a = 2*Math.PI*k/n - Math.PI/2, ca = Math.cos(a), sa = Math.sin(a);
-    const loc = [[r0,-hw0],[r1,-hw1]];
-    for (let t = 1; t < 12; t++) { const th = -Math.PI/2 + Math.PI*t/12; loc.push([r1 + hw1*0.9*Math.cos(th), hw1*Math.sin(th)]); }
-    loc.push([r1,hw1],[r0,hw0]);
-    out += '<polygon points="'+pts(loc.map(q => [200 + q[0]*ca - q[1]*sa, 200 + q[0]*sa + q[1]*ca]))+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1.5" stroke-linejoin="round"/>';
-  }
-  return out;
-}
-function bedSVG(r, amp, n, seed){
-  const edge = [];
-  for (let i = 0; i < 180; i++) { const th = 2*Math.PI*i/180 - Math.PI/2, rr = r + amp*Math.cos(n*(th + Math.PI/2)); edge.push([200 + rr*Math.cos(th), 200 + rr*Math.sin(th)]); }
-  const rnd = rngSeed(seed); let d = '';
-  for (let i = 0; i < 28; i++) { const a = rnd()*2*Math.PI, rr = Math.pow(rnd(), .6)*r*.82; d += '<circle cx="'+(200+rr*Math.cos(a)).toFixed(1)+'" cy="'+(200+rr*Math.sin(a)).toFixed(1)+'" r="'+(2.5+rnd()*4.5).toFixed(1)+'" fill="#68503F" fill-opacity=".45"/>'; }
-  return '<polygon points="'+pts(edge)+'" fill="url(#fBed)"/>'+d+
-    '<circle class="f-rip" cx="200" cy="200" r="'+(r*.42).toFixed(1)+'" fill="none" stroke="#F1F3EF" stroke-opacity=".12" stroke-width="2"/>'+
-    '<circle class="f-rip r2" cx="200" cy="200" r="'+(r*.7).toFixed(1)+'" fill="none" stroke="#F1F3EF" stroke-opacity=".09" stroke-width="2"/>'+
-    '<circle cx="200" cy="200" r="'+(r*.1).toFixed(1)+'" fill="#2A1E18"/>';
-}
-function topSVG(id){
-  let b = '';
-  if (id === 'v60') {
-    let ridges = '';
-    for (let k = 0; k < 14; k++) { const a = 2*Math.PI*k/14, c = Math.cos(a), s = Math.sin(a); ridges += '<line x1="'+(200+104*c).toFixed(1)+'" y1="'+(200+104*s).toFixed(1)+'" x2="'+(200+146*c).toFixed(1)+'" y2="'+(200+146*s).toFixed(1)+'" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>'; }
-    b = '<rect x="336" y="186" width="48" height="28" rx="14" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/>'+
-      '<circle cx="200" cy="200" r="152" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+ridges+
-      '<circle cx="200" cy="200" r="132" fill="'+PAPER+'" stroke="'+PEDGE+'" stroke-width="2"/>'+
-      '<path d="M200 70 l9 7 -9 7 9 7 -9 7 M200 98 V150" fill="none" stroke="'+PEDGE+'" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'+
-      bedSVG(88, 0, 1, 3);
-  } else if (id === 'kalita') {
-    b = '<circle cx="200" cy="200" r="152" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+
-      '<circle cx="200" cy="200" r="140" fill="'+VALLEY+'" stroke="'+PEDGE+'" stroke-width="2"/>'+
-      petalsSVG(18, 92, 124, 11, 21, '#FBFCF9', PEDGE)+bedSVG(88, 9, 18, 5);
-  } else if (id === 'chemex') {
-    b = '<path d="M168 52 Q200 30 232 52" fill="none" stroke="var(--ink2)" stroke-width="3" stroke-linecap="round"/>'+
-      '<circle cx="200" cy="200" r="152" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+
-      '<circle cx="200" cy="200" r="143" fill="none" stroke="var(--line)" stroke-width="2"/>'+
-      '<circle cx="200" cy="200" r="132" fill="'+PAPER+'" stroke="'+PEDGE+'" stroke-width="2"/>'+
-      '<path d="M296 150 A110 110 0 0 1 296 250 M284 160 A98 98 0 0 1 284 240" fill="none" stroke="'+PEDGE+'" stroke-width="3" stroke-linecap="round"/>'+
-      '<path d="M112 150 L128 200 L112 250" fill="none" stroke="'+PEDGE+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'+
-      bedSVG(94, 0, 1, 9);
-  } else if (id === 'aeropress') {
-    let bub = ''; const rnd = rngSeed(21);
-    for (let i = 0; i < 22; i++) { const a = rnd()*2*Math.PI, rr = 20 + rnd()*86; bub += '<circle cx="'+(200+rr*Math.cos(a)).toFixed(1)+'" cy="'+(200+rr*Math.sin(a)).toFixed(1)+'" r="'+(2+rnd()*5).toFixed(1)+'" fill="none" stroke="#C9A97F" stroke-opacity=".7" stroke-width="1.6"/>'; }
-    b = '<rect x="44" y="190" width="30" height="20" rx="8" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/><rect x="326" y="190" width="30" height="20" rx="8" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/>'+
-      '<circle cx="200" cy="200" r="138" fill="var(--bg)" stroke="var(--ink2)" stroke-width="4"/>'+
-      '<circle cx="200" cy="200" r="126" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2"/>'+
-      '<circle cx="200" cy="200" r="112" fill="'+COFFEE+'"/><circle cx="200" cy="200" r="104" fill="none" stroke="#9A7A58" stroke-opacity=".55" stroke-width="8"/>'+bub+
-      '<circle class="f-rip" cx="200" cy="200" r="46" fill="none" stroke="#C9A97F" stroke-opacity=".35" stroke-width="2"/>';
-  } else {
-    let bub = ''; const rnd = rngSeed(33);
-    for (let i = 0; i < 30; i++) { const a = rnd()*2*Math.PI, rr = 10 + rnd()*108; bub += '<circle cx="'+(200+rr*Math.cos(a)).toFixed(1)+'" cy="'+(200+rr*Math.sin(a)).toFixed(1)+'" r="'+(2+rnd()*5).toFixed(1)+'" fill="none" stroke="#C9A97F" stroke-opacity=".7" stroke-width="1.6"/>'; }
-    b = '<path d="M340 168 C392 168 392 232 340 232" fill="none" stroke="var(--ink2)" stroke-width="12" stroke-linecap="round"/>'+
-      '<circle cx="200" cy="200" r="150" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+
-      '<circle cx="200" cy="200" r="138" fill="var(--accent-soft)" stroke="var(--line)" stroke-width="2"/>'+
-      '<circle cx="200" cy="200" r="124" fill="'+COFFEE+'"/><circle cx="200" cy="200" r="116" fill="none" stroke="#9A7A58" stroke-opacity=".5" stroke-width="10"/>'+bub;
-  }
-  return '<svg viewBox="0 0 400 400" aria-hidden="true"><defs><radialGradient id="fBed" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#54402F"/><stop offset="1" stop-color="#2B211B"/></radialGradient></defs>'+
-    '<g class="f-ring"><circle cx="200" cy="200" r="172"/></g><g class="f-body">'+b+'</g></svg>';
-}
+const COFFEE = '#4A3427', PAPER = '#F6F7F3', PEDGE = '#D3D8CD';
 /* cup under the brewer; cx is its centre */
 function cupSVG(cx){
   const body = 'M'+(cx-55)+' 270 L'+(cx-55)+' 328 Q'+(cx-55)+' 356 '+(cx-27)+' 356 L'+(cx+27)+' 356 Q'+(cx+55)+' 356 '+(cx+55)+' 328 L'+(cx+55)+' 270 Z';
@@ -2382,52 +2424,397 @@ function cupSVG(cx){
     '<path d="'+body+'" fill="none" stroke="var(--ink2)" stroke-width="3" stroke-linejoin="round"/>'+
     '<path d="M'+(cx+55)+' 286 h16 a17 17 0 0 1 0 34 h-16" fill="none" stroke="var(--ink2)" stroke-width="4" stroke-linecap="round"/>'+steam;
 }
-function sideSVG(id){
-  const table = '<line x1="40" y1="358" x2="360" y2="358" stroke="var(--line)" stroke-width="2" stroke-linecap="round"/>';
-  let inner = '';
-  if (id === 'v60') {
-    inner = '<path d="M122 120 L278 120 L214 238 L186 238 Z" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3" stroke-linejoin="round"/>'+
-      '<path d="M132 120 L146 96 L254 96 L268 120" fill="'+PAPER+'" stroke="'+PEDGE+'" stroke-width="2" stroke-linejoin="round"/>'+
-      '<path d="M142 126 L258 126 L244 150 L156 150 Z" fill="'+COFFEE+'"/>'+
-      '<path d="M150 150 L192 232 M200 150 V232 M250 150 L208 232" stroke="var(--line)" stroke-width="2.5" stroke-linecap="round" fill="none"/>'+
-      '<rect x="184" y="238" width="32" height="10" rx="3" fill="var(--bg)" stroke="var(--ink2)" stroke-width="2.5"/>'+
-      '<rect x="276" y="116" width="30" height="12" rx="6" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/>'+
-      cupSVG(200)+'<path class="f-stream" d="M200 250 V332"/>';
-  } else if (id === 'kalita') {
-    let zig = ''; for (let i = 0; i <= 14; i++) zig += (112 + i*13.7).toFixed(1)+','+(i%2 ? 108 : 118)+' ';
-    inner = '<path d="M106 122 L294 122 L250 214 L150 214 Z" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3" stroke-linejoin="round"/>'+
-      '<polyline points="'+zig+'" fill="'+PAPER+'" stroke="'+PEDGE+'" stroke-width="2" stroke-linejoin="round"/>'+
-      '<path d="M120 128 L280 128 L262 152 L138 152 Z" fill="'+COFFEE+'"/>'+
-      '<path d="M146 152 q6 30 14 60 M174 152 q4 30 8 60 M200 152 v60 M226 152 q-4 30 -8 60 M254 152 q-6 30 -14 60" stroke="var(--line)" stroke-width="2.2" fill="none" stroke-linecap="round"/>'+
-      '<rect x="140" y="214" width="120" height="10" rx="3" fill="var(--bg)" stroke="var(--ink2)" stroke-width="2.5"/>'+
-      '<rect x="150" y="224" width="10" height="14" fill="var(--ink2)"/><rect x="240" y="224" width="10" height="14" fill="var(--ink2)"/>'+
-      cupSVG(200)+'<path class="f-stream" d="M174 226 V316"/><path class="f-stream" d="M200 226 V320"/><path class="f-stream" d="M226 226 V316"/>';
-  } else if (id === 'aeropress') {
-    inner = '<rect class="f-liq f-liqdown" x="163" y="92" width="74" height="148" fill="'+COFFEE+'"/>'+
-      '<g class="f-plunge"><rect x="194" y="30" width="12" height="42" fill="var(--ink2)"/><rect x="176" y="22" width="48" height="9" rx="4" fill="var(--ink2)"/><rect x="162" y="70" width="76" height="22" rx="4" fill="var(--ink2)"/></g>'+
-      '<rect x="158" y="58" width="84" height="184" rx="5" fill="none" stroke="var(--ink2)" stroke-width="3"/>'+
-      '<rect x="148" y="54" width="104" height="8" rx="4" fill="var(--bg)" stroke="var(--ink2)" stroke-width="2.5"/>'+
-      '<path d="M158 110 h10 M158 140 h10 M158 170 h10 M158 200 h10" stroke="var(--ink2)" stroke-width="2" stroke-linecap="round"/>'+
-      '<rect x="150" y="242" width="100" height="16" rx="4" fill="var(--accent-soft)" stroke="var(--ink2)" stroke-width="2.5"/>'+
-      cupSVG(200)+'<path class="f-stream" d="M186 260 V322"/><path class="f-stream" d="M214 260 V322"/>';
-  } else if (id === 'chemex') {
-    inner = '<g class="f-tilt" style="transform-origin:225px 90px"><g transform="translate(45 0)">'+
-      '<path d="M100 90 L132 150 L132 156 L82 270 L198 270 L148 156 L148 150 L180 90 Z" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3" stroke-linejoin="round"/>'+
-      '<path d="M112.7 200 L167.3 200 L198 270 L82 270 Z" fill="'+COFFEE+'" class="f-liq f-liqtilt"/>'+
-      '<rect x="126" y="138" width="28" height="44" rx="6" fill="#A67C52" stroke="#7E5B3A" stroke-width="2"/><path d="M126 158 H154" stroke="#7E5B3A" stroke-width="3"/><circle cx="140" cy="164" r="4" fill="#E9DCC6" stroke="#7E5B3A" stroke-width="1.5"/>'+
-      '<path d="M176 88 q8 -6 14 2" fill="none" stroke="var(--ink2)" stroke-width="3" stroke-linecap="round"/></g></g>'+
-      cupSVG(310)+'<path class="f-stream late" d="M228 94 C252 98 292 150 300 330"/>';
-  } else {
-    inner = '<g class="f-tilt" style="transform-origin:214px 114px"><g>'+
-      '<path d="M110 150 h-22 a14 14 0 0 0 -14 14 v46 a14 14 0 0 0 14 14 h22" fill="none" stroke="var(--ink2)" stroke-width="5" stroke-linecap="round"/>'+
-      '<rect x="110" y="110" width="90" height="160" rx="6" fill="var(--bg)" stroke="var(--ink2)" stroke-width="3"/>'+
-      '<rect x="112" y="190" width="86" height="78" fill="'+COFFEE+'" class="f-liq f-liqtilt"/>'+
-      '<rect x="106" y="104" width="98" height="10" rx="3" fill="var(--ink2)"/><rect x="151" y="92" width="8" height="14" fill="var(--ink2)"/><circle cx="155" cy="86" r="9" fill="var(--ink2)"/>'+
-      '<path d="M200 110 q10 -3 16 5" fill="none" stroke="var(--ink2)" stroke-width="3" stroke-linecap="round"/></g></g>'+
-      cupSVG(310)+'<path class="f-stream late" d="M218 118 C246 122 290 160 298 330"/>';
+/* ===== V2: every brewer drawn as a solid of revolution, seen by a camera that tilts from straight above to side-on =====
+   Projection: model point (x, d, z) with z up and d toward the viewer. At camera elevation e and scale k,
+   screen y = ay + (H - z)·cos(e)·k + d·sin(e)·k, so a circle at height z becomes an ellipse with ry = r·sin(e).
+   At e = 90° it is the top view; at e = 12° it is almost side-on. Each brewer is a profile of [height, radius]
+   points plus its own parts (base, handle, paper, lid) and its own way of pouring. */
+const V2 = (function(){
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = $('#v2svg');
+  const add = (tag, attrs, parent) => { const el = document.createElementNS(NS, tag); Object.keys(attrs || {}).forEach(k => el.setAttribute(k, attrs[k])); (parent || svg).append(el); return el; };
+  const set = (el, attrs) => { if (!el) return; Object.keys(attrs).forEach(k => el.setAttribute(k, typeof attrs[k] === 'number' ? attrs[k].toFixed(2) : attrs[k])); };
+  const f = n => n.toFixed(1);
+  const clamp01 = x => Math.max(0, Math.min(1, x));
+  const span = (t, a, b) => clamp01((t - a) / (b - a));
+  const lerp = (a, b, x) => a + (b - a) * x;
+  const ease = x => x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2;
+  const easeOut = x => 1 - Math.pow(1 - x, 3);
+  const WOOD = '#A67C52', WOOD_EDGE = '#7E5B3A', STEEL = '#C9CDC6', RUBBER = '#2F3330', CAP = '#4A4F4B';
+
+  /* ----- shape helpers ----- */
+  /* radius of a profile at height z (profile runs top to bottom) */
+  function rAt(prof, z){
+    if (z >= prof[0][0]) return prof[0][1];
+    for (let i = 1; i < prof.length; i++) {
+      const a = prof[i - 1], b = prof[i];
+      if (z >= b[0]) return lerp(b[1], a[1], (z - b[0]) / (a[0] - b[0]));
+    }
+    return prof[prof.length - 1][1];
   }
-  return '<svg viewBox="0 0 400 400" aria-hidden="true">'+table+inner+'</svg>';
-}
+  /* the part of a profile between two heights */
+  function cut(prof, zLo, zHi){
+    const pts = [[zHi, rAt(prof, zHi)]];
+    prof.forEach(p => { if (p[0] < zHi && p[0] > zLo) pts.push(p); });
+    pts.push([zLo, rAt(prof, zLo)]);
+    return pts;
+  }
+  const shrink = (prof, w) => prof.map(p => [p[0], Math.max(6, p[1] - w)]);
+  const cyl = (z0, z1, r) => [[z1, r], [z0, r]];
+  /* silhouette of a turned shape: sides down, front of the bottom, sides up, back of the top */
+  function sil(P, prof){
+    const k = P.k, s = Math.max(.002, P.s), top = prof[0], bot = prof[prof.length - 1];
+    let d = 'M' + f(P.ax - top[1]*k) + ' ' + f(P.y(top[0]));
+    for (let i = 1; i < prof.length; i++) d += ' L' + f(P.ax - prof[i][1]*k) + ' ' + f(P.y(prof[i][0]));
+    d += ' A' + f(bot[1]*k) + ' ' + f(Math.max(.01, bot[1]*k*s)) + ' 0 0 0 ' + f(P.ax + bot[1]*k) + ' ' + f(P.y(bot[0]));
+    for (let i = prof.length - 2; i >= 0; i--) d += ' L' + f(P.ax + prof[i][1]*k) + ' ' + f(P.y(prof[i][0]));
+    d += ' A' + f(top[1]*k) + ' ' + f(Math.max(.01, top[1]*k*s)) + ' 0 0 0 ' + f(P.ax - top[1]*k) + ' ' + f(P.y(top[0])) + ' Z';
+    return d;
+  }
+  /* the visible side of a ring or band between two heights: sides, front of the bottom edge, front of the top edge.
+     Unlike sil() it has no top face, so whatever is inside the ring stays visible. */
+  function band(P, z0, r0, z1, r1){
+    const k = P.k, s = Math.max(.002, P.s);
+    return 'M' + f(P.ax - r1*k) + ' ' + f(P.y(z1)) + ' L' + f(P.ax - r0*k) + ' ' + f(P.y(z0)) +
+      ' A' + f(r0*k) + ' ' + f(Math.max(.01, r0*k*s)) + ' 0 0 0 ' + f(P.ax + r0*k) + ' ' + f(P.y(z0)) +
+      ' L' + f(P.ax + r1*k) + ' ' + f(P.y(z1)) +
+      ' A' + f(r1*k) + ' ' + f(Math.max(.01, r1*k*s)) + ' 0 0 1 ' + f(P.ax - r1*k) + ' ' + f(P.y(z1)) + ' Z';
+  }
+  /* a horizontal circle at height z, as an ellipse path (optionally scalloped: amp, n petals) */
+  function ring(P, z, r, amp, n){
+    if (!amp) {
+      const rx = r * P.k, ry = Math.max(.01, rx * P.s), x = P.ax, y = P.y(z);
+      return 'M' + f(x - rx) + ' ' + f(y) + ' A' + f(rx) + ' ' + f(ry) + ' 0 1 0 ' + f(x + rx) + ' ' + f(y) + ' A' + f(rx) + ' ' + f(ry) + ' 0 1 0 ' + f(x - rx) + ' ' + f(y) + ' Z';
+    }
+    let d = '';
+    for (let i = 0; i <= 96; i++) {
+      const th = 2 * Math.PI * i / 96, rr = r + amp * Math.cos(n * th);
+      d += (i ? ' L' : 'M') + f(P.ax + rr * Math.cos(th) * P.k) + ' ' + f(P.y(z) + rr * Math.sin(th) * P.s * P.k);
+    }
+    return d + ' Z';
+  }
+  function ell(el, P, z, r, extra){ set(el, Object.assign({ cx:P.ax, cy:P.y(z), rx:r * P.k, ry:Math.max(.01, r * P.k * P.s) }, extra || {})); }
+  /* a line along a surface at angle th0 between two heights, optionally spiralling */
+  function surfLine(P, prof, th0, zFrom, zTo, spiral, H){
+    let d = '', depth = 0;
+    for (let j = 0; j <= 8; j++) {
+      const z = lerp(zFrom, zTo, j / 8), th = th0 + (spiral || 0) * (1 - z / H), r = rAt(prof, z);
+      d += (j ? ' L' : 'M') + f(P.ax + r * Math.cos(th) * P.k) + ' ' + f(P.y(z) + r * Math.sin(th) * P.s * P.k);
+      depth += Math.sin(th);
+    }
+    return { d, front:depth > 0 };
+  }
+  /* a loop handle in the plane through the axis on the right: a short tab from above, a D shape from the side */
+  function loop(P, prof, h){
+    const z1 = h.zTop, z2 = h.zBot, out = h.out, x = r => f(P.ax + r * P.k), y = z => f(P.y(z));
+    return 'M' + x(rAt(prof, z1) - 6) + ' ' + y(z1) + ' C' + x(out) + ' ' + y(z1 + 6) + ' ' + x(out) + ' ' + y(z2 - 4) + ' ' + x(rAt(prof, z2) - 6) + ' ' + y(z2);
+  }
+  /* a flat tab sticking out sideways at height z, between radius r0 and r1 (dir 1 right, -1 left) */
+  function tab(el, P, z, r0, r1, depth, tall, dir){
+    const h = (depth * P.s + tall * P.c) * P.k, a = P.ax + dir * r0 * P.k, b = P.ax + dir * r1 * P.k;
+    set(el, { x:Math.min(a, b), y:P.y(z) - h / 2, width:Math.abs(b - a), height:h, rx:Math.min(10 * P.k, h / 2) });
+  }
+  /* rotate a point about (px, py) by deg */
+  function rot(x, y, px, py, deg){ const a = deg * Math.PI / 180, c = Math.cos(a), s = Math.sin(a); return [px + (x - px) * c - (y - py) * s, py + (x - px) * s + (y - py) * c]; }
+  /* keep the part of a polygon below a horizontal line (screen y >= ys) */
+  function below(poly, ys){
+    const out = [];
+    for (let i = 0; i < poly.length; i++) {
+      const a = poly[i], b = poly[(i + 1) % poly.length], ai = a[1] >= ys, bi = b[1] >= ys;
+      if (ai) out.push(a);
+      if (ai !== bi) { const u = (ys - a[1]) / (b[1] - a[1]); out.push([a[0] + (b[0] - a[0]) * u, ys]); }
+    }
+    return out;
+  }
+  /* sampled outline of a profile's silhouette as points, for clipping */
+  function silPoints(P, prof){
+    const pts = [], k = P.k, s = P.s, bot = prof[prof.length - 1], top = prof[0];
+    prof.forEach(p => pts.push([P.ax - p[1]*k, P.y(p[0])]));
+    for (let i = 1; i < 12; i++) { const th = Math.PI - Math.PI * i / 12; pts.push([P.ax + bot[1]*k*Math.cos(th), P.y(bot[0]) + bot[1]*k*s*Math.sin(th)]); }
+    for (let i = prof.length - 1; i >= 0; i--) pts.push([P.ax + prof[i][1]*k, P.y(prof[i][0])]);
+    for (let i = 1; i < 12; i++) { const th = -Math.PI * i / 12; pts.push([P.ax + top[1]*k*Math.cos(th), P.y(top[0]) + top[1]*k*s*Math.sin(th)]); }
+    return pts;
+  }
+  const polyD = pts => pts.length < 3 ? '' : 'M' + pts.map(p => f(p[0]) + ' ' + f(p[1])).join(' L') + ' Z';
+
+  /* ----- the brewers ----- */
+  /* kind: drip (coffee drips through into a cup below), drain (steep, then the level drops as it drains),
+     press (AeroPress on the cup), tiltpour (vessel tips to pour into a cup alongside).
+     side: where the camera ends up (scale, x of the axis, screen y of the lowest point). */
+  const SPECS = {
+    v60: { kind:'drip', H:214, prof:[[214,150],[0,26]], wall:9, mat:'glass', paper:{ type:'cone', r:124, up:6, seam:true },
+      ribs:{ n:14, spiral:.55, from:.28 }, bed:.45, base:{ r:48, z0:-1, z1:-10 }, tip:.14,
+      handle:{ zTop:.78, zBot:.34, reach:44, w:13 }, streams:[0], side:{ k:.6, ax:200, bottom:250 } },
+    origami: { kind:'drip', H:200, prof:[[200,150],[0,30]], wall:8, mat:'ceramic', paper:{ type:'cone', r:118, up:6, seam:true },
+      pleats:{ n:20, amp:5 }, bed:.45, base:{ r:44, z0:-1, z1:-9 }, holder:{ z0:.13, z1:.18, out:24 },
+      streams:[0], side:{ k:.6, ax:200, bottom:250 } },
+    kalita: { kind:'drip', H:150, prof:[[150,150],[0,76]], wall:8, mat:'steel', paper:{ type:'wave', r:136, up:10, amp:8, n:20 },
+      bed:.3, bedAmp:6, base:{ r:96, z0:-2, z1:-9 }, bands:[.36, .68],
+      streams:[-22, 0, 22], side:{ k:.62, ax:200, bottom:250 } },
+    'switch': { kind:'drain', H:200, prof:[[200,146],[0,30]], wall:9, mat:'glass', paper:{ type:'cone', r:120, up:6, seam:true },
+      ribs:{ n:14, spiral:.55, from:.28 }, level:[.72, .16], tip:.12,
+      collar:{ r:58, z0:-54, z1:0 }, valve:{ z0:-42, z1:-34, r:61 },
+      handle:{ zTop:.78, zBot:.36, reach:44, w:13 }, streams:[0], side:{ k:.58, ax:200, bottom:252 } },
+    clever: { kind:'drain', H:180, prof:[[180,150],[0,70]], wall:8, mat:'plastic', paper:{ type:'cone', r:132, up:6, seam:true },
+      level:[.74, .14], base:{ r:104, z0:-3, z1:-13 },
+      handle:{ zTop:.84, zBot:.5, reach:38, w:12 }, streams:[0], side:{ k:.6, ax:200, bottom:252 } },
+    chemex: { kind:'tiltpour', H:300, prof:[[300,150],[178,30],[160,27],[142,31],[40,114],[0,118]], wall:7, mat:'glass',
+      paper:{ type:'chemex', r:138, up:12, lift:true }, bed:.72, level:[.24, .05],
+      collar:{ z0:128, z1:200, t:7 }, spout:14,
+      tilt:{ start:2500, up:3150, down:4300, end:4700, deg:50 }, side:{ k:.6, ax:150, bottom:352 } },
+    aeropress: { kind:'press', H:230, prof:[[230,118],[0,118]], wall:8, mat:'plastic', open:true, level:[.56, .06],
+      cap:{ r:74, z0:-14, z1:0 }, flange:{ r:148, z0:6, z1:16 }, wings:{ r1:178, depth:24, tall:10 }, marks:[.3, .45, .6, .75],
+      plunger:{ r:108, enter:2450, land:2720, done:4400 }, streams:[-18, 18], side:{ k:.6, ax:200, bottom:286 } },
+    french: { kind:'tiltpour', H:250, prof:[[250,124],[0,124]], wall:5, mat:'glass', open:true, level:[.72, .1],
+      frame:[{ z0:0, z1:14, r:130 }, { z0:232, z1:250, r:130 }], handle:{ zTop:.86, zBot:.22, reach:62, w:15, from:130 },
+      lid:{ land:[1850, 2400], press:[2400, 2850], rod:80 }, spout:8,
+      tilt:{ start:2900, up:3400, down:4300, end:4700, deg:42 }, side:{ k:.55, ax:160, bottom:352 } }
+  };
+
+  let id = null, R = null;
+  function build(which){
+    id = SPECS[which] ? which : 'v60';
+    const sp = SPECS[id], tilts = sp.kind === 'tiltpour', cupX = tilts ? 310 : 200;
+    svg.innerHTML = '<defs><radialGradient id="v2Bed" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#54402F"/><stop offset="1" stop-color="#2B211B"/></radialGradient><clipPath id="v2Clip"><path id="v2ClipP"/></clipPath></defs>';
+    R = { clip:svg.querySelector('#v2ClipP'), cupX };
+    R.ring = add('circle', { cx:200, cy:200, r:172, fill:'none', stroke:'var(--accent)', 'stroke-width':3 });
+    R.cup = add('g', {}); R.cup.innerHTML = cupSVG(cupX);
+    /* its own clip id, so the coffee stays inside this cup and not V1's */
+    R.cup.querySelector('clipPath').id = 'v2CupClip';
+    R.cup.querySelector('[clip-path]').setAttribute('clip-path', 'url(#v2CupClip)');
+    R.fill = R.cup.querySelector('.f-fill');
+    R.streams = (sp.streams || [0]).map(() => add('path', { fill:'none', stroke:COFFEE, 'stroke-width':4, 'stroke-linecap':'round', 'stroke-dasharray':'7 6', opacity:0 }));
+    /* liquid in a vessel that tips is drawn outside it, so its surface stays level */
+    if (tilts) R.liquidOut = add('path', { fill:COFFEE });
+    const g = R.g = add('g', {});
+    const stroke = { stroke:'var(--ink2)', 'stroke-width':3, 'stroke-linejoin':'round' };
+    if (sp.handle) { R.hOut = add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-linecap':'round' }, g); R.hIn = add('path', { fill:'none', stroke:'var(--accent-soft)', 'stroke-linecap':'round' }, g); }
+    if (sp.collar && id === 'switch') { R.collar = add('path', Object.assign({ fill:'var(--bg)', 'fill-opacity':.5 }, stroke), g); R.collarTop = add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':2 }, g); R.valve = add('path', { fill:STEEL, stroke:'var(--ink2)', 'stroke-width':2 }, g); R.lever = add('rect', { fill:STEEL, stroke:'var(--ink2)', 'stroke-width':2 }, g); }
+    if (sp.cap) R.cap = add('path', { fill:CAP, stroke:'var(--ink2)', 'stroke-width':2 }, g);
+    if (sp.wings) { R.wingL = add('rect', { fill:'var(--accent-soft)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); R.wingR = add('rect', { fill:'var(--accent-soft)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); }
+    if (sp.flange) { R.flange = add('path', { fill:'var(--accent-soft)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); R.flangeTop = add('path', { fill:'var(--accent-soft)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); }
+    if (sp.base) { R.base = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g); R.baseTop = add('path', { fill:'var(--bg)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); }
+    if (sp.tip) R.tip = add('path', { fill:'var(--bg)' }, g);
+    if (!tilts && (sp.mat === 'glass' || sp.mat === 'plastic')) R.liquid = add('path', { fill:COFFEE }, g);
+    if (sp.lid) R.mesh = add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':2.5, 'stroke-dasharray':'2 3' }, g);
+    const bodyFill = { glass:{ fill:'var(--bg)', 'fill-opacity':.28 }, plastic:{ fill:'var(--accent-soft)', 'fill-opacity':.38 }, ceramic:{ fill:'var(--accent-soft)' }, steel:{ fill:'var(--bg)' } }[sp.mat];
+    R.body = add('path', Object.assign({}, bodyFill, stroke), g);
+    if (sp.bands) R.bands = sp.bands.map(() => add('path', { fill:'none', stroke:'var(--line)', 'stroke-width':2.5 }, g));
+    if (sp.pleats) R.pleats = Array.from({ length:sp.pleats.n }, () => add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':1.6, 'stroke-opacity':.5 }, g));
+    if (sp.holder) R.holder = add('path', { fill:WOOD, stroke:WOOD_EDGE, 'stroke-width':2.5, 'stroke-linejoin':'round' }, g);
+    if (sp.collar && id === 'chemex') { R.wood = add('path', { fill:WOOD, stroke:WOOD_EDGE, 'stroke-width':2.5, 'stroke-linejoin':'round' }, g); R.tie = add('path', { fill:'none', stroke:'#7E5B3A', 'stroke-width':3 }, g); R.bead = add('ellipse', { fill:'#E9DCC6', stroke:WOOD_EDGE, 'stroke-width':1.5 }, g); }
+    if (sp.marks) R.marks = sp.marks.map(() => add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':2, 'stroke-linecap':'round' }, g));
+    if (sp.frame) { R.frameLo = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g); R.frameHi = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g); }
+    if (sp.ribs) R.ribsSide = Array.from({ length:sp.ribs.n }, () => add('path', { fill:'none', stroke:'var(--line)', 'stroke-width':3, 'stroke-linecap':'round' }, g));
+    R.rim = add('path', Object.assign({ fill:'var(--bg)' }, stroke), g);
+    if (sp.spout) R.spout = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g);
+    if (sp.ribs) R.ribsTop = Array.from({ length:sp.ribs.n }, () => add('path', { fill:'none', stroke:'var(--line)', 'stroke-width':3, 'stroke-linecap':'round' }, g));
+    if (sp.pleats) R.pleatsTop = Array.from({ length:sp.pleats.n }, () => add('path', { fill:'none', stroke:'var(--line)', 'stroke-width':3, 'stroke-linecap':'round' }, g));
+    R.paperG = add('g', {}, g);
+    if (sp.paper) {
+      R.paper = add('path', { fill:sp.paper.type === 'wave' ? '#FBFCF9' : PAPER, stroke:PEDGE, 'stroke-width':2 }, R.paperG);
+      if (sp.paper.type === 'chemex') R.paperFold = add('path', { fill:'none', stroke:PEDGE, 'stroke-width':2 }, R.paperG);
+    }
+    R.inside = add('g', { 'clip-path':'url(#v2Clip)' }, R.paperG);
+    if (sp.paper && sp.paper.seam) R.seam = add('path', { fill:'none', stroke:PEDGE, 'stroke-width':3, 'stroke-linecap':'round' }, R.inside);
+    if (sp.paper && sp.paper.type === 'wave') R.folds = Array.from({ length:sp.paper.n }, () => add('path', { fill:'none', stroke:PEDGE, 'stroke-width':2 }, R.inside));
+    if (sp.bed != null) {
+      R.bed = add('path', { fill:'url(#v2Bed)' }, R.inside);
+      R.rip = add('ellipse', { fill:'none', stroke:'#F1F3EF', 'stroke-opacity':.12, 'stroke-width':2 }, R.inside);
+      R.hole = add('ellipse', { fill:'#2A1E18' }, R.inside);
+    }
+    if (sp.level && id !== 'chemex') {
+      R.surf = add('path', { fill:COFFEE }, R.inside);
+      R.crust = add('path', { fill:'none', stroke:'#9A7A58', 'stroke-opacity':.55, 'stroke-width':6 }, R.inside);
+      R.bub = Array.from({ length:22 }, () => add('ellipse', { fill:'none', stroke:'#C9A97F', 'stroke-opacity':.7, 'stroke-width':1.6 }, R.inside));
+      const rnd = rngSeed(id.length * 7 + 3);
+      R.bubAt = R.bub.map(() => ({ a:rnd() * 2 * Math.PI, u:.15 + rnd() * .75, r:2 + rnd() * 4.5 }));
+    }
+    if (sp.lid) { R.rod = add('path', { fill:'none', stroke:'var(--ink2)', 'stroke-width':4, 'stroke-linecap':'round' }, g); R.lid = add('path', Object.assign({ fill:'var(--bg)' }, stroke, { 'stroke-width':2.5 }), g); R.lidTop = add('path', { fill:'var(--bg)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); R.knob = add('ellipse', { fill:'var(--ink2)' }, g); }
+    if (sp.plunger) { R.plunger = add('path', { fill:'var(--bg)', 'fill-opacity':.85, stroke:'var(--ink2)', 'stroke-width':2.5 }, g); R.seal = add('path', { fill:RUBBER, stroke:'var(--ink2)', 'stroke-width':2 }, g); R.plTop = add('path', { fill:'var(--bg)', stroke:'var(--ink2)', 'stroke-width':2.5 }, g); }
+  }
+
+  function render(t, which){
+    if (which !== id || !R) build(which);
+    const sp = SPECS[id], H = sp.H, prof = sp.prof, inner = shrink(prof, sp.wall);
+    const tilts = sp.kind === 'tiltpour';
+    /* camera */
+    const intro = easeOut(span(t, 100, 800));
+    const tl = ease(span(t, 1300, 2500));
+    const eSide = 12 * Math.PI / 180;
+    const zLow = Math.min(0, sp.base ? sp.base.z1 : 0, sp.collar && id === 'switch' ? sp.collar.z0 : 0, sp.cap ? sp.cap.z0 : 0);
+    const aySide = sp.side.bottom - (H - zLow) * Math.cos(eSide) * sp.side.k;
+    const e = lerp(90, 12, tl) * Math.PI / 180, k = lerp(1, sp.side.k, tl);
+    const P = { k, s:Math.sin(e), c:Math.cos(e), ax:lerp(200, sp.side.ax, tl), y:z => lerp(200, aySide, tl) + (H - z) * Math.cos(e) * k };
+    const topness = Math.pow(P.s, 6);
+    /* the timer ring shrinks onto the rim */
+    set(R.ring, { r:lerp(172, prof[0][1], easeOut(span(t, 0, 800))), opacity:1 - span(t, 550, 950) });
+    /* tipping to pour (Chemex, French press) about the spout */
+    let deg = 0, px = 0, py = 0;
+    if (tilts) {
+      const T = sp.tilt;
+      deg = sp.tilt.deg * (ease(span(t, T.start, T.up)) - ease(span(t, T.down, T.end)));
+      px = P.ax + (prof[0][1] + (sp.spout || 0)) * k; py = P.y(H);
+    }
+    set(R.g, { opacity:intro, transform:'translate(200 200) scale(' + (0.92 + 0.08 * intro).toFixed(4) + ') translate(-200 -200)' + (deg ? ' rotate(' + deg.toFixed(2) + ' ' + f(px) + ' ' + f(py) + ')' : '') });
+
+    /* how full the vessel is: drains during the pour */
+    let level = null;
+    if (sp.level) {
+      const L = sp.level, drop = sp.kind === 'drain' ? ease(span(t, 2550, 4400)) : tilts ? ease(span(t, sp.tilt.start + 300, sp.tilt.down)) : 0;
+      level = lerp(L[0], L[1], drop) * H;
+    }
+    /* AeroPress plunger: lowers onto the coffee, then presses it through */
+    let seal = null;
+    if (sp.plunger) {
+      const pl = sp.plunger, l0 = sp.level[0] * H;
+      seal = t < pl.land ? lerp(H + 300, l0, easeOut(span(t, pl.enter, pl.land))) : lerp(l0, sp.cap ? 18 : 10, ease(span(t, pl.land, pl.done)));
+      level = Math.min(l0, seal);
+    }
+
+    /* parts behind the body */
+    if (R.hOut) {
+      const h = sp.handle, hp = { zTop:h.zTop * H, zBot:h.zBot * H, out:(h.from || prof[0][1]) + h.reach };
+      const d = loop(P, h.from ? cyl(0, H, h.from) : prof, hp);
+      set(R.hOut, { d, 'stroke-width':h.w * k + 5 }); set(R.hIn, { d, 'stroke-width':h.w * k });
+    }
+    if (R.collar) {
+      const c = sp.collar;
+      set(R.collar, { d:sil(P, cyl(c.z0, c.z1, c.r)) }); set(R.collarTop, { d:ring(P, c.z1, c.r) });
+      /* the steel valve band only reads from the side; from above it would be a solid disc */
+      set(R.valve, { d:band(P, sp.valve.z0, sp.valve.r, sp.valve.z1, sp.valve.r), opacity:1 - Math.pow(P.s, 2) });
+      tab(R.lever, P, (sp.valve.z0 + sp.valve.z1) / 2, sp.valve.r - 2, sp.valve.r + 22, 10, 9, 1);
+      set(R.lever, { opacity:1 - Math.pow(P.s, 2) });
+    }
+    if (R.cap) set(R.cap, { d:sil(P, cyl(sp.cap.z0, sp.cap.z1, sp.cap.r)) });
+    if (R.wingL) { const fz = (sp.flange.z0 + sp.flange.z1) / 2; tab(R.wingL, P, fz, sp.flange.r - 4, sp.wings.r1, sp.wings.depth, sp.wings.tall, -1); tab(R.wingR, P, fz, sp.flange.r - 4, sp.wings.r1, sp.wings.depth, sp.wings.tall, 1); }
+    if (R.flange) { set(R.flange, { d:sil(P, cyl(sp.flange.z0, sp.flange.z1, sp.flange.r)) }); set(R.flangeTop, { d:ring(P, sp.flange.z1, sp.flange.r) }); }
+    if (R.base) { set(R.base, { d:sil(P, cyl(sp.base.z1, sp.base.z0, sp.base.r)) }); set(R.baseTop, { d:ring(P, sp.base.z0, sp.base.r) }); }
+    if (R.frameLo) set(R.frameLo, { d:band(P, sp.frame[0].z0, sp.frame[0].r, sp.frame[0].z1, sp.frame[0].r) });
+    if (R.tip) set(R.tip, { d:sil(P, cut(prof, 0, sp.tip * H)) });
+    /* coffee seen through glass or plastic */
+    if (R.liquid) {
+      const top = sp.bed != null && sp.kind === 'drip' ? sp.bed * H : level;
+      set(R.liquid, { d:top != null && top > 2 ? sil(P, cut(inner, 0, top)) : '' });
+    }
+    if (R.liquidOut) {
+      /* the vessel tips, the surface stays level: clip the tipped interior with a horizontal line */
+      const pts = silPoints(P, cut(inner, 0, H)).map(p => deg ? rot(p[0], p[1], px, py, deg) : p);
+      const c = deg ? rot(P.ax, P.y(level), px, py, deg) : [P.ax, P.y(level)];
+      set(R.liquidOut, { d:level > 2 ? polyD(below(pts, c[1])) : '' });
+    }
+    /* French press: the lid comes down, then the mesh presses the grounds to the bottom */
+    let meshZ = null, lidZ = null;
+    if (sp.lid) {
+      const ld = sp.lid;
+      lidZ = lerp(H + 160, H + 2, easeOut(span(t, ld.land[0], ld.land[1])));
+      meshZ = lerp(H - 8, 16, ease(span(t, ld.press[0], ld.press[1])));
+      const show = t >= ld.land[0];
+      set(R.mesh, { d:show && t >= ld.land[1] - 60 ? ring(P, meshZ, rAt(inner, meshZ) - 2) : '', opacity:show ? 1 : 0 });
+    }
+    set(R.body, { d:sil(P, prof) });
+    if (R.bands) sp.bands.forEach((b, i) => { const z = b * H, r = rAt(prof, z); set(R.bands[i], { d:'M' + f(P.ax - r * k) + ' ' + f(P.y(z)) + ' A' + f(r * k) + ' ' + f(Math.max(.01, r * k * P.s)) + ' 0 0 0 ' + f(P.ax + r * k) + ' ' + f(P.y(z)), opacity:1 - topness }); });
+    if (R.pleats) R.pleats.forEach((pl, i) => { const L = surfLine(P, prof, 2 * Math.PI * i / R.pleats.length, .06 * H, H, 0, H); set(pl, { d:L.d, opacity:L.front ? (1 - topness) : 0 }); });
+    if (R.holder) { const h = sp.holder, z0 = h.z0 * H, z1 = h.z1 * H; set(R.holder, { d:band(P, z0, rAt(prof, z0) + h.out, z1, rAt(prof, z1) + h.out) }); }
+    if (R.wood) {
+      const c = sp.collar, t2 = c.t, zs = [c.z1, 178, 160, 142, c.z0];
+      set(R.wood, { d:sil(P, zs.map(z => [z, rAt(prof, z) + t2])) });
+      const zt = 162, rt = rAt(prof, zt) + t2 + 1;
+      set(R.tie, { d:'M' + f(P.ax - rt * k) + ' ' + f(P.y(zt)) + ' A' + f(rt * k) + ' ' + f(Math.max(.01, rt * k * P.s)) + ' 0 0 0 ' + f(P.ax + rt * k) + ' ' + f(P.y(zt)), opacity:1 - topness });
+      set(R.bead, { cx:P.ax + 6 * k, cy:P.y(zt - 14) + rt * k * P.s, rx:6 * k, ry:7 * k, opacity:1 - topness });
+    }
+    if (R.marks) sp.marks.forEach((m, i) => { const z = m * H, r = prof[0][1], th = 1.95; const x = P.ax + r * Math.cos(th) * k, y = P.y(z) + r * Math.sin(th) * P.s * k; set(R.marks[i], { d:'M' + f(x) + ' ' + f(y) + ' h' + f((i % 2 ? 10 : 18) * k), opacity:1 - topness }); });
+    if (R.frameHi) set(R.frameHi, { d:band(P, sp.frame[1].z0, sp.frame[1].r, sp.frame[1].z1, sp.frame[1].r) });
+    /* ribs: seen through the glass once tilted, seen from above at the start; they hand over smoothly */
+    if (R.ribsSide) {
+      const rb = sp.ribs;
+      R.ribsSide.forEach((el, i) => { const L = surfLine(P, inner, 2 * Math.PI * i / rb.n, rb.from * H, .9 * H, rb.spiral, H); set(el, { d:L.d, 'stroke-opacity':(1 - topness) * (L.front ? .8 : .3) }); });
+      R.ribsTop.forEach((el, i) => { const L = surfLine(P, inner, 2 * Math.PI * i / rb.n, rb.from * H, H, rb.spiral, H); set(el, { d:L.d, 'stroke-opacity':topness }); });
+    }
+    /* rim: the opening; Origami's pleated edge is scalloped */
+    set(R.rim, { d:ring(P, H, prof[0][1], sp.pleats ? sp.pleats.amp : 0, sp.pleats ? sp.pleats.n : 0) });
+    if (R.pleatsTop) R.pleatsTop.forEach((el, i) => { const L = surfLine(P, inner, 2 * Math.PI * (i + .5) / R.pleatsTop.length, .3 * H, H, 0, H); set(el, { d:L.d, 'stroke-opacity':topness }); });
+    if (R.spout) {
+      const r = prof[0][1], z = H, x0 = P.ax + (r - 4) * k, y0 = P.y(z), w = 14 * k * P.s + 3;
+      set(R.spout, { d:'M' + f(x0) + ' ' + f(y0 - w) + ' L' + f(x0 + (sp.spout + 4) * k) + ' ' + f(y0 - 2 * P.c * k) + ' L' + f(x0) + ' ' + f(y0 + w) + ' Z' });
+    }
+    /* paper, and what is seen through the opening */
+    if (sp.paper) {
+      const pp = sp.paper, zp = H + pp.up;
+      const lift = pp.lift ? easeOut(span(t, 1950, 2450)) : 0;
+      set(R.paperG, { transform:'translate(0 ' + f(-60 * lift) + ')', opacity:1 - lift });
+      if (pp.type === 'wave') { set(R.paper, { d:ring(P, zp, pp.r, pp.amp, pp.n) }); set(R.clip, { d:ring(P, zp, pp.r - 3, pp.amp, pp.n) }); }
+      else { set(R.paper, { d:ring(P, zp, pp.r) }); set(R.clip, { d:ring(P, zp, pp.r - (pp.type === 'chemex' ? 10 : 1.5)) }); }
+      if (R.paperFold) set(R.paperFold, { d:ring(P, zp, pp.r - 10) });
+      if (R.seam) {
+        let d = ''; const zEnd = (sp.bed != null ? sp.bed : sp.level[0]) * H;
+        for (let j = 0; j <= 6; j++) { const z = lerp(zp, zEnd, j / 6), r = rAt(inner, Math.min(z, H)) - 6; d += (j ? ' L' : 'M') + f(P.ax) + ' ' + f(P.y(z) - r * P.s * k); }
+        set(R.seam, { d, opacity:Math.pow(P.s, 3) });
+      }
+      if (R.folds) R.folds.forEach((el, i) => {
+        const th = 2 * Math.PI * (i + .5) / R.folds.length, zb = sp.bed * H, rb = rAt(inner, zb) - 4;
+        const a = [P.ax + rb * Math.cos(th) * k, P.y(zb) + rb * Math.sin(th) * P.s * k], b = [P.ax + (pp.r - pp.amp) * Math.cos(th) * k, P.y(zp) + (pp.r - pp.amp) * Math.sin(th) * P.s * k];
+        set(el, { d:'M' + f(a[0]) + ' ' + f(a[1]) + ' L' + f(b[0]) + ' ' + f(b[1]) });
+      });
+    } else {
+      set(R.clip, { d:ring(P, H, rAt(inner, H)) });
+    }
+    if (R.bed) {
+      const zb = sp.bed * H, rb = rAt(inner, zb) - 4, pulse = .94 + .06 * Math.sin(t / 380);
+      set(R.bed, { d:ring(P, zb, rb, sp.bedAmp || 0, sp.paper && sp.paper.n || 0) });
+      ell(R.rip, P, zb, rb * .55 * pulse);
+      ell(R.hole, P, zb, 9);
+    }
+    if (R.surf) {
+      const show = level != null && level > 2;
+      const rs = show ? rAt(inner, level) - 3 : 0;
+      set(R.surf, { d:show ? ring(P, level, rs) : '' });
+      set(R.crust, { d:show ? ring(P, level, rs * .92) : '', opacity:1 - span(t, 2550, 3300) });
+      R.bub.forEach((b, i) => {
+        const a = R.bubAt[i], rr = a.u * rs, x = P.ax + rr * Math.cos(a.a) * k, y = (show ? P.y(level) : 0) + rr * Math.sin(a.a) * P.s * k;
+        set(b, { cx:x, cy:y, rx:a.r * k, ry:Math.max(.01, a.r * k * P.s), opacity:show ? 1 - span(t, 2550, 3300) : 0 });
+      });
+    }
+    /* lid, rod and knob */
+    if (R.lid) {
+      const show = t >= sp.lid.land[0], ld = sp.lid, r = sp.frame[1].r + 2;
+      set(R.lid, { d:show ? sil(P, cyl(lidZ, lidZ + 10, r)) : '' }); set(R.lidTop, { d:show ? ring(P, lidZ + 10, r) : '' });
+      /* the knob rides on the rod: high while the mesh is up, down at the lid once pressed */
+      const knobZ = lidZ + 14 + ld.rod * (meshZ - 16) / (H - 24);
+      set(R.rod, { d:show ? 'M' + f(P.ax) + ' ' + f(P.y(lidZ + 10)) + ' V' + f(P.y(knobZ)) : '' });
+      ell(R.knob, P, knobZ + 6, 14, { opacity:show ? 1 : 0 });
+    }
+    /* AeroPress plunger */
+    if (R.plunger) {
+      const show = t >= sp.plunger.enter, top = seal + 270, r = sp.plunger.r;
+      set(R.plunger, { d:show ? sil(P, cyl(seal + 12, top, r)) : '' });
+      set(R.seal, { d:show ? sil(P, cyl(seal, seal + 12, r)) : '' });
+      set(R.plTop, { d:show ? ring(P, top, r) : '' });
+    }
+    /* cup and pour */
+    const cupIn = easeOut(span(t, 1950, 2550));
+    set(R.cup, { opacity:cupIn, transform:'translate(0 ' + ((1 - cupIn) * 26).toFixed(2) + ')' });
+    const T = tilts ? sp.tilt : null;
+    const pourA = sp.kind === 'press' ? sp.plunger.land : tilts ? T.start + 250 : 2500;
+    const pourB = sp.kind === 'press' ? sp.plunger.done : tilts ? T.down : 4350;
+    const fillLevel = .8 * ease(span(t, pourA + 150, pourB));
+    R.fill.style.transform = 'scaleY(' + fillLevel.toFixed(4) + ')';
+    const top = 356 - 82 * fillLevel, sOp = span(t, pourA, pourA + 150) * (1 - span(t, pourB, pourB + 170));
+    if (tilts) {
+      const sx = px + 2, sy = py + 2;
+      R.streams.forEach(el => set(el, { d:'M' + f(sx) + ' ' + f(sy) + ' C' + f(sx + 16) + ' ' + f(sy + 6) + ' ' + f(R.cupX - 10) + ' ' + f(sy + 50) + ' ' + f(R.cupX - 8) + ' ' + f(Math.max(sy + 60, top)), opacity:sOp, 'stroke-dashoffset':(-t * .055).toFixed(1) }));
+    } else {
+      const y0 = P.y(zLow) + 1;
+      R.streams.forEach((el, i) => { const x = P.ax + sp.streams[i] * k; set(el, { d:'M' + f(x) + ' ' + f(y0) + ' V' + f(Math.max(y0 + 1, top)), opacity:sOp, 'stroke-dashoffset':(-t * .055).toFixed(1) }); });
+    }
+  }
+  /* drop the drawing so the next render builds afresh (the overlay empties the svg after each brew) */
+  function reset(){ id = null; R = null; svg.replaceChildren(); }
+  /* when the stream appears for a brewer, in ms: the pour sound starts here */
+  function pourAt(which){ const sp = SPECS[which] || SPECS.v60; return sp.kind === 'press' ? sp.plunger.land : sp.kind === 'tiltpour' ? sp.tilt.start + 250 : 2500; }
+  return { render, reset, pourAt, has:which => !!SPECS[which] };
+})();
+
 function pourSound(){
   try {
     const c = B.ctx;
@@ -2443,9 +2830,11 @@ function pourSound(){
   } catch (e) {}
 }
 const finEl = $('#finale');
+const FIN_END = 7100, FIN_GLOW = 4700, FIN_REDUCED_END = 2600;
 function finAt(ms, fn){ FIN.timers.push(setTimeout(fn, ms)); }
 function endFinale(){
   FIN.timers.forEach(clearTimeout); FIN.timers = [];
+  cancelAnimationFrame(FIN.raf); FIN.raf = 0;
   try { if (FIN.src) FIN.src.stop(); } catch (e) {}
   FIN.src = null;
   if (!FIN.on) return;
@@ -2455,7 +2844,7 @@ function endFinale(){
   setTimeout(() => {
     if (FIN.on) return;
     finEl.className = 'finale'; finEl.inert = true; finEl.setAttribute('aria-hidden','true');
-    $('#fTop').replaceChildren(); $('#fSide').replaceChildren();
+    V2.reset();
   }, 900);
 }
 function startFinale(){
@@ -2463,23 +2852,36 @@ function startFinale(){
   if (FIN.on) return;
   FIN.on = true;
   $('#fText').textContent = S.name ? 'Enjoy your cup, '+S.name+'.' : 'Enjoy your cup.';
-  const art = { origami:'v60', 'switch':'v60', clever:'kalita' }[S.method] || S.method;
-  $('#fTop').innerHTML = topSVG(art);
-  $('#fSide').innerHTML = sideSVG(art);
+  const brewer = V2.has(S.method) ? S.method : 'v60';
+  V2.reset();
   finEl.className = 'finale'; void finEl.offsetWidth;
   finEl.inert = false; finEl.removeAttribute('aria-hidden');
   finEl.classList.add('on');
   try { finEl.focus({ preventScroll:true }); } catch (e) {}
   if (reduced) {
     finEl.classList.add('p-glow'); $('#fScene').hidden = true;
-    finAt(2600, endFinale);
+    finAt(FIN_REDUCED_END, endFinale);
     return;
   }
   $('#fScene').hidden = false;
-  finAt(1300, () => finEl.classList.add('p-tilt'));
-  finAt(2500, () => { finEl.classList.add('p-pour'); pourSound(); });
-  finAt(4700, () => finEl.classList.add('p-glow'));
-  finAt(7100, endFinale);
+  /* one clock (t, ms from 0 to 7100) drives the drawing and the pour sound; the glow and the end also run on timers,
+     so the overlay still finishes if animation frames are paused (a hidden tab) */
+  const pourAt = V2.pourAt(brewer);
+  let t0 = 0, poured = false;
+  V2.render(0, brewer);
+  const tick = now => {
+    if (!FIN.on) return;
+    if (!t0) t0 = now;
+    const t = Math.min(now - t0, FIN_END);
+    V2.render(t, brewer);
+    if (!poured && t >= pourAt) { poured = true; pourSound(); }
+    if (t >= FIN_GLOW) finEl.classList.add('p-glow');
+    if (t >= FIN_END) { FIN.raf = 0; endFinale(); return; }
+    FIN.raf = requestAnimationFrame(tick);
+  };
+  finAt(FIN_GLOW, () => finEl.classList.add('p-glow'));
+  finAt(FIN_END + 50, endFinale);
+  FIN.raf = requestAnimationFrame(tick);
 }
 finEl.addEventListener('click', endFinale);
 finEl.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') { e.preventDefault(); endFinale(); } });
@@ -2822,6 +3224,8 @@ function renderHistory(){
         S.notes = Array.isArray(rec.notes) ? rec.notes.filter(x => FLAVOURS.includes(x)) : [];
         if (METHODS[rec.method]) S.method = rec.method;
         S.yieldMl = clamp(Math.round(rec.yieldMl || 250), 100, 700);
+        const bg = bagOfRec(rec); S.bagId = bg ? bg.id : ''; S.editingBagId = '';
+        if (bg) ['openedOn','frozenOn','thawedOn','restUntil'].forEach(k => { S[k] = bg[k] || ''; });
         renderCoffee(); go('coffee');
       });
       acts.append(again);
@@ -3700,11 +4104,371 @@ function renderBagView(rows){
   return true;
 }
 
+/* ===== PASS5: bags, Today and the shelf =====
+   A bag is the coffee you are working through: its details, dates and weight. Every brew links to its bag (rec.bagId).
+   Today opens on the bag to brew with the recipe already adjusted from the last cup; the shelf orders the rest. */
+S.bags = [];
+Object.assign(S, { bagId:'', todayBagId:LS.get('bloom.todayBag', '') || '', editingBagId:'', brewFrom:'', todayMethod:'', todayYield:0 });
+const BAG_FIELDS = ['roaster','coffeeName','varieties','components','process','grade','altitude','decaf','labelNotes','notes','roast','roastInferred',
+  'roastDate','roastDateText','restDays','useWithinDays','restUntil','openedOn','frozenOn','thawedOn','weightG','source','roasterRecipe'];
+const clone = v => v == null ? v : JSON.parse(JSON.stringify(v));
+function bagFromS(){ const b = {}; BAG_FIELDS.forEach(k => { b[k === 'coffeeName' ? 'name' : k] = clone(S[k] == null ? '' : S[k]); }); return b; }
+function loadBag(bag){
+  BAG_FIELDS.forEach(k => {
+    const v = bag[k === 'coffeeName' ? 'name' : k];
+    if (k === 'varieties' || k === 'components' || k === 'notes') S[k] = Array.isArray(v) ? clone(v) : [];
+    else if (k === 'decaf' || k === 'roastInferred') S[k] = !!v;
+    else if (k === 'restDays' || k === 'useWithinDays' || k === 'weightG') S[k] = v > 0 ? v : null;
+    else if (k === 'roast') S[k] = ['light','medium','dark'].includes(v) ? v : 'light';
+    else S[k] = v == null ? '' : v;
+  });
+  S.bagId = bag.id;
+  clearMarks();
+}
+/* a blank coffee for a new bag: no sample values */
+function blankCoffee(){
+  RESET_HOOKS.forEach(h => { try { h(); } catch (e) {} });
+  Object.assign(S, { roaster:'', coffeeName:'', varieties:[], components:[], process:'', grade:'', altitude:'', decaf:false, labelNotes:'', notes:[],
+    roast:'light', roastInferred:false, roastDate:'', roastDateText:'', restDays:null, useWithinDays:null, restUntil:'', openedOn:'', frozenOn:'', thawedOn:'',
+    weightG:null, source:'', roasterRecipe:'', bagId:'', editingBagId:'' });
+  clearMarks();
+}
+const bagTitle = b => [b.roaster, b.name].filter(Boolean).join(' · ') || (Array.isArray(b.varieties) && b.varieties.length ? b.varieties.join(', ') : 'Unnamed coffee');
+const recKey = r => (coffeeTitle(r) || '') + '|' + (r.roastDate || '');
+const findBag = id => S.bags.find(b => b.id === id) || null;
+/* brews of a bag: linked by id, or (for brews made before bags existed) by coffee and roast date */
+function brewsOf(bag){
+  return S.history.filter(r => r.bagId ? r.bagId === bag.id : (bag.legacyKey && recKey(r) === bag.legacyKey))
+    .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+}
+const bagOfRec = r => r.bagId ? findBag(r.bagId) : S.bags.find(b => b.legacyKey && b.legacyKey === recKey(r)) || null;
+const inFreezer = b => !!(b.frozenOn && !b.thawedOn);
+/* run the bag-age helpers (which read S) against a bag's own dates */
+const AGE_KEYS = ['roastDate','frozenOn','thawedOn','restUntil','restDays','useWithinDays','roast'];
+function withBag(bag, fn){
+  const keep = {}; AGE_KEYS.forEach(k => { keep[k] = S[k]; S[k] = bag[k] == null ? (k === 'restDays' || k === 'useWithinDays' ? null : '') : bag[k]; });
+  try { return fn(); } finally { Object.assign(S, keep); }
+}
+const statusOf = bag => withBag(bag, () => bagStatus()) || { word:bag.roastDate ? '' : 'No roast date', nums:'', warn:false, age:null };
+/* grams and brews left from the bag weight */
+function leftOf(bag){
+  if (!bag.weightG) return null;
+  const recs = brewsOf(bag).filter(r => r.source !== 'log' && r.dose > 0);
+  const used = recs.reduce((s, r) => s + r.dose, 0), g = Math.max(0, Math.round(bag.weightG - used));
+  const dose = recs[0] ? recs[0].dose : 15;
+  return { g, brews:Math.floor(g / dose) };
+}
+const leftText = l => !l ? '' : l.g <= 0 ? 'Empty' : l.brews < 1 ? l.g + ' g left' : 'About ' + l.brews + (l.brews === 1 ? ' brew' : ' brews') + ' left';
+
+/* ----- storage: private db collection when signed in, this browser otherwise ----- */
+Object.assign(store, {
+  bagCol:null, bagUnsub:null, bagsReady:false,
+  loadBagsLocal(){ const v = LS.get('bloom.bags.v1', []); return Array.isArray(v) ? v : []; },
+  saveBagsLocal(){ LS.set('bloom.bags.v1', S.bags); },
+  initBags(){
+    S.bags = this.loadBagsLocal(); this.bagsReady = true; migrateBags(); refreshBagViews();
+    if (!this.profile) return;
+    try {
+      this.bagCol = this.profile.collection('bags');
+      this.bagsReady = false;
+      this.bagUnsub = this.bagCol.onSnapshot(
+        snap => { S.bags = snap.docs.map(d => Object.assign({ id:d.id }, d.data())); this.bagsReady = true; this.saveBagsLocal(); migrateBags(); refreshBagViews(); },
+        () => { this.bagCol = null; S.bags = this.loadBagsLocal(); this.bagsReady = true; refreshBagViews(); }
+      );
+    } catch (e) { this.bagCol = null; }
+  },
+  async saveBag(bag){
+    bag.updatedAt = new Date().toISOString();
+    const i = S.bags.findIndex(b => b.id === bag.id);
+    if (i >= 0) S.bags[i] = bag; else S.bags.push(bag);
+    this.saveBagsLocal(); refreshBagViews();
+    if (this.bagCol) { try { await this.bagCol.doc(bag.id).set(clone(bag)); } catch (e) {} }
+  },
+  async removeBag(id){
+    S.bags = S.bags.filter(b => b.id !== id);
+    this.saveBagsLocal(); refreshBagViews();
+    if (this.bagCol) { try { await this.bagCol.doc(id).delete(); } catch (e) {} }
+  }
+});
+/* first run with bags: group earlier brews into bags (by coffee and roast date). Recent ones stay on the shelf. */
+function migrateBags(){
+  if (!store.bagsReady || S.bags.length || !S.history.length) return;
+  if (store.bagCol && !store.histReady) return;
+  const flag = store.bagCol ? 'bloom.bags.migrated.db.v1' : 'bloom.bags.migrated.v1';
+  if (LS.get(flag, false)) return;
+  const groups = new Map();
+  S.history.filter(r => !r.bagId && r.source !== 'log' && (coffeeTitle(r) || r.roastDate)).forEach(r => {
+    const k = recKey(r); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r);
+  });
+  const now = Date.now(), made = [];
+  groups.forEach((recs, key) => {
+    recs.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+    const r = recs[0], t0 = new Date(r.createdAt).getTime(), last = isFinite(t0) ? t0 : 0;
+    const bag = { id:newId(), legacyKey:key, createdAt:recs[recs.length - 1].createdAt, status:(now - last) / 864e5 <= 30 ? 'open' : 'finished',
+      lastBrewAt:r.createdAt, order:-last };
+    BAG_FIELDS.forEach(k => { const src = k === 'coffeeName' ? 'name' : k; bag[src] = clone(r[src] == null ? (k === 'varieties' ? (r.variety ? String(r.variety).split(/\s*,\s*/) : []) : '') : r[src]); });
+    if (!bag.openedOn) bag.openedOn = String(recs[recs.length - 1].createdAt).slice(0, 10);
+    made.push(bag);
+  });
+  LS.set(flag, true);
+  made.forEach(b => store.saveBag(b));
+}
+/* save the coffee form as a bag: updates the current bag, or starts a new one at the front of the shelf */
+function commitBag(){
+  const id = S.editingBagId || S.bagId;
+  if (!id && !S.roaster && !S.coffeeName && !S.varieties.length && !S.roastDate) return null;
+  const old = id ? findBag(id) : null;
+  const bag = Object.assign(old ? clone(old) : { id:newId(), createdAt:new Date().toISOString(), status:'open',
+    order:Math.min(0, ...S.bags.map(b => b.order || 0)) - 1 }, bagFromS());
+  if (bag.status !== 'open' && !S.editingBagId) bag.status = 'open';
+  store.saveBag(bag);
+  S.bagId = bag.id;
+  if (!S.editingBagId) { S.todayBagId = bag.id; LS.set('bloom.todayBag', bag.id); }
+  return bag;
+}
+/* each finished brew belongs to its bag; the first brew also marks the bag opened */
+REC_HOOKS.push(() => ({ bagId:S.bagId || '' }));
+const _finishBag = rec => {
+  const bag = findBag(rec.bagId); if (!bag) return;
+  const b = clone(bag); b.lastBrewAt = rec.createdAt; if (!b.openedOn) b.openedOn = isoDaysAgo(0);
+  store.saveBag(b);
+};
+REC_HOOKS.push(rec => { setTimeout(() => _finishBag(rec), 0); return {}; });
+
+/* ----- today's plan for a bag: last recipe for this bag, grind nudged from how it tasted ----- */
+function stepText(g, n){ return g.unit === 'clicks' ? n + (n === 1 ? ' click' : ' clicks') : g.unit === 'microns' ? n + ' µm' : String(n); }
+const dayWord = iso => { const d = bagDay(new Date()) - bagDay(new Date(iso)); return d <= 0 && new Date(iso).getHours() < 12 ? 'This morning’s' : d === 1 ? 'Yesterday’s' : 'Your last'; };
+function suggestGrind(bag, g){
+  const recs = brewsOf(bag).filter(r => r.source !== 'log' && r.grinderId === g.id && r.method === S.method && r.grindSetting);
+  const last = recs[0];
+  if (!last) {
+    const other = brewsOf(bag).find(r => r.grinderId === g.id && r.grindSetting);
+    if (other) return { v:String(other.grindSetting), why:'First time with this bag on the ' + METHODS[S.method].name + '. Starting from your last setting for it.' };
+    return { v:g.start || '', why:g.start ? 'New bag: your usual filter setting. Change one thing per brew.' : 'New bag: note your grind setting on the recipe screen so Bloom can suggest it next time.' };
+  }
+  const cur = parseFloat(last.grindSetting), st = stepOf(g) * (g.unit === 'clicks' ? 2 : 1), when = dayWord(last.createdAt);
+  let dir = 0, why = '';
+  const fast = last.drainSec && last.totalSec ? advise(last.drainSec, last.totalSec).state : '';
+  if (last.taste === 'Sour') { dir = -1; why = when + ' cup was sour'; }
+  else if (last.taste === 'Bitter') { dir = 1; why = when + ' cup was bitter'; }
+  else if (last.taste === 'Weak') { dir = -1; why = when + ' cup was weak'; }
+  else if (last.taste === 'Balanced') why = when + ' cup was balanced';
+  else if (fast === 'slow') { dir = 1; why = when + ' brew drained slowly'; }
+  else if (last.rating) why = 'You rated ' + (when === 'Last' ? 'your last' : when.charAt(0).toLowerCase() + when.slice(1)) + ' cup ' + last.rating + ' of 5';
+  else why = when + ' cup wasn’t rated';
+  const plain = /^-?\d+(\.\d+)?$/.test(String(last.grindSetting).trim());
+  if (dir && !plain) return { v:String(last.grindSetting), why:why + ', so go ' + (dir < 0 ? 'a step finer' : 'a step coarser') + ' than ' + last.grindSetting + ' today.' };
+  if (!dir || !isFinite(cur)) return { v:String(last.grindSetting), why:why + ', so the grind stays at ' + fmtSetting(g, last.grindSetting) + '.' };
+  const real = dir * (g.higherFiner ? -1 : 1), nv = Math.round((cur + real * st) * 1000) / 1000;
+  return { v:String(nv), why:why + ', so ' + stepText(g, st) + (dir < 0 ? ' finer' : ' coarser') + ' today.' };
+}
+/* what changed between the last two brews of this bag */
+function lastChange(bag){
+  const recs = brewsOf(bag).filter(r => r.source !== 'log' && r.dose > 0);
+  if (recs.length < 2) return '';
+  const a = recs[1], b = recs[0], bits = [];
+  if (a.method !== b.method) bits.push(methodName(a) + ' → ' + methodName(b));
+  if (a.grindSetting && b.grindSetting && String(a.grindSetting) !== String(b.grindSetting)) bits.push('grind ' + a.grindSetting + ' → ' + fmtSetting({ unit:b.grindUnit }, b.grindSetting));
+  if (a.temp != null && b.temp != null && a.temp !== b.temp) bits.push(tempText(a.temp) + ' → ' + tempText(b.temp));
+  const ra = a.water / a.dose, rb = b.water / b.dose;
+  if (isFinite(ra) && isFinite(rb) && Math.abs(ra - rb) > .2) bits.push('ratio 1:' + (Math.round(ra * 10) / 10) + ' → 1:' + (Math.round(rb * 10) / 10));
+  if (!bits.length) return 'Last brew: same recipe as the one before' + (b.taste ? ', tasted ' + b.taste.toLowerCase() : '') + '.';
+  return 'Last change: ' + bits.join(', ') + (b.taste ? '. It tasted ' + b.taste.toLowerCase() + '.' : '.');
+}
+/* load a bag into the app, ready to brew */
+function prepareToday(bag){
+  loadBag(bag);
+  const last = brewsOf(bag).find(r => r.source !== 'log');
+  if (last) {
+    if (METHODS[last.method] && SET.brewers.includes(last.method)) S.method = last.method;
+    if (last.yieldMl) S.yieldMl = clamp(Math.round(last.yieldMl), 100, 700);
+    if (findWater(last.waterId)) S.waterId = last.waterId;
+    if (findGrinder(last.grinderId)) S.grinderId = last.grinderId;
+    RESTORE_HOOKS.forEach(h => { try { h(last); } catch (e) {} });
+    BAG_FIELDS.forEach(k => { const v = bag[k === 'coffeeName' ? 'name' : k]; if (['openedOn','frozenOn','thawedOn','restUntil'].includes(k)) S[k] = v || ''; });
+  }
+  if (S.todayMethod && METHODS[S.todayMethod]) S.method = S.todayMethod;
+  if (S.todayYield) S.yieldMl = S.todayYield;
+  if (!SET.brewers.includes(S.method)) S.method = SET.brewers[0];
+  const g = findGrinder(S.grinderId) || defGrinder();
+  let why = '';
+  if (g) {
+    S.grinderId = g.id;
+    const sg = suggestGrind(bag, g);
+    S.grindSetting = sg.v; why = sg.why;
+    S.gearKey = gearKey() + '|' + g.id; S.gearWhy = 'Suggested for today';
+  }
+  if (!findWater(S.waterId) && defWater()) S.waterId = defWater().id;
+  S.recipe = recompute();
+  return { grinder:g, why };
+}
+/* which bag Today shows: the one you chose, else the last one brewed if it's ready, else the first ready bag on the shelf */
+function shelfOrder(){ return S.bags.filter(b => b.status !== 'finished' && !inFreezer(b)).sort((a, b) => (a.order || 0) - (b.order || 0)); }
+function currentBag(){
+  const open = shelfOrder();
+  if (!open.length) return null;
+  const chosen = open.find(b => b.id === S.todayBagId);
+  if (chosen) return chosen;
+  const ready = open.filter(b => !/^Resting|freezer/i.test(statusOf(b).word));
+  const recent = ready.slice().sort((a, b) => String(b.lastBrewAt || '').localeCompare(String(a.lastBrewAt || '')))[0];
+  return (recent && recent.lastBrewAt ? recent : ready[0]) || open[0];
+}
+
+/* ----- Today ----- */
+const CUPS = [200, 250, 350, 500];
+const trRate = buildRating($('#trRating'), n => { const r = loose(); if (!r) return; const v = r.rating === n ? 0 : n; r.rating = v; trRate.paint(v); store.patch(r.id, { rating:v }); paintLoose(); });
+['Sour','Balanced','Bitter','Weak'].forEach(t => {
+  const b = mk('button','chip',t); b.type = 'button'; b.dataset.t = t; b.setAttribute('aria-pressed','false');
+  b.addEventListener('click', () => { const r = loose(); if (!r) return; const v = r.taste === t ? '' : t; r.taste = v; store.patch(r.id, { taste:v }); paintLoose(); renderToday(); });
+  $('#trTaste').append(b);
+});
+/* the last brew if it hasn't been rated: shown once, on the next visit */
+function loose(){
+  const r = S.history.filter(x => x.source !== 'log').sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)))[0];
+  if (!r || (r.rating && r.taste)) return null;
+  if (Date.now() - new Date(r.createdAt).getTime() > 3 * 864e5) return null;
+  return r;
+}
+function paintLoose(){
+  const r = loose(), box = $('#todayRate');
+  box.hidden = !r;
+  if (!r) return;
+  $('#trLabel').textContent = 'How was ' + (dayWord(r.createdAt) === 'Yesterday’s' ? 'yesterday’s' : 'your last') + ' ' + (coffeeTitle(r) || methodName(r)) + '?';
+  $$('#trTaste .chip').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.t === r.taste)));
+  trRate.paint(r.rating || 0);
+  $('#trMsg').textContent = r.taste ? 'Saved. Today’s grind takes it into account.' : 'Pick how it tasted and Bloom adjusts today’s grind.';
+}
+function renderToday(){
+  const hr = new Date().getHours();
+  $('#h-today').textContent = (hr < 12 ? 'Good morning' : hr < 18 ? 'Good afternoon' : 'Good evening') + (S.name ? ', ' + S.name : '') + '.';
+  const bag = currentBag();
+  $('#todayMain').hidden = !bag; $('#todayEmpty').hidden = !!bag;
+  paintLoose();
+  if (!bag) {
+    const any = S.bags.length;
+    $('#todayEmptyText').textContent = any ? 'Every bag on your shelf is finished or in the freezer. Add the bag you’re brewing from, or take one out of the freezer.' : 'Add the bag you’re brewing from. Scan the label or fill it in by hand, and Bloom works out today’s recipe.';
+    $('#todayEmptyShelf').hidden = !any;
+    $('#todayShelf').hidden = true;
+    return;
+  }
+  const plan = prepareToday(bag), r = S.recipe, st = statusOf(bag), left = leftOf(bag);
+  $('#todayWhich').textContent = bag.lastBrewAt ? 'Brewing today' : 'Up next';
+  $('#todayName').textContent = bagTitle(bag);
+  $('#todayStatus').textContent = [st.word, SET.pro ? st.nums : '', leftText(left)].filter(Boolean).join(' · ');
+  $('#todayStatus').classList.toggle('warn', !!st.warn);
+  $('#todayDose').replaceChildren(); setNum($('#todayDose'), doseParts(r.dose));
+  $('#todayDose').append(mk('span','t-arrow','→'));
+  const w = mk('span','t-water'); setNum(w, waterParts(r.water)); $('#todayDose').append(w);
+  $('#tBrewer').textContent = r.method.name + (r.iced ? ', iced' : '') + ' · ' + waterText(r.cup) + ' in the cup';
+  $('#tTemp').textContent = tempText(r.temp) + ' · ratio ' + ratioText(r.ratio);
+  $('#tGrindRow').hidden = !plan.grinder;
+  if (plan.grinder) $('#tGrind').textContent = S.grindSetting ? plan.grinder.name + ' at ' + fmtSetting(plan.grinder, S.grindSetting) : plan.grinder.name + ', setting not noted yet';
+  $('#todayWhy').textContent = plan.why;
+  $('#todayWhy').hidden = !plan.why;
+  const ch = lastChange(bag);
+  $('#todayChange').textContent = ch; $('#todayChange').hidden = !ch;
+  const warn = /^Resting/.test(st.word) ? 'Still resting. You can brew it now, but it may taste better in a few days.' : left && left.g <= 0 ? 'By weight this bag is empty. Mark it finished on the shelf when it is.' : '';
+  $('#todayWarn').textContent = warn; $('#todayWarn').hidden = !warn;
+  $('#todaySetup').hidden = !!plan.grinder || SET.grinders.length > 0;
+  /* quick swaps */
+  radioChips($('#tsBrewers'), SET.brewers.map(k => [k, METHODS[k].name]), () => S.method, v => { S.todayMethod = v; renderToday(); });
+  radioChips($('#tsCups'), CUPS.map(n => [n, metric() ? n + ' g' : (n / ML_PER_FLOZ).toFixed(1) + ' fl oz']), () => Math.round(S.yieldMl), v => { S.todayYield = v; renderToday(); });
+  $('#todaySwapSum').textContent = r.method.name + ' · ' + (metric() ? Math.round(S.yieldMl) + ' g' : (S.yieldMl / ML_PER_FLOZ).toFixed(1) + ' fl oz');
+  /* the rest of the shelf */
+  const others = shelfOrder().filter(b => b.id !== bag.id).slice(0, 4).concat(S.bags.filter(inFreezer).slice(0, 2));
+  const list = $('#todayShelfList'); list.replaceChildren();
+  others.forEach(b => {
+    const li = mk('li'), btn = mk('button','t-row'); btn.type = 'button';
+    const s = statusOf(b), l = leftOf(b);
+    btn.append(mk('span','t-rn', bagTitle(b)), mk('span','t-rs' + (s.warn ? ' warn' : ''), [s.word, leftText(l)].filter(Boolean).join(' · ')));
+    btn.setAttribute('aria-label', 'Brew ' + bagTitle(b) + ' today');
+    btn.addEventListener('click', () => { if (inFreezer(b)) { go('shelf'); return; } chooseToday(b.id); });
+    li.append(btn); list.append(li);
+  });
+  $('#todayShelf').hidden = false;
+  $('#todayShelfNone').hidden = others.length > 0;
+}
+function chooseToday(id){ S.todayBagId = id; S.todayMethod = ''; S.todayYield = 0; LS.set('bloom.todayBag', id); if (S.stage !== 'today') go('today'); else { renderToday(); window.scrollTo(0, 0); } }
+function newBag(){ blankCoffee(); S.todayMethod = ''; S.todayYield = 0; renderCoffee(); resetScan(); go('coffee'); }
+$('#todayBrew').addEventListener('click', () => {
+  const bag = currentBag(); if (!bag) return;
+  prepareToday(bag);
+  S.brewFrom = 'today';
+  go('brew');
+});
+$('#todayAdjust').addEventListener('click', () => { const bag = currentBag(); if (!bag) return; prepareToday(bag); S.brewFrom = 'todayAdjust'; go('recipe'); });
+$('#todayChangeBag').addEventListener('click', () => go('shelf'));
+$('#todaySeeShelf').addEventListener('click', () => go('shelf'));
+$('#todayNewBag').addEventListener('click', newBag);
+$('#todayAddBag').addEventListener('click', newBag);
+$('#todayEmptyShelf').addEventListener('click', () => go('shelf'));
+$('#todaySetup').addEventListener('click', () => go('settings'));
+
+/* ----- Shelf ----- */
+function shelfRow(list, bag, kind){
+  const li = mk('li'), det = mk('details'), sum = mk('summary'), left = mk('span'), right = mk('span','h-right');
+  det.dataset.id = bag.id;
+  const s = statusOf(bag), l = leftOf(bag), n = brewsOf(bag).length;
+  const sub = kind === 'freezer' ? ['Frozen ' + fmtDay(bag.frozenOn), s.age ? 'day ' + s.age.days + ' off roast' : ''] :
+    kind === 'done' ? [n + (n === 1 ? ' brew' : ' brews')] : [s.word, leftText(l)];
+  left.append(mk('span','h-name', bagTitle(bag)), mk('span','h-sub' + (s.warn && kind === 'next' ? ' warn' : ''), sub.filter(Boolean).join(' · ')));
+  const best = brewsOf(bag).reduce((m, r) => Math.max(m, r.rating || 0), 0);
+  right.append(mk('span','h-rate', best ? dotsText(best) : ''));
+  if (kind === 'next' && S.todayBagId === bag.id) right.prepend(mk('span','h-taste','Today'));
+  sum.append(left, right);
+  const body = mk('div','h-body'), acts = mk('div','h-actions');
+  const act = (label, fn, quiet) => { const b = mk('button', 'link' + (quiet ? ' quiet' : ''), label); b.type = 'button'; b.addEventListener('click', e => fn(b, e)); acts.append(b); return b; };
+  const save = changes => { const b = Object.assign(clone(bag), changes); store.saveBag(b); };
+  if (kind === 'next') {
+    act('Brew today', () => chooseToday(bag.id));
+    const idx = shelfOrder().findIndex(b => b.id === bag.id);
+    if (idx > 0) act('Move up', () => {
+      /* renumber the whole queue so ties and gaps never make a bag jump too far */
+      const ord = shelfOrder(), i = ord.findIndex(b => b.id === bag.id);
+      if (i < 1) return;
+      [ord[i - 1], ord[i]] = [ord[i], ord[i - 1]];
+      ord.forEach((b, k) => { if (b.order !== k) store.saveBag(Object.assign(clone(b), { order:k })); });
+    });
+    act('Freeze', () => save({ frozenOn:isoDaysAgo(0), thawedOn:'' }));
+    act('Finished', b => arm(b, 'Tap again: finished', () => { save({ status:'finished', finishedAt:new Date().toISOString() }); if (S.todayBagId === bag.id) { S.todayBagId = ''; LS.set('bloom.todayBag', ''); } }));
+  } else if (kind === 'freezer') {
+    act('Take out', () => save({ thawedOn:isoDaysAgo(0), status:'open' }));
+    act('Finished', b => arm(b, 'Tap again: finished', () => save({ status:'finished', finishedAt:new Date().toISOString() })));
+  } else {
+    act('Back on the shelf', () => save({ status:'open' }));
+    act('Delete bag', b => arm(b, 'Tap again to delete', () => store.removeBag(bag.id)), true);
+  }
+  act('Edit details', () => { loadBag(bag); S.editingBagId = bag.id; renderCoffee(); resetScan(); go('coffee'); }, true);
+  if (bag.roastDate || bag.weightG) body.append(mk('p','h-note', [bag.roastDate ? 'Roasted ' + fmtDay(bag.roastDate) : '', bag.openedOn ? 'opened ' + fmtDay(bag.openedOn) : '', bag.weightG ? bag.weightG + ' g bag' : '', n ? n + (n === 1 ? ' brew' : ' brews') : ''].filter(Boolean).join(' · ')));
+  body.append(acts);
+  det.append(sum, body); li.append(det); list.append(li);
+}
+function renderShelf(){
+  const was = new Set(); $$('#shelfNext details[open], #shelfFreezer details[open], #shelfDone details[open]').forEach(d => was.add(d.dataset.id));
+  const next = shelfOrder(), frozen = S.bags.filter(b => b.status !== 'finished' && inFreezer(b)), done = S.bags.filter(b => b.status === 'finished')
+    .sort((a, b) => String(b.finishedAt || b.lastBrewAt || '').localeCompare(String(a.finishedAt || a.lastBrewAt || '')));
+  [['#shelfNext', next, 'next'], ['#shelfFreezer', frozen, 'freezer'], ['#shelfDone', done, 'done']].forEach(x => {
+    const ul = $(x[0]); ul.replaceChildren(); x[1].forEach(b => shelfRow(ul, b, x[2]));
+  });
+  $$('#shelfNext details, #shelfFreezer details, #shelfDone details').forEach(d => { if (was.has(d.dataset.id)) d.open = true; });
+  $('#sgNext').hidden = !next.length; $('#sgFreezer').hidden = !frozen.length; $('#sgDone').hidden = !done.length;
+  $('#shelfDoneCount').textContent = done.length ? String(done.length) : '';
+  const ready = next.filter(b => !/^Resting/.test(statusOf(b).word)).length;
+  $('#shelfStats').textContent = S.bags.length ? [next.length + ' on the shelf', ready + ' ready', frozen.length ? frozen.length + ' in the freezer' : ''].filter(Boolean).join(' · ') : '';
+  $('#shelfEmpty').hidden = S.bags.length > 0;
+  $('#shelfEmpty').textContent = 'Your shelf is empty. Add the bag you’re brewing from to get started.';
+}
+$('#shelfNewBag').addEventListener('click', newBag);
+function refreshBagViews(){ if (S.stage === 'today') renderToday(); if (S.stage === 'shelf') renderShelf(); }
+/* history changes (a new brew, a rating) can change Today's suggestion */
+const _renderHistory = renderHistory;
+renderHistory = function(){ _renderHistory.apply(this, arguments); migrateBags(); refreshBagViews(); };
+
 /* ---------- boot ---------- */
 $('#unitBtn').textContent = metric() ? 'g · °C' : 'oz · °F';
 renderCoffee();
-S.stage = 'coffee';
-go(S.nameSet ? 'coffee' : 'welcome');
+S.stage = 'today';
+go(S.nameSet ? 'today' : 'welcome');
 store.init();
 })();
 </script>

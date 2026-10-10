@@ -68,12 +68,16 @@ The full Simple/Pro split planned across all passes:
 
 **Shipped:** after brewing, "What you tasted" (flavour tags plus your own words) shown beside the roaster's notes, with a comparison rather than a score; "As it cooled" note; "Would you buy it again?" (yes, maybe, no); the grind setting you used, editable after the brew; "Copy as review" in the r/pourover weekly-thread format, from the after-brew screen and from any history entry; history shows tasting notes and buy-again; "Bought from" field; history search covers source and tasting notes. Header: "bloom" is now bold text that goes back to the start (asks first mid-brew); the logo is the page favicon. The grinder and setting moved up the recipe screen, and the grind shows on the timer screen.
 
-## Next: bags, shelf and a Today screen (proposed 10 Oct)
+## Pass 5: Today, the shelf and bags ✅ shipped 10 Oct 2026
 
-- **Bags as the main object**: a shelf of open bags with details, roast date and grams left. Picking a coffee from the shelf asks only "same bag, or a new bag?"; a new bag asks just the roast date. Brews link to their bag.
-- **Today screen on open**: the current bag ready to brew, with today's recipe already adjusted from the last cup ("yesterday was sour, so 2 clicks finer") and one Brew button; quick swaps for bag, brewer and cup size; a nudge to rate yesterday's cup; the rest of the shelf in plain words (resting, ready, past best-within, brews left); "New bag" opens the scan.
-- **One screen for repeat brews**; keep the step-by-step flow for new bags.
-- **Bottom navigation**: Today, Shelf, History; Settings moves into Today.
+- **Bags are their own records**: details, roast and freezer dates, bag weight, status. Every brew links to its bag. Earlier brews are grouped into bags automatically on first open (by coffee and roast date; anything brewed in the last 30 days stays on the shelf, older bags are marked finished).
+- **Today is the home screen**: opens on the bag to brew with today's recipe already worked out from the last cup of that bag (sour or weak: finer; bitter or slow drawdown: coarser; balanced: same), the reason in plain words, and what changed last time. One tap on Start brewing goes straight to the timer. Quick swaps for brewer and cup size; "How was yesterday's cup?" if it wasn't rated; the rest of the shelf with status and brews left.
+- **Shelf**: drink-next order (Move up), resting and ready status, a freezer backlog (Freeze, Take out), finished bags (Back on the shelf, Delete), and Edit details for any bag.
+- **New bag** opens an empty form (no more sample Gesha values). "bloom" and finishing a brew both return to Today.
+- **End-of-brew animation**: the V2 finale (one continuous camera tilt from top to side) for all 8 brewers.
+- **Batch-size note**: brews under 12 g or over 32 g of coffee get a note on the recipe screen.
+
+**Not done from the proposal:** bottom navigation (Shelf sits in the header instead); "same bag or new bag?" when picking a coffee from history (Brew again now reuses that coffee's bag).
 
 ## Pass 3 (original plan)
 
@@ -93,7 +97,7 @@ The full Simple/Pro split planned across all passes:
 - Bag ageing: opened, frozen, out-of-freezer and rest-until dates; freezer days don't count towards age; plain-word status that matches the recipe engine; History "By coffee" view with a rating vs days-off-roast chart; dial-in hint on the recipe screen.
 - Review fixes: iced water after recipe changes, ice reminder handling, iced ratio in reviews, dial-in hint per brewer, saved recipes syncing, review days-off-roast uses freezer-adjusted age.
 
-**Moved to the shelf/Today work:** drink-next queue and freezer backlog, beans remaining, new-bag dial-in flow as its own screen.
+**Moved to the shelf/Today work (shipped in Pass 5):** drink-next queue and freezer backlog, beans remaining, new-bag dial-in flow.
 
 ## Pass 4 (original plan)
 
