@@ -2,6 +2,8 @@
 
 A pour-over coffee coach. Describe your beans (or scan the bag), pick a brewer and how much coffee you want, and Bloom works out a recipe, runs a guided timer while you brew, then helps you adjust the next cup from how this one tasted.
 
+**Try it:** https://first-time-caller.github.io/bloom-brew/
+
 It is a single self-contained page, `index.html`: plain HTML, CSS and JavaScript with no build step and no dependencies beyond two Google Fonts.
 
 ## What it does
