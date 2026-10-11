@@ -1,0 +1,3012 @@
+[
+{
+"id": "et-guji",
+"country": "Ethiopia",
+"region": "Guji",
+"aliases": [
+"guji",
+"hambela",
+"hambella",
+"shakiso",
+"shakisso",
+"uraga",
+"odo shakiso",
+"bule hora",
+"kercha",
+"oromia guji",
+"dimtu",
+"benti nenka"
+],
+"lat": 5.9,
+"lon": 38.7,
+"altitudeM": [
+1800,
+2300
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Main harvest Oct-Jan; washed lots ship from Feb, naturals a little later.",
+"varieties": [
+"Heirloom landraces",
+"74110",
+"74112",
+"Kurume",
+"Wolisho",
+"Dega"
+],
+"processes": [
+"Natural",
+"Washed",
+"Anaerobic"
+],
+"profile": "Intensely floral and fruity: bergamot, peach, blueberry in naturals, jasmine and stone fruit in washed lots. Light, silky body with bright, clean, lingering sweetness.",
+"notable": "Hambela (METAD), Shakiso and Uraga are the celebrated sub-zones; Guji split from Sidama as its own origin name only in the 2010s.",
+"brewTip": "Very dense, small beans drain slowly and extract readily; grind slightly coarser than you think and brew hot (94-96C) to pull florals without muddiness."
+},
+{
+"id": "et-yirgacheffe",
+"country": "Ethiopia",
+"region": "Yirgacheffe",
+"aliases": [
+"yirgacheffe",
+"yirgachefe",
+"yirgacheffee",
+"irgachefe",
+"gedeb",
+"kochere",
+"kochore",
+"chelelektu",
+"chelelelektu",
+"worka",
+"wote",
+"aricha",
+"idido",
+"konga",
+"gedeo",
+"adado"
+],
+"lat": 6.16,
+"lon": 38.2,
+"altitudeM": [
+1750,
+2200
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Harvest Oct-Jan; fresh crop lands abroad Mar-Jun.",
+"varieties": [
+"Heirloom landraces",
+"Kurume",
+"Wolisho",
+"Dega",
+"74110"
+],
+"processes": [
+"Washed",
+"Natural"
+],
+"profile": "Washed: tea-like, jasmine, lemon, bergamot, delicate and clean. Natural: blueberry, strawberry, winey, heavier and sweeter. The archetype of floral Ethiopian coffee.",
+"notable": "Gedeo zone washing stations (Gedeb, Kochere, Aricha, Idido) are the most famous named stations in the world; the Yirgacheffe name dates to the 1970s.",
+"brewTip": "Small, dense beans with lots of fines; a coarser grind and a gentle, steady pour stop the drawdown from stalling and keep the cup transparent."
+},
+{
+"id": "et-sidama",
+"country": "Ethiopia",
+"region": "Sidama",
+"aliases": [
+"sidama",
+"sidamo",
+"bensa",
+"bensa sidama",
+"bombe",
+"daye bensa",
+"arbegona",
+"nensebo",
+"keramo",
+"shantawene",
+"bona",
+"aleta wondo"
+],
+"lat": 6.5,
+"lon": 38.7,
+"altitudeM": [
+1700,
+2300
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Harvest Oct-Jan, highest Bensa farms picking into February.",
+"varieties": [
+"Heirloom landraces",
+"74158",
+"74160",
+"Kurume",
+"Wolisho"
+],
+"processes": [
+"Washed",
+"Natural",
+"Anaerobic"
+],
+"profile": "Bright citrus and florals with rounder stone fruit and red berry; naturals from Bensa are candy-sweet with blueberry and tropical notes. Fuller body than Yirgacheffe.",
+"notable": "Bensa district (Daye Bensa, Bombe, Shantawene) is the Sidama area most seen on bags; Sidamo was the historic export grade name.",
+"brewTip": "Behaves like other southern Ethiopians: dense, fines-heavy, slow drawdown; use a slightly coarser grind and avoid aggressive agitation late in the brew."
+},
+{
+"id": "et-limu",
+"country": "Ethiopia",
+"region": "Limu",
+"aliases": [
+"limu",
+"limmu",
+"limu kossa",
+"kossa",
+"seka",
+"jimma zone limu"
+],
+"lat": 8.1,
+"lon": 36.9,
+"altitudeM": [
+1400,
+2100
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Harvest Oct-Jan.",
+"varieties": [
+"Heirloom landraces",
+"74110",
+"74112"
+],
+"processes": [
+"Washed",
+"Natural"
+],
+"profile": "Softer than the south: balanced, sweet, spiced with mild citrus and florals, sometimes winey; medium body and gentle acidity.",
+"notable": "Western Ethiopian forest coffee zone, historically known for clean, tea-like washed coffees from the Limu Kossa and Gera areas.",
+"brewTip": "Slightly lower grown and less dense than Guji; medium-fine grind and 92-94C water suit it, and it tolerates a faster pour."
+},
+{
+"id": "et-jimma",
+"country": "Ethiopia",
+"region": "Jimma / Agaro",
+"aliases": [
+"jimma",
+"jima",
+"agaro",
+"gera",
+"goma",
+"nano challa",
+"duromina",
+"biftu gudina",
+"gomma",
+"kaffa",
+"bonga",
+"gesha village"
+],
+"lat": 7.85,
+"lon": 36.65,
+"altitudeM": [
+1700,
+2200
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Harvest Oct-Jan; Agaro cooperatives ship Mar-May.",
+"varieties": [
+"Heirloom landraces",
+"74110",
+"74112",
+"74140",
+"Gesha (Gesha Village)"
+],
+"processes": [
+"Washed",
+"Natural"
+],
+"profile": "Agaro washed lots are juicy and sweet: ripe peach, apricot, honey and florals with a rounded, syrupy body. Less citric and more tropical than the south.",
+"notable": "Cooperatives such as Duromina, Nano Challa and Biftu Gudina made Agaro famous; the Kaffa and Gesha forests nearby are coffee's genetic birthplace.",
+"brewTip": "Dense beans that like heat; brew at 94-96C with a slightly coarser grind, and expect a sweet, syrupy cup that forgives small ratio changes."
+},
+{
+"id": "et-harrar",
+"country": "Ethiopia",
+"region": "Harrar",
+"aliases": [
+"harrar",
+"harar",
+"harrar longberry",
+"hararghe",
+"east harrar",
+"west harrar",
+"dire dawa",
+"mocha harrar"
+],
+"lat": 9.3,
+"lon": 42.1,
+"altitudeM": [
+1500,
+2100
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Harvest Oct-Jan, sun-dried on the farm.",
+"varieties": [
+"Heirloom landraces",
+"Harrar longberry"
+],
+"processes": [
+"Natural"
+],
+"profile": "Rustic natural: blueberry, dark chocolate, winey and spicy with a heavy, almost chewy body and low acidity. Variable; the best are jammy, the worst earthy.",
+"notable": "Eastern dry-region garden coffee, traditionally sun-dried by smallholders; one of the oldest coffee trade names and the original 'mocha' flavour reference.",
+"brewTip": "Less dense and often uneven in roast; grind a touch finer, use 90-93C water and a slower pour to tame harsher notes and bring out the fruit."
+},
+{
+"id": "ke-nyeri",
+"country": "Kenya",
+"region": "Nyeri",
+"aliases": [
+"nyeri",
+"gatomboya",
+"karatina",
+"othaya",
+"gichathaini",
+"gakuyuini",
+"kiriaini",
+"ndaroini",
+"mugaga",
+"rumukia",
+"mukurwe-ini",
+"kieni",
+"gatugi"
+],
+"lat": -0.42,
+"lon": 36.95,
+"altitudeM": [
+1600,
+2000
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Main crop Oct-Jan; smaller fly crop May-Jul.",
+"varieties": [
+"SL28",
+"SL34",
+"Ruiru 11",
+"Batian",
+"K7"
+],
+"processes": [
+"Washed"
+],
+"profile": "The classic Kenyan cup: blackcurrant, tomato, grapefruit, intense winey acidity with a juicy, heavy body and dark sugar finish. Powerful and vivid.",
+"notable": "Factories (wet mills) owned by cooperative societies on the slopes of Mt Kenya and the Aberdares, sold through the Nairobi auction; home of AA/AB grading fame.",
+"brewTip": "Very dense, hard beans with high acidity; grind fine, brew hot (95-96C) and use a slightly longer ratio (1:16-17) to open the acidity into sweetness."
+},
+{
+"id": "ke-kirinyaga",
+"country": "Kenya",
+"region": "Kirinyaga",
+"aliases": [
+"kirinyaga",
+"kiringaya",
+"karimikui",
+"kii",
+"kabare",
+"kiangoi",
+"baragwi",
+"rukira",
+"kamwangi",
+"kianyaga"
+],
+"lat": -0.5,
+"lon": 37.3,
+"altitudeM": [
+1500,
+1900
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Main crop Oct-Jan; fly crop May-Jul.",
+"varieties": [
+"SL28",
+"SL34",
+"Ruiru 11",
+"Batian"
+],
+"processes": [
+"Washed"
+],
+"profile": "Bright red fruit and blackcurrant with a rounder sweetness than Nyeri: plum, red grape, caramel and citrus, syrupy body and long finish.",
+"notable": "Southern slope of Mt Kenya; red volcanic soils and factories like Karimikui, Kii and Kabare have made it the most sought-after Kenyan county recently.",
+"brewTip": "Dense and acid-forward; fine grind, 94-96C and a gentle bloom. If it tastes sharp, lengthen the ratio or coarsen slightly rather than lowering temperature."
+},
+{
+"id": "ke-muranga",
+"country": "Kenya",
+"region": "Murang'a",
+"aliases": [
+"muranga",
+"murang'a",
+"murang a",
+"gatanga",
+"kandara"
+],
+"lat": -0.72,
+"lon": 37.15,
+"altitudeM": [
+1400,
+1900
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Main crop Oct-Jan; fly crop May-Jul.",
+"varieties": [
+"SL28",
+"SL34",
+"Ruiru 11",
+"Batian"
+],
+"processes": [
+"Washed"
+],
+"profile": "Juicy and sweet with blackcurrant, red apple and brown sugar; slightly softer acidity and more chocolate than Nyeri, with a clean finish.",
+"notable": "Central Kenya county between Nyeri and Kiambu; its factories have been winning more attention as roasters look beyond the famous names.",
+"brewTip": "Treat like other Kenyans: fine grind, hot water, full-immersion bloom; a slightly shorter ratio (1:15) emphasises its sweetness."
+},
+{
+"id": "ke-embu",
+"country": "Kenya",
+"region": "Embu",
+"aliases": [
+"embu",
+"runyenjes",
+"manyatta",
+"kibugu",
+"kathangariri",
+"gakundu",
+"mungania"
+],
+"lat": -0.53,
+"lon": 37.45,
+"altitudeM": [
+1400,
+1900
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Main crop Oct-Jan; fly crop May-Jul.",
+"varieties": [
+"SL28",
+"SL34",
+"Ruiru 11",
+"Batian",
+"K7"
+],
+"processes": [
+"Washed"
+],
+"profile": "Blackcurrant and citrus with a softer, rounder body than Nyeri; cola, brown sugar and red fruit. Approachable Kenyan brightness.",
+"notable": "South-eastern slopes of Mt Kenya; a smaller producing county whose factories (Kibugu, Gakundu, Kathangariri) appear on specialty bags.",
+"brewTip": "Dense beans; fine grind and 94-96C. Drains a little faster than Nyeri lots so you can push agitation for more sweetness."
+},
+{
+"id": "ke-kiambu",
+"country": "Kenya",
+"region": "Kiambu",
+"aliases": [
+"kiambu",
+"thika",
+"ruiru",
+"gatundu",
+"githunguri",
+"kiambu estate",
+"kiambu peaberry",
+"ndumberi",
+"karinga",
+"mabroukie",
+"kiambu aa",
+"limuru"
+],
+"lat": -1.1,
+"lon": 36.8,
+"altitudeM": [
+1500,
+2000
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Main crop Oct-Jan; fly crop May-Jul.",
+"varieties": [
+"SL28",
+"SL34",
+"Ruiru 11",
+"Batian"
+],
+"processes": [
+"Washed"
+],
+"profile": "Balanced Kenyan profile: blackcurrant and plum with milder acidity, more caramel and cocoa, medium-heavy body.",
+"notable": "Home of larger estates near Nairobi and of the Coffee Research Institute in Ruiru, where Ruiru 11 and Batian were bred.",
+"brewTip": "Slightly less acid-driven than northern counties; fine-medium grind and 94C water; it handles shorter ratios without turning sour."
+},
+{
+"id": "ke-nakuru",
+"country": "Kenya",
+"region": "Nakuru",
+"aliases": [
+"nakuru",
+"kericho",
+"njoro",
+"molo",
+"rift valley kenya",
+"nakuru estate",
+"subukia",
+"bahati",
+"solai",
+"menengai"
+],
+"lat": -0.3,
+"lon": 36.1,
+"altitudeM": [
+1600,
+2200
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Main crop Oct-Jan; some estates pick into Feb.",
+"varieties": [
+"SL28",
+"SL34",
+"Ruiru 11",
+"Batian"
+],
+"processes": [
+"Washed",
+"Natural"
+],
+"profile": "Sweeter and gentler than Mt Kenya coffees: red berry, caramel, mild citrus with a rounded body; estates sometimes release naturals with winey berry fruit.",
+"notable": "Rift Valley growing area west of Nairobi, mostly larger estates on volcanic soils; a newer name in specialty Kenyan lots.",
+"brewTip": "High-grown and dense; fine grind and hot water as for other Kenyans, but its softer acidity tolerates 92-94C."
+},
+{
+"id": "rw",
+"country": "Rwanda",
+"region": "Rwanda (Western / Southern)",
+"aliases": [
+"nyamasheke",
+"huye",
+"gakenke",
+"rulindo",
+"kivu belt",
+"lake kivu rwanda",
+"gisenyi",
+"rubavu",
+"nyungwe",
+"muraho",
+"karongi",
+"nyamagabe"
+],
+"lat": -2.3,
+"lon": 29.5,
+"altitudeM": [
+1500,
+2100
+],
+"harvest": [
+3,
+4,
+5,
+6
+],
+"harvestNote": "Single harvest Mar-Jun (Mar-Jul at highest sites); exports from Jul.",
+"varieties": [
+"Red Bourbon",
+"Jackson",
+"Mibirizi"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Red apple, orange, black tea and caramel with silky body and crisp, clean acidity; naturals add strawberry and winey notes. Occasional potato defect.",
+"notable": "A washing-station revolution after 2002 (PEARL project) turned Rwanda into a specialty origin; Nyamasheke and Lake Kivu stations are most seen on bags.",
+"brewTip": "Dense Bourbon beans with uniform size; medium-fine grind, 93-95C. Extracts easily and cleanly, so it is a forgiving pour-over coffee."
+},
+{
+"id": "bi",
+"country": "Burundi",
+"region": "Burundi (Kayanza / Ngozi)",
+"aliases": [
+"kayanza",
+"ngozi",
+"kirimiro",
+"buyenzi",
+"gatara",
+"muyinga",
+"long miles",
+"bukeye",
+"heza",
+"gaharo"
+],
+"lat": -2.92,
+"lon": 29.62,
+"altitudeM": [
+1600,
+2100
+],
+"harvest": [
+3,
+4,
+5,
+6,
+7
+],
+"harvestNote": "Harvest Mar-Jul, peak Apr-Jun; new crop exports Aug-Oct.",
+"varieties": [
+"Red Bourbon",
+"Jackson",
+"Mibirizi"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Bright and sweet: blackcurrant, cranberry, orange, honey and black tea with a juicy, medium body. Close cousin to Rwanda, often a little more floral.",
+"notable": "Kayanza and Ngozi provinces in the north hold the famous washing stations (Long Miles, Heza, Gaharo); ranked among Africa's best for price-quality.",
+"brewTip": "Dense, high-grown Bourbon; medium-fine grind and 93-95C. Blooms vigorously; a two-stage pour keeps acidity bright without harshness."
+},
+{
+"id": "tz",
+"country": "Tanzania",
+"region": "Tanzania (Kilimanjaro / Mbeya)",
+"aliases": [
+"kilimanjaro",
+"moshi",
+"arusha",
+"mbeya",
+"mbinga",
+"ruvuma",
+"songwe",
+"mbozi",
+"tarime",
+"karatu",
+"ngorongoro",
+"oldeani",
+"tanzania peaberry",
+"tanzania pb",
+"kigoma",
+"mara"
+],
+"lat": -3.3,
+"lon": 37.3,
+"altitudeM": [
+1200,
+2000
+],
+"harvest": [
+6,
+7,
+8,
+9,
+10
+],
+"harvestNote": "North (Kilimanjaro, Arusha) picks Jul-Dec; south (Mbeya, Mbinga) May-Oct.",
+"varieties": [
+"Bourbon",
+"Kent",
+"N39",
+"Blue Mountain",
+"Typica"
+],
+"processes": [
+"Washed",
+"Natural"
+],
+"profile": "Bright, winey blackcurrant and citrus in the north, softer and sweeter with chocolate and plum in the south. Medium body; the famous peaberry grade is lively and clean.",
+"notable": "Kilimanjaro and Arusha estates in the north and Mbeya/Mbinga smallholders in the south; Tanzania Peaberry is the best-known export grade.",
+"brewTip": "Moderately dense; medium-fine grind at 93-94C. Northern lots behave like a gentler Kenya; southern lots suit slightly finer grinding."
+},
+{
+"id": "ug",
+"country": "Uganda",
+"region": "Uganda (Mt Elgon / Rwenzori)",
+"aliases": [
+"mt elgon",
+"~mount elgon",
+"sipi falls",
+"~sipi",
+"~bugisu",
+"bugishu",
+"kapchorwa",
+"mbale",
+"bududa",
+"~rwenzori",
+"kasese",
+"bundibugyo",
+"zombo",
+"west nile",
+"nebbi",
+"gumutindo",
+"bukonzo",
+"mt elgon aa"
+],
+"lat": 1.2,
+"lon": 34.4,
+"altitudeM": [
+1400,
+2200
+],
+"harvest": [
+10,
+11,
+12,
+1,
+2
+],
+"harvestNote": "Elgon main harvest Oct-Feb; Rwenzori main crop Apr-Jul with a second Oct-Dec.",
+"varieties": [
+"SL14",
+"SL28",
+"Nyasaland",
+"Bugisu local",
+"Kent"
+],
+"processes": [
+"Washed",
+"Natural"
+],
+"profile": "Full-bodied with cocoa, dried fruit and mild citrus; washed Elgon lots can be clean and sweet with red apple, naturals winey and heavy.",
+"notable": "Africa's largest coffee exporter (mostly Robusta); arabica from Mt Elgon (Sipi, Bugisu) and the Rwenzoris is the specialty face of the country.",
+"brewTip": "Medium density; medium grind and 92-94C. Tends to extract quickly, so avoid very fine grinds that push bitterness into the heavy body."
+},
+{
+"id": "cd-kivu",
+"country": "DR Congo",
+"region": "Kivu",
+"aliases": [
+"congo",
+"drc",
+"democratic republic of congo",
+"kivu",
+"south kivu",
+"north kivu",
+"lake kivu",
+"sopacdi",
+"muungano",
+"kawa kabuya",
+"idjwi",
+"kalehe",
+"minova",
+"bukavu",
+"virunga",
+"rebuild women's hope",
+"kahondo",
+"kivu lake"
+],
+"lat": -2.2,
+"lon": 28.9,
+"altitudeM": [
+1450,
+2000
+],
+"harvest": [
+3,
+4,
+5,
+6
+],
+"harvestNote": "Main harvest Mar-Jun (some stations into Jul); small secondary Sep-Dec.",
+"varieties": [
+"Bourbon",
+"Blue Mountain",
+"Jackson"
+],
+"processes": [
+"Washed",
+"Natural"
+],
+"profile": "Rich and sweet: dark chocolate, plum, brown sugar and gentle citrus with a creamy body; the best are juicy with black tea and red fruit.",
+"notable": "Smallholder cooperatives (SOPACDI, Muungano, Kawa Kabuya) on the shores of Lake Kivu rebuilt the trade after conflict; Idjwi island lots are prized.",
+"brewTip": "Dense Bourbon; medium-fine grind, 93-94C. The heavier body rewards a slightly shorter ratio (1:15) and firm agitation during bloom."
+},
+{
+"id": "co-huila",
+"country": "Colombia",
+"region": "Huila",
+"aliases": [
+"huila",
+"pitalito",
+"san agustin",
+"san agustín",
+"acevedo",
+"garzon",
+"garzón",
+"la plata",
+"timana",
+"timaná",
+"monteblanco",
+"el diviso"
+],
+"lat": 2.0,
+"lon": -76.0,
+"altitudeM": [
+1400,
+2100
+],
+"harvest": [
+10,
+11,
+12,
+4,
+5,
+6
+],
+"harvestNote": "Main crop Oct-Dec; mitaca (second crop) Apr-Jun. Fresh lots nearly year-round.",
+"varieties": [
+"Caturra",
+"Castillo",
+"Colombia",
+"Pink Bourbon",
+"Gesha",
+"Tabi",
+"Typica"
+],
+"processes": [
+"Washed",
+"Honey",
+"Natural",
+"Anaerobic",
+"Thermal shock"
+],
+"profile": "Juicy and sweet: red apple, panela, orange, caramel with lively acidity and a round, creamy body. Pink Bourbon lots are floral and tropical.",
+"notable": "Colombia's largest and most awarded department, home to Pitalito, San Agustín, Acevedo and famous farms like El Paraíso, Monteblanco and El Diviso.",
+"brewTip": "Dense but even; medium-fine grind and 93-95C. Washed lots are forgiving; experimental ferments extract fast, so coarsen a little and shorten contact."
+},
+{
+"id": "co-narino",
+"country": "Colombia",
+"region": "Nariño",
+"aliases": [
+"narino",
+"nariño",
+"pasto",
+"la union",
+"la unión",
+"buesaco",
+"sandona",
+"sandoná"
+],
+"lat": 1.2,
+"lon": -77.3,
+"altitudeM": [
+1700,
+2300
+],
+"harvest": [
+5,
+6,
+7,
+8
+],
+"harvestNote": "Single main harvest Apr-Aug, peaking Jun-Jul; exports from Aug.",
+"varieties": [
+"Caturra",
+"Castillo",
+"Colombia",
+"Typica",
+"Bourbon"
+],
+"processes": [
+"Washed",
+"Honey",
+"Natural"
+],
+"profile": "Among the brightest Colombians: lime, white grape, florals and sugary sweetness with a crisp, delicate body. Clean and intense.",
+"notable": "Extremely high, steep farms near the Ecuador border; Buesaco and La Unión won repeated Cup of Excellence top places for tiny smallholders.",
+"brewTip": "Very dense, small beans; grind fine and brew hot (95-96C). Slow drawdown is normal; slightly longer ratio (1:16-17) softens the acidity."
+},
+{
+"id": "co-tolima",
+"country": "Colombia",
+"region": "Tolima",
+"aliases": [
+"tolima",
+"planadas",
+"gaitania",
+"ibague",
+"ibagué",
+"chaparral",
+"ataco",
+"rioblanco",
+"san antonio tolima",
+"libano",
+"líbano"
+],
+"lat": 3.7,
+"lon": -75.4,
+"altitudeM": [
+1400,
+2100
+],
+"harvest": [
+4,
+5,
+6,
+10,
+11,
+12
+],
+"harvestNote": "Two crops: Apr-Jun and Oct-Dec; south (Planadas) peaks May-Jun.",
+"varieties": [
+"Caturra",
+"Castillo",
+"Colombia",
+"Typica",
+"Bourbon"
+],
+"processes": [
+"Washed",
+"Honey",
+"Natural"
+],
+"profile": "Balanced and sweet: red fruit, milk chocolate, caramel, orange acidity with medium-full body; Planadas lots can be strikingly clean and floral.",
+"notable": "Planadas and Gaitania in the south, once off-limits during the conflict, now produce some of Colombia's most awarded smallholder lots.",
+"brewTip": "Dense; medium-fine grind and 93-94C. Tolerates stronger ratios well and rarely turns astringent."
+},
+{
+"id": "co-cauca",
+"country": "Colombia",
+"region": "Cauca",
+"aliases": [
+"cauca",
+"popayan",
+"popayán",
+"inza",
+"inzá",
+"piendamo",
+"piendamó",
+"timbio",
+"timbío",
+"el tambo",
+"el tambo cauca",
+"finca el paraiso",
+"el paraiso"
+],
+"lat": 2.5,
+"lon": -76.6,
+"altitudeM": [
+1600,
+2200
+],
+"harvest": [
+10,
+11,
+12,
+4,
+5,
+6
+],
+"harvestNote": "Main crop Oct-Dec; mitaca Apr-Jun in many municipalities.",
+"varieties": [
+"Caturra",
+"Castillo",
+"Colombia",
+"Typica",
+"Tabi"
+],
+"processes": [
+"Washed",
+"Honey",
+"Natural"
+],
+"profile": "Sweet and floral with citrus, caramel and panela; medium body and clean, bright acidity. Often slightly softer than Nariño, more aromatic than Huila.",
+"notable": "Holds a Protected Denomination of Origin; Inzá, Popayán plateau and El Tambo smallholders dominate specialty exports.",
+"brewTip": "Dense, high-grown; medium-fine grind and 94C. A longer bloom (45s) helps these tightly packed beans degas before pouring."
+},
+{
+"id": "co-antioquia",
+"country": "Colombia",
+"region": "Antioquia",
+"aliases": [
+"antioquia",
+"medellin",
+"medellín",
+"jardin",
+"jardín",
+"andes",
+"ciudad bolivar",
+"ciudad bolívar",
+"jerico",
+"jericó",
+"urrao",
+"concordia",
+"tamesis",
+"támesis",
+"santa barbara antioquia"
+],
+"lat": 6.3,
+"lon": -75.6,
+"altitudeM": [
+1300,
+2100
+],
+"harvest": [
+10,
+11,
+12,
+4,
+5,
+6
+],
+"harvestNote": "Main crop Oct-Dec; mitaca Apr-Jun.",
+"varieties": [
+"Caturra",
+"Castillo",
+"Colombia",
+"Cenicafé 1",
+"Gesha"
+],
+"processes": [
+"Washed",
+"Honey",
+"Natural",
+"Anaerobic"
+],
+"profile": "Classic 'Colombian' balance: milk chocolate, caramel, red apple, nutty sweetness with medium body and gentle acidity. Jardín and Urrao lots can be floral.",
+"notable": "The historic heart of Colombia's coffee culture around Medellín; the FNC's Medellín Excelso grade and Jardín's experimental producers are both from here.",
+"brewTip": "Medium-high density; medium grind and 92-94C. Forgiving and consistent, a good coffee for dialling in a new brewer."
+},
+{
+"id": "co-santander",
+"country": "Colombia",
+"region": "Santander",
+"aliases": [
+"santander",
+"bucaramanga",
+"san gil",
+"socorro",
+"rionegro santander",
+"mesa de los santos",
+"hacienda el roble",
+"barichara"
+],
+"lat": 6.7,
+"lon": -73.2,
+"altitudeM": [
+1200,
+1800
+],
+"harvest": [
+10,
+11,
+12,
+1
+],
+"harvestNote": "Main harvest Oct-Jan; small mitaca Apr-May.",
+"varieties": [
+"Castillo",
+"Caturra",
+"Colombia",
+"Typica",
+"Bourbon",
+"Gesha"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Rounder and lower-acid than southern Colombia: milk chocolate, dried fruit, nuts, brown sugar with full body. Shade-grown lots are soft and sweet.",
+"notable": "Colombia's oldest coffee region near the Venezuelan border, known for shade-grown, often organic production; Hacienda El Roble pioneered variety gardens.",
+"brewTip": "Lower grown and softer; medium grind, 91-93C and a slightly shorter ratio keep the body rich without flatness."
+},
+{
+"id": "br-cerrado",
+"country": "Brazil",
+"region": "Cerrado Mineiro",
+"aliases": [
+"cerrado",
+"cerrado mineiro",
+"patrocinio",
+"patrocínio",
+"carmo do paranaiba",
+"carmo do paranaíba",
+"monte carmelo",
+"araguari",
+"araxa",
+"araxá",
+"alto paranaiba",
+"triangulo mineiro",
+"daterra"
+],
+"lat": -18.9,
+"lon": -46.9,
+"altitudeM": [
+800,
+1250
+],
+"harvest": [
+5,
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest May-Sep (dry season), often mechanised; new crop ships Aug-Nov.",
+"varieties": [
+"Mundo Novo",
+"Catuaí",
+"Bourbon",
+"Topázio",
+"Acaiá",
+"Icatu"
+],
+"processes": [
+"Natural",
+"Pulped natural",
+"Anaerobic natural"
+],
+"profile": "Nutty, chocolate, caramel and dried fruit with low acidity and a heavy, smooth body; naturals add raisin and winey notes. The classic espresso base.",
+"notable": "Flat plateau farms with Brazil's first Denomination of Origin for coffee; large, technified estates such as Daterra set the standard for consistency.",
+"brewTip": "Low-grown, soft beans that extract fast: grind coarser than for African coffees, use 90-93C, and a short ratio (1:14-15) to keep the body sweet, not bitter."
+},
+{
+"id": "br-sulminas",
+"country": "Brazil",
+"region": "Sul de Minas",
+"aliases": [
+"sul de minas",
+"south of minas",
+"minas gerais",
+"carmo de minas",
+"mantiqueira",
+"serra da mantiqueira",
+"mantiqueira de minas",
+"sao lourenco",
+"são lourenço",
+"pocos de caldas",
+"poços de caldas",
+"guaxupe",
+"guaxupé",
+"varginha",
+"tres pontas",
+"três pontas",
+"santo antonio do amparo",
+"santo antônio do amparo",
+"fazenda rainha"
+],
+"lat": -21.5,
+"lon": -45.5,
+"altitudeM": [
+900,
+1400
+],
+"harvest": [
+5,
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest May-Sep; Mantiqueira hill farms pick into Sep-Oct.",
+"varieties": [
+"Yellow Bourbon",
+"Catuaí",
+"Mundo Novo",
+"Acaiá",
+"Catucaí",
+"Arara"
+],
+"processes": [
+"Natural",
+"Pulped natural",
+"Washed",
+"Anaerobic natural"
+],
+"profile": "Sweet and rounded: milk chocolate, hazelnut, red apple and caramel with gentle citric acidity and creamy body; Mantiqueira Yellow Bourbons are floral and sugary.",
+"notable": "Brazil's largest arabica region; the Mantiqueira de Minas hills (Carmo de Minas) have won most Brazilian Cup of Excellence titles.",
+"brewTip": "Medium-low density; medium-coarse grind, 91-93C and a short, steady pour. Over-extraction shows quickly as bitterness, so keep contact time modest."
+},
+{
+"id": "br-mogiana",
+"country": "Brazil",
+"region": "Mogiana",
+"aliases": [
+"mogiana",
+"alta mogiana",
+"franca",
+"sao paulo mogiana",
+"são paulo",
+"pedregulho",
+"altinopolis",
+"altinópolis"
+],
+"lat": -20.8,
+"lon": -47.3,
+"altitudeM": [
+900,
+1200
+],
+"harvest": [
+5,
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest May-Sep.",
+"varieties": [
+"Mundo Novo",
+"Catuaí",
+"Yellow Bourbon",
+"Obatã",
+"Icatu"
+],
+"processes": [
+"Natural",
+"Pulped natural"
+],
+"profile": "Full-bodied with chocolate, toffee, nuts and a soft fruit sweetness; low acidity, heavy and smooth. Reliable, comforting Brazilian cup.",
+"notable": "Named after the Mogiana railway on the São Paulo-Minas border; Alta Mogiana around Franca is the premium sub-zone with its own producer association.",
+"brewTip": "Soft beans; medium-coarse grind, 90-92C, short ratio. Great for bypass or stronger brews; avoid long drawdowns."
+},
+{
+"id": "br-chapada",
+"country": "Brazil",
+"region": "Chapada Diamantina",
+"aliases": [
+"chapada diamantina",
+"chapada",
+"bahia",
+"piata",
+"piatã",
+"mucuge",
+"mucugê",
+"ibicoara",
+"barra da estiva",
+"lencois",
+"lençóis",
+"seabra",
+"fazenda floresta",
+"bahia chapada",
+"vale do capao",
+"vale do capão"
+],
+"lat": -12.6,
+"lon": -41.5,
+"altitudeM": [
+1000,
+1400
+],
+"harvest": [
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest Jun-Sep, later than most of Brazil.",
+"varieties": [
+"Catuaí",
+"Yellow Catuaí",
+"Topázio",
+"Bourbon",
+"Catucaí",
+"Mundo Novo"
+],
+"processes": [
+"Natural",
+"Pulped natural",
+"Anaerobic natural"
+],
+"profile": "Brighter than typical Brazil: red fruit, cocoa, honey and florals with a cleaner, lighter body thanks to altitude. Cup of Excellence winners show stone fruit.",
+"notable": "High plateau in Bahia's national park area where small farms around Piatã have repeatedly topped Brazil's Cup of Excellence.",
+"brewTip": "Denser than lowland Brazil; medium grind, 92-94C. Behaves closer to a Central American coffee than a Cerrado natural."
+},
+{
+"id": "br-espirito",
+"country": "Brazil",
+"region": "Espírito Santo",
+"aliases": [
+"espirito santo",
+"espírito santo",
+"caparao",
+"caparaó",
+"venda nova do imigrante",
+"venda nova",
+"pedra azul",
+"domingos martins",
+"afonso claudio",
+"afonso cláudio",
+"brejetuba",
+"castelo",
+"ibatiba",
+"irupi",
+"iuna",
+"iúna",
+"dores do rio preto",
+"montanhas do espirito santo",
+"conilon"
+],
+"lat": -20.3,
+"lon": -41.1,
+"altitudeM": [
+900,
+1400
+],
+"harvest": [
+5,
+6,
+7,
+8,
+9
+],
+"harvestNote": "Arabica harvest May-Sep in the Caparaó mountains; Conilon lowlands pick Apr-Jul.",
+"varieties": [
+"Catuaí",
+"Yellow Catuaí",
+"Bourbon",
+"Catucaí",
+"Arara"
+],
+"processes": [
+"Natural",
+"Pulped natural",
+"Anaerobic natural"
+],
+"profile": "Sweet and juicy mountain coffee: yellow fruit, cocoa, honey and gentle citrus with a medium body; cleaner and brighter than central Brazil.",
+"notable": "Caparaó, on the border with Minas, is a rising specialty zone of tiny hillside farms; the state is also Brazil's Robusta (Conilon) capital.",
+"brewTip": "Medium density; medium grind, 92-93C. Naturals extract quickly, so a slightly coarser grind keeps the fruit clean."
+},
+{
+"id": "pe-cajamarca",
+"country": "Peru",
+"region": "Cajamarca",
+"aliases": [
+"perú",
+"cajamarca",
+"jaen",
+"jaén",
+"san ignacio",
+"huabal",
+"la coipa",
+"chirinos",
+"tabaconas",
+"~amazonas",
+"~rodriguez de mendoza",
+"~rodríguez de mendoza",
+"~cusco",
+"~quillabamba",
+"~junin",
+"~junín",
+"~chanchamayo",
+"~villa rica",
+"~oxapampa",
+"~puno",
+"~sandia",
+"cenfrocafe",
+"sol y cafe",
+"norandino",
+"finca tasta"
+],
+"lat": -5.7,
+"lon": -78.8,
+"altitudeM": [
+1500,
+2100
+],
+"harvest": [
+5,
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest May-Sep in the north (Cajamarca, Amazonas); Cusco and Puno slightly later, Jun-Oct.",
+"varieties": [
+"Caturra",
+"Typica",
+"Bourbon",
+"Catimor",
+"Pache",
+"Gesha",
+"Marshell"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Sweet and balanced: milk chocolate, caramel, red apple and soft citrus with a silky, medium body; the best micro-lots are floral and juicy.",
+"notable": "Jaén and San Ignacio in Cajamarca are Peru's most awarded zones; cooperatives (Cenfrocafé, Sol y Café) and tiny farms dominate, mostly organic.",
+"brewTip": "Dense and clean; medium-fine grind and 93-94C. Very forgiving; it rarely turns astringent even at fine grinds."
+},
+{
+"id": "bo-caranavi",
+"country": "Bolivia",
+"region": "Caranavi",
+"aliases": [
+"caranavi",
+"yungas",
+"los yungas",
+"la paz",
+"coroico",
+"sol de la manana",
+"sol de la mañana",
+"agricafe",
+"samaipata",
+"santa cruz bolivia",
+"inquisivi",
+"finca la linda",
+"uchumachi",
+"taypiplaya",
+"copacabana bolivia",
+"alto beni"
+],
+"lat": -15.8,
+"lon": -67.6,
+"altitudeM": [
+1400,
+1900
+],
+"harvest": [
+5,
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest May-Sep (peak Jun-Aug); some high farms pick into Oct.",
+"varieties": [
+"Caturra",
+"Typica",
+"Catuaí",
+"Java",
+"Gesha",
+"Bourbon"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Elegant and sweet: milk chocolate, red fruit, mandarin and floral notes with silky body and crisp, clean acidity. Java and Gesha lots are intensely aromatic.",
+"notable": "Tiny production from the Yungas valleys; Agricafe's Sol de la Mañana programme and Caranavi's smallholders produce the country's celebrated micro-lots.",
+"brewTip": "High-grown and dense; medium-fine grind and 94C. Delicate florals fade with over-extraction, so keep contact time moderate."
+},
+{
+"id": "ec-loja",
+"country": "Ecuador",
+"region": "Loja",
+"aliases": [
+"loja",
+"vilcabamba",
+"quilanga",
+"espindola",
+"espíndola",
+"olmedo",
+"chaguarpamba",
+"saraguro",
+"zamora chinchipe",
+"zamora",
+"palanda",
+"pichincha",
+"nanegal",
+"el pangui",
+"finca la papaya",
+"hacienda la papaya",
+"sidra",
+"imbabura",
+"intag"
+],
+"lat": -4.0,
+"lon": -79.2,
+"altitudeM": [
+1500,
+2100
+],
+"harvest": [
+5,
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest May-Sep in the south; Pichincha (north) Jun-Oct.",
+"varieties": [
+"Typica",
+"Bourbon",
+"Caturra",
+"Sidra",
+"Typica Mejorado",
+"Gesha"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Anaerobic"
+],
+"profile": "Refined and sweet: stone fruit, caramel, florals and citrus with bright acidity and silky body; Sidra and Typica Mejorado lots are perfumed and tropical.",
+"notable": "Southern highlands near Peru produce Ecuador's finest lots; small volume but prestigious farms (La Papaya, Finca Soledad) and new varieties like Sidra.",
+"brewTip": "High-grown and dense; medium-fine grind at 94C. Aromatic varieties reward a longer ratio and gentle pour to protect florals."
+},
+{
+"id": "gt-huehuetenango",
+"country": "Guatemala",
+"region": "Huehuetenango",
+"aliases": [
+"huehuetenango",
+"huehue",
+"la libertad",
+"san pedro necta",
+"cuilco",
+"todos santos",
+"la democracia",
+"santa barbara huehuetenango",
+"hoja blanca",
+"concepcion huista",
+"concepción huista",
+"el injerto",
+"finca el injerto",
+"san antonio huista",
+"unión cantinil",
+"union cantinil",
+"chiantla",
+"la cumbre"
+],
+"lat": 15.5,
+"lon": -91.6,
+"altitudeM": [
+1500,
+2000
+],
+"harvest": [
+1,
+2,
+3,
+4
+],
+"harvestNote": "Late harvest Jan-Apr thanks to altitude and the dry Mexican winds.",
+"varieties": [
+"Bourbon",
+"Caturra",
+"Catuaí",
+"Typica",
+"Pache",
+"Pacamara",
+"Gesha"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Bright, winey and sweet: red apple, orange, caramel, dried fruit with crisp acidity and medium-full body. Complex and elegant.",
+"notable": "Non-volcanic limestone highlands on the Mexican border; El Injerto and the La Libertad area have repeatedly won Guatemala's Cup of Excellence.",
+"brewTip": "Dense, hard beans; medium-fine grind and 94-95C. Extracts cleanly; it suits a slightly longer ratio (1:16) that lets acidity shine."
+},
+{
+"id": "gt-antigua",
+"country": "Guatemala",
+"region": "Antigua",
+"aliases": [
+"antigua",
+"antigua guatemala",
+"sacatepequez",
+"sacatepéquez",
+"ciudad vieja",
+"san miguel duenas",
+"san miguel dueñas",
+"finca la azotea",
+"bella vista",
+"finca san sebastian",
+"finca san sebastián",
+"pastores",
+"santa ana antigua",
+"hunapu",
+"agua volcano",
+"finca filadelfia",
+"filadelfia"
+],
+"lat": 14.56,
+"lon": -90.73,
+"altitudeM": [
+1500,
+1800
+],
+"harvest": [
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Dec-Mar, peak Jan-Feb.",
+"varieties": [
+"Bourbon",
+"Caturra",
+"Catuaí",
+"Typica",
+"Gesha"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Rich and balanced: cocoa, caramel, orange, smoky spice with a full, velvety body and refined acidity. The classic Guatemalan estate cup.",
+"notable": "Volcanic valley between Agua, Fuego and Acatenango volcanoes; shade-grown estates with a protected 'Genuine Antigua' mark run by the producers' association.",
+"brewTip": "Dense volcanic beans; medium-fine grind and 93-94C. Body-forward, so it stays sweet at shorter ratios (1:15)."
+},
+{
+"id": "gt-acatenango",
+"country": "Guatemala",
+"region": "Acatenango",
+"aliases": [
+"acatenango",
+"acatenango valley",
+"chimaltenango",
+"la soledad",
+"finca la soledad",
+"san jose poaquil",
+"yepocapa",
+"san pedro yepocapa",
+"aldea quisache",
+"el socorro",
+"finca el socorro",
+"atitlan",
+"atitlán",
+"san marcos guatemala",
+"coban",
+"cobán",
+"fraijanes",
+"nuevo oriente"
+],
+"lat": 14.5,
+"lon": -90.9,
+"altitudeM": [
+1300,
+2000
+],
+"harvest": [
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Dec-Mar, higher farms into Apr.",
+"varieties": [
+"Bourbon",
+"Caturra",
+"Catuaí",
+"Pacamara",
+"Gesha",
+"Villa Sarchí"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Lively and sweet: red fruit, chocolate, honey, citrus with a juicy, medium body; higher and often brighter than neighbouring Antigua.",
+"notable": "Steep volcanic slopes west of Antigua, renewed by ash from Fuego; Finca La Soledad and the Pérez family's Gesha/Pacamara lots are the famous names.",
+"brewTip": "Dense; medium-fine grind, 94C. Blooms strongly; a longer bloom and two pours give a clean, bright cup."
+},
+{
+"id": "cr-tarrazu",
+"country": "Costa Rica",
+"region": "Tarrazú",
+"aliases": [
+"tarrazu",
+"tarrazú",
+"los santos",
+"san marcos de tarrazu",
+"dota",
+"santa maria de dota",
+"leon cortes",
+"león cortés",
+"san lorenzo",
+"frailes",
+"copey",
+"la pastora",
+"cedral",
+"coopetarrazu",
+"coopedota",
+"don mayo",
+"la lia",
+"la lía",
+"monte copey",
+"el cedral",
+"zona de los santos"
+],
+"lat": 9.65,
+"lon": -84.0,
+"altitudeM": [
+1400,
+2000
+],
+"harvest": [
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Dec-Mar, peak Jan-Feb; highest farms pick into Apr.",
+"varieties": [
+"Caturra",
+"Catuaí",
+"Villa Sarchí",
+"Typica",
+"SL28",
+"Gesha"
+],
+"processes": [
+"Honey",
+"Washed",
+"Natural",
+"Anaerobic"
+],
+"profile": "Clean and bright: orange, red apple, caramel and honey with crisp acidity and silky medium body. Honey process adds sugary, jammy sweetness.",
+"notable": "The Los Santos mountains are Costa Rica's most famous zone; micro-mill revolution of the 2000s and the 'honey process' were pioneered here.",
+"brewTip": "Very dense, hard beans; medium-fine grind and 94-95C. Honey lots drain slower than washed; coarsen slightly if the bed stalls."
+},
+{
+"id": "cr-westvalley",
+"country": "Costa Rica",
+"region": "West Valley",
+"aliases": [
+"west valley",
+"valle occidental",
+"naranjo",
+"grecia",
+"palmares",
+"san ramon",
+"san ramón",
+"sarchi",
+"sarchí",
+"atenas",
+"lourdes de naranjo",
+"las lajas",
+"finca las lajas",
+"helsar",
+"helsar de zarcero",
+"zarcero",
+"la candelilla",
+"sumava",
+"cordillera de fuego"
+],
+"lat": 10.1,
+"lon": -84.4,
+"altitudeM": [
+1200,
+1800
+],
+"harvest": [
+11,
+12,
+1,
+2
+],
+"harvestNote": "Harvest Nov-Feb, peak Dec-Jan.",
+"varieties": [
+"Caturra",
+"Catuaí",
+"Villa Sarchí",
+"Gesha",
+"SL28",
+"Typica"
+],
+"processes": [
+"Honey",
+"Natural",
+"Washed",
+"Anaerobic"
+],
+"profile": "Sweet and fruit-forward: peach, honey, vanilla, orange with medium body and bright but soft acidity; naturals and black honeys are jammy and winey.",
+"notable": "Home of the Villa Sarchí variety and a cluster of innovative micro-mills (Las Lajas, Helsar, Sumava, Cordillera de Fuego) that drive processing experiments.",
+"brewTip": "Dense; medium-fine grind and 93-94C. Processed lots can taste heavy if over-extracted; coarser grind and faster pour keep them clean."
+},
+{
+"id": "cr-centralvalley",
+"country": "Costa Rica",
+"region": "Central Valley",
+"aliases": [
+"central valley",
+"valle central",
+"heredia",
+"alajuela",
+"san jose costa rica",
+"san josé",
+"poas",
+"poás",
+"barva",
+"santa barbara de heredia",
+"tres rios",
+"tres ríos",
+"volcan poas",
+"la minita",
+"doka estate",
+"turrialba"
+],
+"lat": 9.95,
+"lon": -84.1,
+"altitudeM": [
+1000,
+1600
+],
+"harvest": [
+11,
+12,
+1,
+2
+],
+"harvestNote": "Harvest Nov-Feb; Turrialba to the east starts earlier (Jul-Dec).",
+"varieties": [
+"Caturra",
+"Catuaí",
+"Typica",
+"Villa Sarchí",
+"Bourbon"
+],
+"processes": [
+"Washed",
+"Honey",
+"Natural"
+],
+"profile": "Balanced and approachable: chocolate, honey, mild citrus and red fruit with medium body and gentle acidity.",
+"notable": "The oldest coffee zone in the country around the capital, with historic estates (Doka, La Minita) on the slopes of the Poás and Barva volcanoes.",
+"brewTip": "Moderately dense; medium grind and 92-94C. An easy, forgiving pour-over that suits standard 1:16 recipes."
+},
+{
+"id": "hn-santabarbara",
+"country": "Honduras",
+"region": "Santa Bárbara",
+"aliases": [
+"santa barbara",
+"santa bárbara",
+"las vegas",
+"pena blanca",
+"peña blanca",
+"san vicente",
+"el cielito",
+"las flores",
+"santa barbara honduras",
+"cerro azul",
+"finca el puente",
+"ocotepeque",
+"la paz honduras",
+"~marcala",
+"intibuca",
+"intibucá",
+"comayagua"
+],
+"lat": 14.9,
+"lon": -88.2,
+"altitudeM": [
+1300,
+1900
+],
+"harvest": [
+1,
+2,
+3,
+4
+],
+"harvestNote": "Harvest Jan-Apr, later than lower Honduran zones; peak Feb-Mar.",
+"varieties": [
+"Pacas",
+"Parainema",
+"IHCAFE 90",
+"Catuaí",
+"Bourbon",
+"Lempira",
+"Typica"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Anaerobic"
+],
+"profile": "Juicy and complex: tropical fruit, mango, florals, brown sugar with vivid acidity and silky body; Pacas lots can taste surprisingly like an Ethiopian.",
+"notable": "Santa Bárbara mountain farms (Las Flores, El Cielito) around Lake Yojoa dominate Honduran Cup of Excellence; Marcala (La Paz) is the other famous zone.",
+"brewTip": "Dense; medium-fine grind and 94C. Fruity lots are delicate and sweeten with a longer ratio; avoid harsh agitation."
+},
+{
+"id": "hn-copan",
+"country": "Honduras",
+"region": "Copán",
+"aliases": [
+"copan",
+"copán",
+"santa rosa de copan",
+"santa rosa de copán",
+"corquin",
+"corquín",
+"san pedro de copan",
+"capucas",
+"lempira honduras",
+"el paraiso honduras"
+],
+"lat": 14.85,
+"lon": -89.1,
+"altitudeM": [
+1100,
+1600
+],
+"harvest": [
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Dec-Mar, peak Jan-Feb.",
+"varieties": [
+"Catuaí",
+"Bourbon",
+"Caturra",
+"IHCAFE 90",
+"Lempira",
+"Parainema"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Rounded and chocolatey: cocoa, caramel, red apple, sweet spice with full body and soft acidity. Comfortable and sweet.",
+"notable": "Western Honduras near the Mayan ruins; cooperative Capucas and the Corquín area are well known. Honduras is Central America's largest producer.",
+"brewTip": "Medium density; medium grind and 92-93C. Body-forward and forgiving; good for stronger ratios."
+},
+{
+"id": "sv-apaneca",
+"country": "El Salvador",
+"region": "Santa Ana / Apaneca-Ilamatepec",
+"aliases": [
+"santa ana",
+"apaneca",
+"apaneca-ilamatepec",
+"ilamatepec",
+"ahuachapan",
+"ahuachapán",
+"juayua",
+"juayúa",
+"concepcion de ataco",
+"chalatenango",
+"alotepec-metapan",
+"usulutan",
+"usulután",
+"tecapa",
+"la palma",
+"finca kilimanjaro",
+"los pirineos",
+"el carmen estate",
+"el carmen"
+],
+"lat": 13.85,
+"lon": -89.8,
+"altitudeM": [
+1200,
+1900
+],
+"harvest": [
+11,
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Nov-Mar, peak Dec-Feb; highest Chalatenango farms into Apr.",
+"varieties": [
+"Bourbon",
+"Pacas",
+"Pacamara",
+"Tekisic",
+"Catuaí",
+"SL28"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Anaerobic"
+],
+"profile": "Sweet and soft: honey, caramel, red apple, cocoa with a creamy body and mild acidity; Pacamara lots are big, juicy, floral and savoury.",
+"notable": "Birthplace of the Pacas and Pacamara varieties and a stronghold of old Bourbon; estates on the Santa Ana volcano win Cup of Excellence regularly.",
+"brewTip": "Medium-high density; medium grind, 92-94C. Pacamara's large beans need a slightly finer grind than their size suggests to extract evenly."
+},
+{
+"id": "ni-jinotega",
+"country": "Nicaragua",
+"region": "Jinotega",
+"aliases": [
+"jinotega",
+"matagalpa",
+"nueva segovia",
+"dipilto",
+"mozonte",
+"ocotal",
+"san juan del rio coco",
+"san juan del río coco",
+"la dalia",
+"finca la bastilla",
+"un regalo de dios",
+"finca limoncillo",
+"peñas blancas",
+"penas blancas"
+],
+"lat": 13.1,
+"lon": -85.95,
+"altitudeM": [
+1100,
+1700
+],
+"harvest": [
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Dec-Mar, peak Jan-Feb.",
+"varieties": [
+"Caturra",
+"Catuaí",
+"Bourbon",
+"Maragogipe",
+"Pacamara",
+"Java",
+"Catimor",
+"Maracaturra"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Anaerobic"
+],
+"profile": "Mellow and sweet: milk chocolate, nuts, caramel, mild red fruit and soft acidity with a round body; Maracaturra and Java lots are brighter and floral.",
+"notable": "Jinotega and Matagalpa grow most of Nicaragua's coffee; Nueva Segovia (Dipilto, Mozonte) estates have taken most Cup of Excellence wins.",
+"brewTip": "Medium density; medium grind and 92-93C. Low acidity means it can taste flat if under-extracted, so grind on the finer side of medium."
+},
+{
+"id": "pa-boquete",
+"country": "Panama",
+"region": "Boquete",
+"aliases": [
+"panamá",
+"boquete",
+"chiriqui",
+"chiriquí",
+"hacienda la esmeralda",
+"la esmeralda",
+"elida",
+"elida estate",
+"finca lerida",
+"lérida",
+"don pachi",
+"jaramillo",
+"bajo mono",
+"alto quiel",
+"kotowa",
+"finca deborah",
+"carmen estate",
+"lamastus",
+"ninety plus"
+],
+"lat": 8.78,
+"lon": -82.44,
+"altitudeM": [
+1200,
+2000
+],
+"harvest": [
+12,
+1,
+2,
+3,
+4
+],
+"harvestNote": "Harvest Dec-Apr; Gesha on the highest farms picks Feb-Apr.",
+"varieties": [
+"Gesha",
+"Catuaí",
+"Caturra",
+"Typica",
+"Pacamara",
+"Bourbon"
+],
+"processes": [
+"Washed",
+"Natural",
+"Anaerobic",
+"Carbonic maceration"
+],
+"profile": "Panama Gesha is jasmine, bergamot, peach and tropical fruit with tea-like clarity and sparkling acidity; Catuaí lots are sweet, chocolatey and balanced.",
+"notable": "Hacienda La Esmeralda's 2004 Best of Panama lot launched the Gesha phenomenon; Elida, Lamastus and Finca Deborah set world auction records.",
+"brewTip": "Gesha is low-density and porous for its altitude: grind a bit coarser, brew 90-93C and use a longer ratio (1:16-17) so florals are not buried."
+},
+{
+"id": "pa-volcan",
+"country": "Panama",
+"region": "Volcán",
+"aliases": [
+"volcan",
+"volcán",
+"volcan baru",
+"volcán barú",
+"tierras altas",
+"cerro punta",
+"finca hartmann",
+"hartmann",
+"finca sophia",
+"finca nuvo",
+"renacimiento",
+"rio sereno",
+"río sereno"
+],
+"lat": 8.77,
+"lon": -82.63,
+"altitudeM": [
+1300,
+2100
+],
+"harvest": [
+12,
+1,
+2,
+3,
+4
+],
+"harvestNote": "Harvest Dec-Apr, the highest farms (Finca Sophia, Nuvo) into May.",
+"varieties": [
+"Gesha",
+"Catuaí",
+"Caturra",
+"Typica",
+"Pacamara",
+"SL28"
+],
+"processes": [
+"Washed",
+"Natural",
+"Anaerobic"
+],
+"profile": "Elegant and sweet: florals, stone fruit, honey and citrus with silky body; naturals are winey and tropical. Slightly fuller than Boquete at the same altitude.",
+"notable": "The western slope of Volcán Barú (Tierras Altas); Finca Hartmann's shade forests and Finca Sophia (one of the world's highest farms) are the landmarks.",
+"brewTip": "Treat like Boquete: coarser grind for Gesha, 91-94C, longer ratio; Catuaí and Pacamara lots handle standard 1:16 at 94C."
+},
+{
+"id": "mx-chiapas",
+"country": "Mexico",
+"region": "Chiapas",
+"aliases": [
+"méxico",
+"chiapas",
+"soconusco",
+"tapachula",
+"motozintla",
+"jaltenango",
+"sierra madre de chiapas",
+"el triunfo",
+"finca hamburgo",
+"irlanda",
+"finca irlanda",
+"san cristobal",
+"san cristóbal",
+"bella vista chiapas"
+],
+"lat": 15.4,
+"lon": -92.4,
+"altitudeM": [
+1000,
+1800
+],
+"harvest": [
+11,
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Nov-Mar, peak Dec-Feb; highest Sierra Madre farms into Apr.",
+"varieties": [
+"Bourbon",
+"Typica",
+"Caturra",
+"Mundo Novo",
+"Marsellesa",
+"Oro Azteca",
+"Garnica",
+"Sarchimor"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Balanced and sweet: milk chocolate, nuts, caramel, orange and soft red fruit with medium body and gentle acidity. Clean, easy-drinking.",
+"notable": "Mexico's largest producing state on the Guatemalan border; the Soconusco estates and El Triunfo reserve cooperatives (mostly organic) are the known names.",
+"brewTip": "Medium density; medium grind, 92-93C. Forgiving and consistent; a good starting coffee for new brewers."
+},
+{
+"id": "mx-oaxaca",
+"country": "Mexico",
+"region": "Oaxaca",
+"aliases": [
+"oaxaca",
+"pluma hidalgo",
+"pluma",
+"sierra sur",
+"sierra mazateca",
+"mazateca",
+"huautla",
+"loxicha",
+"mixteca",
+"sierra norte",
+"cepco"
+],
+"lat": 16.0,
+"lon": -96.4,
+"altitudeM": [
+1000,
+1800
+],
+"harvest": [
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Dec-Mar, peak Jan-Feb.",
+"varieties": [
+"Typica",
+"Bourbon",
+"Pluma Hidalgo (Typica)",
+"Mundo Novo",
+"Caturra",
+"Marsellesa"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Delicate and sweet: honey, chocolate, red apple, florals and a soft, tea-like body with mild acidity; Pluma Hidalgo Typicas are prized for elegance.",
+"notable": "Pluma Hidalgo in the Sierra Sur has a denomination of origin for its Typica-based coffee; small indigenous farms and cooperatives such as CEPCO dominate.",
+"brewTip": "Medium-low density; medium grind and 91-93C. Delicate cups are easily over-extracted; keep contact time moderate and ratios around 1:16."
+},
+{
+"id": "mx-veracruz",
+"country": "Mexico",
+"region": "Veracruz",
+"aliases": [
+"veracruz",
+"coatepec",
+"xalapa",
+"jalapa",
+"huatusco",
+"cordoba",
+"córdoba",
+"orizaba",
+"zongolica",
+"xico",
+"teocelo",
+"pico de orizaba",
+"finca kassandra"
+],
+"lat": 19.3,
+"lon": -96.96,
+"altitudeM": [
+900,
+1700
+],
+"harvest": [
+11,
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Nov-Mar, peak Dec-Feb; Pico de Orizaba foothills into Apr.",
+"varieties": [
+"Typica",
+"Bourbon",
+"Garnica",
+"Caturra",
+"Marsellesa",
+"Sarchimor",
+"Gesha"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Soft, sweet and clean: caramel, cocoa, orange, nuts and mild florals with a light-medium body. Higher farms near Pico de Orizaba are brighter.",
+"notable": "Mexico's oldest coffee zone around Coatepec and Huatusco; the Gulf-facing slopes are a hub for Mexican Cup of Excellence and specialty experimentation.",
+"brewTip": "Medium-low density; medium grind, 91-93C. Lighter-bodied, so a slightly shorter ratio (1:15) adds weight without bitterness."
+},
+{
+"id": "ye",
+"country": "Yemen",
+"region": "Yemen (Haraz / Sana'a highlands)",
+"aliases": [
+"haraz",
+"haraaz",
+"harazi",
+"sanani",
+"sana'a",
+"sanaa",
+"mocha",
+"mokha",
+"al mokha",
+"port of mokha",
+"bani matar",
+"bani ismail",
+"ismaili",
+"udaini",
+"qima",
+"sheibani",
+"qishr",
+"mattari",
+"mahwit",
+"al mahwit"
+],
+"lat": 15.2,
+"lon": 43.8,
+"altitudeM": [
+1500,
+2400
+],
+"harvest": [
+10,
+11,
+12
+],
+"harvestNote": "Harvest Oct-Dec (some valleys Sep-Jan); sun-dried on rooftops, exports Jan-Apr.",
+"varieties": [
+"Udaini",
+"Dawairi",
+"Tuffahi",
+"Ja'adi",
+"Yemenia landraces"
+],
+"processes": [
+"Natural",
+"Anaerobic natural"
+],
+"profile": "Wild, winey and spiced: dried fruit, dark chocolate, tobacco, cardamom and red wine with a heavy, syrupy body; modern lots are cleaner with berry and florals.",
+"notable": "The first place coffee was cultivated and traded (via the port of Mokha); terraced mountain gardens with unique 'Yemenia' genetics, exported by Qima, Mokha and others.",
+"brewTip": "Small, uneven, low-moisture beans that extract fast: grind coarser, brew 90-92C, and use a short ratio (1:14-15); over-extraction turns the spice harsh."
+},
+{
+"id": "id-sumatra",
+"country": "Indonesia",
+"region": "Sumatra (Gayo / Aceh)",
+"aliases": [
+"sumatra",
+"sumatera",
+"gayo",
+"aceh",
+"aceh gayo",
+"takengon",
+"bener meriah",
+"lintong",
+"lintong nihuta",
+"mandheling",
+"mandailing",
+"toba",
+"lake toba",
+"sidikalang",
+"gayo highland",
+"ketiara",
+"kerinci",
+"solok",
+"west sumatra"
+],
+"lat": 4.6,
+"lon": 96.9,
+"altitudeM": [
+1200,
+1700
+],
+"harvest": [
+9,
+10,
+11,
+12,
+3,
+4,
+5
+],
+"harvestNote": "Gayo main harvest Sep-Dec, second crop Mar-May; Lintong peaks Oct-Jan with a fly crop around Jun.",
+"varieties": [
+"Tim Tim (Timor Hybrid)",
+"Ateng (Catimor)",
+"Jember (S795)",
+"Bourbon",
+"Typica",
+"Gayo 1",
+"Gayo 2",
+"Abyssinia",
+"P88"
+],
+"processes": [
+"Wet-hulled (Giling Basah)",
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Wet-hulled: earthy, herbal, cedar, dark chocolate, tobacco with a heavy, syrupy body and low acidity. Fully washed Gayo lots are cleaner: spice, citrus, brown sugar.",
+"notable": "The Gayo highlands around Lake Tawar (Takengon) produce most of Indonesia's specialty arabica; wet-hulling (giling basah) gives the signature bluish-green beans.",
+"brewTip": "Wet-hulled beans are soft and extract fast: grind coarser, brew 88-92C and keep ratios short (1:14-15). Washed Gayo lots can take 93C and a finer grind."
+},
+{
+"id": "id-java",
+"country": "Indonesia",
+"region": "Java",
+"aliases": [
+"java",
+"east java",
+"west java",
+"ijen",
+"kawah ijen",
+"ijen plateau",
+"jampit",
+"blawan",
+"kayumas",
+"java estate",
+"preanger",
+"priangan",
+"pangalengan",
+"bandung",
+"puntang",
+"malabar",
+"java frinsa",
+"frinsa"
+],
+"lat": -8.0,
+"lon": 113.9,
+"altitudeM": [
+900,
+1700
+],
+"harvest": [
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest Jun-Sep on the Ijen estates; West Java highlands pick May-Aug.",
+"varieties": [
+"Typica",
+"Ateng (Catimor)",
+"Lini S",
+"S795",
+"Andung Sari",
+"Sigarar Utang",
+"Kartika"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Wet-hulled"
+],
+"profile": "Washed Java is clean, mellow and spicy: cocoa, cedar, nuts, mild citrus with a heavy, smooth body. West Java naturals are fruitier, with red berry and brown sugar.",
+"notable": "The Dutch colonial estates (Jampit, Blawan, Kayumas) on the Ijen plateau give the 'Java' name; West Java's Frinsa and Puntang farms lead the specialty revival.",
+"brewTip": "Medium density; medium grind, 91-93C. Washed estate lots are forgiving; naturals extract fast, so coarsen slightly."
+},
+{
+"id": "id-toraja",
+"country": "Indonesia",
+"region": "Sulawesi Toraja",
+"aliases": [
+"sulawesi",
+"celebes",
+"toraja",
+"tana toraja",
+"toraja sapan",
+"sapan",
+"pulu pulu",
+"pulu-pulu",
+"rantepao",
+"kalosi",
+"enrekang",
+"toarco",
+"mamasa",
+"toraja kalosi"
+],
+"lat": -3.0,
+"lon": 119.9,
+"altitudeM": [
+1200,
+1900
+],
+"harvest": [
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest Jun-Sep, peak Jul-Aug.",
+"varieties": [
+"Typica",
+"S795 (Jember)",
+"Tim Tim",
+"Ateng (Catimor)",
+"Bourbon"
+],
+"processes": [
+"Wet-hulled (Giling Basah)",
+"Washed",
+"Natural"
+],
+"profile": "Deep and syrupy: dark chocolate, ripe fruit, spice, sweet tobacco and cedar with a heavy body and mild acidity; washed lots show caramel and citrus.",
+"notable": "Highland Tana Toraja villages (Sapan, Pulu-Pulu) and the Japanese-backed Toarco estate; Kalosi is the historic trading name for these coffees.",
+"brewTip": "Wet-hulled beans are soft: grind coarser, brew 89-92C and keep the ratio short; the body carries sweetness even with a quick drawdown."
+},
+{
+"id": "id-bali",
+"country": "Indonesia",
+"region": "Bali Kintamani",
+"aliases": [
+"bali",
+"kintamani",
+"bali kintamani",
+"kintamani highlands",
+"batur",
+"mount batur",
+"blue moon",
+"bali blue",
+"subak abian",
+"bangli",
+"ulian"
+],
+"lat": -8.25,
+"lon": 115.35,
+"altitudeM": [
+1100,
+1600
+],
+"harvest": [
+5,
+6,
+7,
+8
+],
+"harvestNote": "Harvest May-Aug, peak Jun-Jul.",
+"varieties": [
+"S795 (Jember)",
+"Typica",
+"Catimor",
+"Lini S",
+"Kopyol"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Wet-hulled"
+],
+"profile": "Soft and sweet: milk chocolate, citrus, brown sugar and gentle florals with a medium, syrupy body; naturals are winey with tropical fruit.",
+"notable": "Grown on the slopes of Mount Batur by Subak Abian farmer groups, intercropped with oranges; Kintamani holds Indonesia's first coffee geographical indication.",
+"brewTip": "Medium density, often washed rather than wet-hulled; medium grind and 92-93C. Clean and forgiving, closer to a Central American in the cup."
+},
+{
+"id": "id-flores",
+"country": "Indonesia",
+"region": "Flores (Bajawa)",
+"aliases": [
+"flores",
+"bajawa",
+"ngada",
+"manggarai",
+"ruteng",
+"bajawa ngura",
+"ngura",
+"flores bajawa",
+"arabika flores bajawa",
+"flores manggarai",
+"east nusa tenggara",
+"nusa tenggara"
+],
+"lat": -8.8,
+"lon": 121.0,
+"altitudeM": [
+1200,
+1700
+],
+"harvest": [
+5,
+6,
+7,
+8
+],
+"harvestNote": "Harvest May-Aug, peak Jun-Jul.",
+"varieties": [
+"S795 (Jember)",
+"Typica",
+"Tim Tim",
+"Catimor",
+"Lini S"
+],
+"processes": [
+"Wet-hulled (Giling Basah)",
+"Washed",
+"Natural"
+],
+"profile": "Sweet and heavy: dark chocolate, tobacco, dried fruit, floral spice with a syrupy body and low acidity; cleaner than Sumatra with more fruit.",
+"notable": "Bajawa district farms on the volcanic slopes of Inerie; the Ngada and Manggarai regencies both hold Indonesian geographical indications.",
+"brewTip": "Soft, wet-hulled beans: coarser grind, 89-92C and a short ratio. Washed lots can be treated like a Bali coffee at 92-93C."
+},
+{
+"id": "pg",
+"country": "Papua New Guinea",
+"region": "Papua New Guinea (Eastern / Western Highlands)",
+"aliases": [
+"png",
+"papua",
+"new guinea",
+"eastern highlands",
+"western highlands",
+"goroka",
+"mt hagen",
+"mount hagen",
+"simbu",
+"chimbu",
+"jiwaka",
+"wahgi",
+"wahgi valley",
+"kainantu",
+"okapa",
+"morobe",
+"sigri",
+"sigri estate",
+"kimel",
+"eastern highlands aa"
+],
+"lat": -6.08,
+"lon": 145.4,
+"altitudeM": [
+1400,
+2000
+],
+"harvest": [
+4,
+5,
+6,
+7,
+8,
+9
+],
+"harvestNote": "Harvest Apr-Sep, peak May-Jul; new crop ships Aug-Nov.",
+"varieties": [
+"Typica",
+"Bourbon",
+"Arusha",
+"Blue Mountain",
+"Mundo Novo",
+"Catimor"
+],
+"processes": [
+"Washed",
+"Natural"
+],
+"profile": "Full and fruity: tropical fruit, red apple, brown sugar, herbal and nutty notes with a rich body and bright but rounded acidity. Some lots are wild and winey.",
+"notable": "Jamaica Blue Mountain seedlings planted in the 1920s; estates like Sigri and Kimel plus thousands of highland 'garden' smallholders in the Wahgi Valley.",
+"brewTip": "Dense, high-grown beans; medium-fine grind and 93-94C. Rustic lots benefit from a slightly coarser grind to keep ferment notes in check."
+},
+{
+"id": "in-chikmagalur",
+"country": "India",
+"region": "Chikmagalur",
+"aliases": [
+"chikmagalur",
+"chikkamagaluru",
+"baba budangiri",
+"bababudangiri",
+"~coorg",
+"~kodagu",
+"karnataka",
+"~wayanad",
+"~nilgiris",
+"nilgiri",
+"~araku",
+"araku valley",
+"mysore nuggets",
+"monsooned malabar",
+"monsoon malabar",
+"kent"
+],
+"lat": 13.3,
+"lon": 75.75,
+"altitudeM": [
+1000,
+1600
+],
+"harvest": [
+11,
+12,
+1,
+2
+],
+"harvestNote": "Arabica harvest Nov-Feb, peak Dec-Jan; Robusta Jan-Mar; monsooning Jun-Sep.",
+"varieties": [
+"Kent",
+"S795",
+"Selection 9",
+"Cauvery (Catimor)",
+"Chandragiri",
+"Selection 5B"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Monsooned",
+"Anaerobic"
+],
+"profile": "Soft, spiced and sweet: cocoa, nuts, dried fruit, warm spice with a heavy body and low acidity; estate micro-lots add citrus and florals. Monsooned coffee is mellow and musty.",
+"notable": "Baba Budan planted India's first coffee here in the 1600s; shade-grown estates in the Western Ghats intercropped with pepper and cardamom.",
+"brewTip": "Medium-low density; medium grind, 91-93C and a short ratio (1:15). Monsooned beans are porous and need a coarse grind and cooler water."
+},
+{
+"id": "vn-dalat",
+"country": "Vietnam",
+"region": "Da Lat (Lâm Đồng)",
+"aliases": [
+"viet nam",
+"da lat",
+"dalat",
+"đà lạt",
+"lam dong",
+"lâm đồng",
+"cau dat",
+"cầu đất",
+"lac duong",
+"lạc dương",
+"langbiang",
+"lang biang",
+"son la",
+"sơn la",
+"central highlands vietnam",
+"k'ho",
+"kho coffee"
+],
+"lat": 11.95,
+"lon": 108.45,
+"altitudeM": [
+1300,
+1700
+],
+"harvest": [
+11,
+12,
+1,
+2
+],
+"harvestNote": "Arabica harvest Nov-Feb, peak Dec-Jan; Son La (north) Oct-Jan.",
+"varieties": [
+"Catimor",
+"Typica (Cau Dat)",
+"Bourbon",
+"Caturra",
+"THA1",
+"Moka (Typica)"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Anaerobic"
+],
+"profile": "Clean, mild and sweet: chocolate, caramel, mild citrus and dried fruit with medium body and soft acidity; Typica lots from Cau Dat are more floral and tea-like.",
+"notable": "The cool Da Lat plateau is the heart of Vietnamese arabica in a country dominated by Robusta; K'Ho and Cau Dat farms lead the specialty movement.",
+"brewTip": "Medium density; medium grind, 92-93C. Catimor lots can show vegetal notes if pushed, so avoid very fine grinds and long contact."
+},
+{
+"id": "th-chiangmai",
+"country": "Thailand",
+"region": "Chiang Mai / Chiang Rai",
+"aliases": [
+"chiang mai",
+"chiangmai",
+"chiang rai",
+"chiangrai",
+"doi chaang",
+"doi chang",
+"doi tung",
+"doi inthanon",
+"doi pha hee",
+"pha hee",
+"mae jantai",
+"mae chan tai",
+"mae hong son",
+"mae salong",
+"akha ama",
+"akha"
+],
+"lat": 19.0,
+"lon": 98.8,
+"altitudeM": [
+1000,
+1600
+],
+"harvest": [
+11,
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Nov-Mar, peak Dec-Feb.",
+"varieties": [
+"Catimor",
+"Typica",
+"Caturra",
+"Chiang Mai 80",
+"Bourbon",
+"SL28",
+"Gesha"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Anaerobic"
+],
+"profile": "Soft and sweet: milk chocolate, nuts, caramel, mild citrus and red fruit with medium body and gentle acidity; naturals add berry and winey notes.",
+"notable": "Hill-tribe villages in the far north (Doi Chaang, Mae Jantai, Pha Hee) grew out of royal crop-substitution projects; Thai barista culture drives quality.",
+"brewTip": "Medium density; medium grind and 92-93C. Catimor-heavy lots dislike over-extraction; keep the ratio around 1:15-16 and the grind medium."
+},
+{
+"id": "cn-yunnan",
+"country": "China",
+"region": "Yunnan",
+"aliases": [
+"yunnan",
+"pu'er",
+"puer",
+"pu er",
+"simao",
+"baoshan",
+"dehong",
+"lincang",
+"yunnan arabica",
+"yunnan catimor"
+],
+"lat": 23.5,
+"lon": 100.5,
+"altitudeM": [
+1000,
+1800
+],
+"harvest": [
+11,
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Nov-Mar, peak Dec-Feb.",
+"varieties": [
+"Catimor",
+"Typica",
+"Bourbon",
+"Caturra",
+"SL34",
+"Gesha"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Anaerobic"
+],
+"profile": "Clean and mellow: milk chocolate, nuts, caramel, plum and mild citrus with medium body and soft acidity; experimental naturals are jammy and tropical.",
+"notable": "Nearly all Chinese coffee grows in Yunnan's Pu'er, Baoshan and Dehong prefectures; rapid quality growth since 2010 with washing stations and micro-lots.",
+"brewTip": "Medium density; medium grind, 92-93C. Catimor lots can taste vegetal if over-extracted, so stay at 1:15-16 and avoid very fine grinds."
+},
+{
+"id": "mm-ywangan",
+"country": "Myanmar",
+"region": "Ywangan (Shan State)",
+"aliases": [
+"burma",
+"ywangan",
+"ywa ngan",
+"shan state",
+"southern shan",
+"pyin oo lwin",
+"pyin u lwin",
+"mandalay",
+"shwe taung thu",
+"behind the leaf"
+],
+"lat": 21.15,
+"lon": 96.45,
+"altitudeM": [
+1100,
+1600
+],
+"harvest": [
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Dec-Mar, peak Jan-Feb.",
+"varieties": [
+"Catuaí",
+"S795",
+"Catimor",
+"SL34",
+"Caturra",
+"Typica"
+],
+"processes": [
+"Natural",
+"Washed",
+"Honey",
+"Anaerobic"
+],
+"profile": "Natural Ywangan lots are sweet and winey: strawberry, dried fruit, honey, cocoa with a juicy body and bright acidity; washed lots are clean with citrus and caramel.",
+"notable": "A community-based specialty programme since 2014 made Ywangan village naturals the face of Burmese coffee; Pyin Oo Lwin is the older estate zone.",
+"brewTip": "Medium-high density; medium grind and 92-94C. Naturals are forgiving but extract fast; coarsen slightly if the fruit turns boozy."
+},
+{
+"id": "tw-alishan",
+"country": "Taiwan",
+"region": "Alishan (Chiayi)",
+"aliases": [
+"alishan",
+"ali shan",
+"chiayi",
+"jiayi",
+"nantou",
+"zou zhou yuan",
+"zhuo wu",
+"zhuowu",
+"taiwan gesha",
+"taiwan geisha"
+],
+"lat": 23.5,
+"lon": 120.8,
+"altitudeM": [
+800,
+1500
+],
+"harvest": [
+11,
+12,
+1,
+2,
+3
+],
+"harvestNote": "Harvest Nov-Mar, peak Dec-Jan.",
+"varieties": [
+"Typica",
+"SL34",
+"Gesha",
+"Bourbon",
+"Caturra",
+"Catuaí"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey",
+"Anaerobic"
+],
+"profile": "Delicate and sweet: stone fruit, florals, honey, brown sugar with a tea-like body and gentle acidity; the best lots echo a light-roast Panama in clarity.",
+"notable": "Tiny production of extremely expensive, meticulously processed micro-lots; Alishan tea-country farms (Zou Zhou Yuan, Zhuo Wu) win national and international awards.",
+"brewTip": "Medium density, very clean; medium grind and 92-94C. Use a longer ratio (1:16-17) and gentle pours to show the florals."
+},
+{
+"id": "us-kona",
+"country": "Hawaii (USA)",
+"region": "Kona",
+"aliases": [
+"kona",
+"hawaii",
+"hawai'i",
+"hawaii kona",
+"big island",
+"holualoa",
+"hōlualoa",
+"captain cook",
+"kealakekua",
+"honaunau",
+"kona typica",
+"kona extra fancy",
+"kona fancy",
+"ka'u",
+"kau",
+"maui",
+"kona peaberry"
+],
+"lat": 19.55,
+"lon": -155.9,
+"altitudeM": [
+250,
+900
+],
+"harvest": [
+8,
+9,
+10,
+11,
+12,
+1
+],
+"harvestNote": "Harvest Aug-Jan, peak Sep-Nov; cherry ripens in several passes.",
+"varieties": [
+"Kona Typica",
+"Typica",
+"Caturra",
+"Bourbon",
+"SL34",
+"Gesha"
+],
+"processes": [
+"Washed",
+"Natural",
+"Honey"
+],
+"profile": "Smooth, mild and sweet: milk chocolate, butter, brown sugar, mild citrus and nuts with a silky body and gentle acidity. Prized for softness, not intensity.",
+"notable": "A narrow belt of small farms on the Hualalai and Mauna Loa slopes; Hawaii's grading (Extra Fancy, Fancy, Peaberry) and the Kona name are state-protected.",
+"brewTip": "Low-grown, soft beans that extract quickly: grind medium-coarse, brew 90-92C and keep ratios short (1:14-15) so the delicate sweetness is not washed out."
+}
+]

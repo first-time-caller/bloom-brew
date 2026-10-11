@@ -68,6 +68,16 @@ The full Simple/Pro split planned across all passes:
 
 **Shipped:** after brewing, "What you tasted" (flavour tags plus your own words) shown beside the roaster's notes, with a comparison rather than a score; "As it cooled" note; "Would you buy it again?" (yes, maybe, no); the grind setting you used, editable after the brew; "Copy as review" in the r/pourover weekly-thread format, from the after-brew screen and from any history entry; history shows tasting notes and buy-again; "Bought from" field; history search covers source and tasting notes. Header: "bloom" is now bold text that goes back to the start (asks first mid-brew); the logo is the page favicon. The grinder and setting moved up the recipe screen, and the grind shows on the timer screen.
 
+## Pass 6: safe to rely on, weigh the bag, origin atlas ✅ shipped 11 Oct 2026
+
+**Safety (from the production review):** records and bags are sanitised on load, so one bad record can't break the app; a brew in progress is saved every few seconds and offered back after a reload or crash ("Brew in progress · Resume / Discard"); the phone's back button behaves like the app's Back button and won't leave a running brew; storage failures show a notice instead of losing data silently; history keeps 1,000 brews; a failed sync is retried and shown as "Not synced" rather than wiping history; Settings → Your data has Download, Import and Delete everything (schema-versioned JSON); timer steps are announced to screen readers; 44 px touch targets; non-blocking fonts; install-to-home-screen manifest and offline service worker on GitHub Pages; scan timeout; settings and bag-migration are two-device safe.
+
+**Timer:** the whole ring no longer turns accent-coloured before a pour; the next pour's mark pulses instead and the ring keeps showing elapsed time.
+
+**Weigh the bag:** "Weigh bag" on Today and on each shelf row. Type what the scale says, with the empty bag's weight subtracted (editable, default 20 g) or "coffee only". Brews-left then comes from your weighing minus the doses brewed since. "Use it up" splits what's left evenly over the brews it will make; "Brew the rest" uses it all and marks the bag finished after that brew. A coffee ± stepper on Today sets the dose directly, with the water following.
+
+**Origin atlas and producer memory:** every bag with an origin gets an origin card on Today: where, elevation, harvest season, what the place is known for, what the cup tends to be like, and how it behaves in a pour-over. A built-in atlas of 60 regions answers instantly; when Bloom runs in Claude the card is refined once with the bag's own farm or station. Harvest-to-roast timeline ("picked around Jan 2026 · roasted Sep · about 8 months from harvest to roast"). Producer memory: "Your 3rd coffee from Hambela Wamena · you rate it 4.5 on average". The shelf has an origins map of everywhere you've brewed from and the places you keep coming back to. Recipe notes explain the recipe in origin terms.
+
 ## Pass 5: Today, the shelf and bags ✅ shipped 10 Oct 2026
 
 - **Bags are their own records**: details, roast and freezer dates, bag weight, status. Every brew links to its bag. Earlier brews are grouped into bags automatically on first open (by coffee and roast date; anything brewed in the last 30 days stays on the shelf, older bags are marked finished).

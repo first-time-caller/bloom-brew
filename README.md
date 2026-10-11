@@ -9,6 +9,8 @@ It is a single self-contained page, `index.html`: plain HTML, CSS and JavaScript
 ## What it does
 
 - **Today**: the home screen. It opens on the bag you're brewing with today's recipe already adjusted from your last cup ("yesterday's cup was sour, so 2 clicks finer today"), what changed last time, and one Start brewing button that goes straight to the timer. Quick swaps for brewer and cup size, and a nudge to rate an unrated cup.
+- **Weigh the bag**: type what your scale says and Bloom works out grams and brews left, with "Use it up" and "Brew the rest".
+- **Origin atlas**: an origin card for every bag (elevation, harvest season, what the region is known for, how it brews), a harvest-to-roast timeline, producer memory across bags, and a map of everywhere you've brewed from. A built-in atlas of 60 regions works offline; in Claude the card is refined with the bag's own farm or station.
 - **Shelf**: every bag as its own record, with a drink-next order, resting and ready status, brews left by weight, a freezer backlog, and finished bags. Earlier brews are grouped into bags automatically.
 - **Coffee details**: roaster, coffee name, varieties, roast date and level, the roaster's tasting notes and flavour tags, origin, process, grade, altitude, bag weight, decaf, and the roaster's rest and best-within advice. Blends are kept part by part.
 - **Bag ageing**: opened, frozen, out-of-freezer and rest-until dates. Freezer time doesn't count towards age, and the bag's status is shown in plain words (resting, ready, in the freezer, past best-within).
@@ -22,6 +24,8 @@ It is a single self-contained page, `index.html`: plain HTML, CSS and JavaScript
 
 ## Running it
 
+On GitHub Pages the app can be added to a phone's home screen and works offline (`sw.js` must sit next to `index.html`). Settings → Your data exports and imports everything as JSON.
+
 Open `index.html` in a browser, or serve the folder with any static host (for example GitHub Pages: Settings → Pages → deploy from the `main` branch, root folder).
 
 Two features only work when the page runs as a Claude artifact:
@@ -33,7 +37,8 @@ Everywhere else Bloom works fully by hand, and history and settings are kept in 
 
 ## Tests and tools
 
-- `tests/today.test.js` and `tests/fullbrew.test.js` are Playwright checks of the Today screen, the shelf and a full brew from Today through the timer. Run with `node tests/today.test.js index.html` (needs the `playwright` package and Chromium).
+- `tests/*.test.js` are Playwright checks: Today and the shelf, a full brew through the timer, weigh-the-bag, the origin atlas, and the safety behaviours (resume after reload, back button, export/import). Run with `node tests/today.test.js index.html` (needs the `playwright` package and Chromium).
+- `data/atlas.json` is the built-in origin atlas (60 regions) and `data/build-belt.js` rebuilds the coffee-belt map outline from `world-atlas`.
 - `tools/finale-lab.html` is a test page for the end-of-brew animation, with every brewer side by side.
 
 ## Docs
